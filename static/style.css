@@ -1,143 +1,352 @@
 /**
- * Custom CSS for Diabetes Prediction Application
- *
- * This file contains minimal custom CSS for features not easily achievable
- * with Tailwind utility classes alone (primarily animations).
- *
- * Educational Note:
- * ----------------
- * We use Tailwind CSS for most styling because:
- * 1. It provides consistent, well-designed utility classes
- * 2. It reduces the amount of custom CSS we need to write
- * 3. It makes the HTML more maintainable (styles are visible in markup)
- * 4. It enforces design system constraints (spacing, colors, etc.)
- *
- * However, some things like custom animations are better defined in CSS.
- * This file contains those exceptions.
+ * Custom styling for the Race Day Predictor.
+ * Builds on Tailwind utility classes with a few bespoke animations and components.
  */
 
-/* ============================================================================
-   Custom Animations
-   ============================================================================ */
+:root {
+    --track-surface: rgba(148, 163, 184, 0.08);
+    --track-rail: rgba(255, 255, 255, 0.08);
+    --finish-line: rgba(255, 255, 255, 0.85);
+}
 
-/**
- * Slide-in animation for result and error displays
- *
- * This animation creates a smooth reveal effect when results appear,
- * improving the user experience by drawing attention to new content.
- */
-@keyframes slideIn {
-    from {
+.input-select {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #e2e8f0;
+    padding: 0.85rem 0.9rem;
+    border-radius: 0.75rem;
+    font-weight: 600;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.input-select:focus {
+    border-color: #12a567;
+    box-shadow: 0 0 0 4px rgba(18, 165, 103, 0.2);
+    transform: translateY(-1px);
+}
+
+.btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 0.9rem 1.1rem;
+    border-radius: 0.9rem;
+    background: linear-gradient(120deg, #12a567, #0f766e, #f97316);
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+    transition: transform 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-1px) scale(1.01);
+    box-shadow: 0 18px 36px rgba(0, 0, 0, 0.3);
+}
+
+.btn-primary:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.button-spinner {
+    width: 18px;
+    height: 18px;
+    border: 3px solid rgba(255, 255, 255, 0.35);
+    border-top-color: #fff;
+    border-radius: 999px;
+    animation: spin 0.9s linear infinite;
+}
+
+.pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.45rem 0.75rem;
+    border-radius: 999px;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    border: 1px solid transparent;
+}
+
+.pill--brand {
+    background: rgba(18, 165, 103, 0.18);
+    border-color: rgba(18, 165, 103, 0.5);
+    color: #e6fffa;
+}
+
+.pill--ghost {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.12);
+    color: #e2e8f0;
+}
+
+.pill--pick {
+    background: rgba(249, 115, 22, 0.15);
+    border-color: rgba(249, 115, 22, 0.55);
+    color: #fff7ed;
+}
+
+.pill--winner {
+    background: rgba(34, 197, 94, 0.22);
+    border-color: rgba(34, 197, 94, 0.65);
+    color: #dcfce7;
+}
+
+.pill--pick-loss {
+    background: rgba(239, 68, 68, 0.22);
+    border-color: rgba(239, 68, 68, 0.55);
+    color: #fee2e2;
+}
+
+.race-card {
+    background: radial-gradient(circle at 20% 20%, rgba(18, 165, 103, 0.12), transparent 35%),
+                radial-gradient(circle at 80% 0%, rgba(249, 115, 22, 0.15), transparent 30%),
+                rgba(15, 23, 42, 0.75);
+    border: 3px solid rgba(255, 255, 255, 0.18);
+    border-radius: 1.25rem;
+    padding: 1.4rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(8px);
+}
+
+.horse-chip {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 800;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+}
+
+.horse-chip__number {
+    font-size: 0.95rem;
+}
+
+.horse-pick {
+    background: rgba(249, 115, 22, 0.16);
+    border: 1px solid rgba(249, 115, 22, 0.45);
+}
+
+.horse-row {
+    position: relative;
+}
+
+.horse-winner {
+    background: rgba(34, 197, 94, 0.16);
+    border: 1px solid rgba(34, 197, 94, 0.5);
+}
+
+.horse-winner::before {
+    content: "";
+    position: absolute;
+    left: -10px;
+    top: -1px;
+    width: 8px;
+    height: calc(100% + 2px);
+    background: #22c55e;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(34, 197, 94, 0.4);
+}
+
+.horse-pick-lose {
+    background: rgba(239, 68, 68, 0.15);
+    border: 1px solid rgba(239, 68, 68, 0.45);
+    position: relative;
+}
+
+.horse-pick-lose::before {
+    content: "";
+    position: absolute;
+    left: -10px;
+    top: -1px;
+    width: 8px;
+    height: calc(100% + 2px);
+    background: #ef4444;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.35);
+}
+
+.crown-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 0.35rem;
+}
+
+.race-track {
+    position: relative;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.02));
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 1rem;
+    padding: 1rem 0.75rem;
+    overflow: hidden;
+    min-height: 230px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.finish-line {
+    position: absolute;
+    top: 16px;
+    bottom: 16px;
+    right: 12px;
+    width: 10px;
+    background: repeating-linear-gradient(
+        180deg,
+        var(--finish-line),
+        var(--finish-line) 6px,
+        transparent 6px,
+        transparent 12px
+    );
+    opacity: 0.8;
+    border-radius: 6px;
+}
+
+.horse-lane {
+    position: relative;
+    height: 58px;
+    border-bottom: 1px dashed var(--track-rail);
+}
+
+.horse-lane:last-child {
+    border-bottom: none;
+}
+
+.horse-icon {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    width: 78px;
+    height: 38px;
+    border-radius: 999px;
+    color: #fff;
+    font-weight: 800;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 0.04em;
+    transform: translateX(0);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.22);
+}
+
+.horse-number {
+    background: rgba(0, 0, 0, 0.25);
+    padding: 0.1rem 0.55rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+}
+
+.race-track.running .horse-icon.is-winner {
+    animation: winnerRun var(--run-duration, 4.4s) ease-in-out forwards;
+    animation-delay: calc(var(--lane-index, 0) * 0.04s);
+}
+
+.race-track.running .horse-icon.is-runner {
+    animation: runnerRun var(--run-duration, 4.8s) ease-out forwards;
+    animation-delay: calc(var(--lane-index, 0) * 0.05s);
+}
+
+@keyframes winnerRun {
+    0%   { transform: translateX(0); }
+    40%  { transform: translateX(52%); }
+    55%  { transform: translateX(68%); }
+    100% { transform: translateX(92%); }
+}
+
+@keyframes runnerRun {
+    0%   { transform: translateX(0); }
+    45%  { transform: translateX(50%); }
+    100% { transform: translateX(78%); }
+}
+
+.race-outcome {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+
+.race-outcome__text {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: clamp(1.5rem, 3vw, 2.4rem);
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+.race-outcome__winner {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 0.95rem;
+    letter-spacing: 0.06em;
+    color: #e2e8f0;
+    opacity: 0;
+    transform: translateY(8px);
+}
+
+.race-track.show-result .race-outcome {
+    opacity: 1;
+}
+
+.race-track.show-result .race-outcome__text {
+    animation: banner 1s ease forwards;
+}
+
+.race-track.show-result .race-outcome__winner {
+    animation: banner 1s ease forwards;
+    animation-delay: 0.1s;
+}
+
+.race-track.result-win {
+    background: linear-gradient(90deg, rgba(17, 94, 89, 0.45), rgba(34, 197, 94, 0.28));
+}
+
+.race-track.result-win .race-outcome__text {
+    color: #dcfce7;
+}
+
+.race-track.result-lose {
+    background: linear-gradient(90deg, rgba(127, 29, 29, 0.5), rgba(220, 38, 38, 0.28));
+}
+
+.race-track.result-lose .race-outcome__text {
+    color: #fecdd3;
+}
+
+@keyframes banner {
+    0% {
         opacity: 0;
-        transform: translateY(-20px);
+        transform: translateY(12px) scale(0.98);
     }
-    to {
+    60% {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0) scale(1.02);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
     }
 }
 
-/* Apply the animation to elements with the slide-in class */
-.slide-in {
-    animation: slideIn 0.4s ease-out;
-}
-
-/**
- * Spinner rotation animation for loading states
- *
- * This creates a smooth, continuous spinning effect for the loading indicator.
- * The animation is hardware-accelerated using CSS transforms for better performance.
- *
- * Educational Note:
- * ----------------
- * We use 'transform' instead of animating position properties because:
- * 1. Transform animations are GPU-accelerated (smoother performance)
- * 2. They don't trigger layout reflows (better for battery life)
- * 3. Linear timing function creates constant rotation speed
- */
 @keyframes spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
-/* Spinner icon styling and animation */
-.spinner-icon {
-    display: inline-block;
-    width: 1.25rem;           /* 20px - proportional to button text */
-    height: 1.25rem;
-    margin-right: 0.5rem;     /* 8px - space between icon and text */
-    vertical-align: middle;   /* Align with text baseline */
-    animation: spin 1s linear infinite;  /* Continuous smooth rotation */
+code {
+    font-family: "Space Grotesk", monospace;
 }
-
-/* Spinner track (background circle) - subtle and semi-transparent */
-.spinner-track {
-    opacity: 0.25;
-}
-
-/* Spinner path (colored segment) - visible part that appears to spin */
-.spinner-path {
-    opacity: 0.75;
-}
-
-/* ============================================================================
-   Custom Utility Classes
-   ============================================================================ */
-
-/**
- * Hidden utility class
- *
- * While Tailwind has a 'hidden' class, we define it here for clarity
- * and to ensure it's available even if Tailwind CDN fails to load.
- */
-.hidden {
-    display: none !important;
-}
-
-/* ============================================================================
-   Gradient Text (Optional Enhancement)
-   ============================================================================ */
-
-/**
- * Gradient text effect
- *
- * This creates a gradient color effect on text, which isn't easily
- * achievable with Tailwind utilities alone.
- */
-.gradient-text {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-}
-
-/* ============================================================================
-   Notes for Students
-   ============================================================================
-
-   Tailwind CSS Integration:
-   ------------------------
-   Most of the styling for this application is done using Tailwind utility
-   classes directly in the HTML. This file only contains:
-
-   1. Custom animations that would be verbose to define inline
-   2. Complex effects not available in Tailwind utilities
-   3. Fallback styles in case Tailwind CDN is unavailable
-
-   To customize the appearance:
-   ---------------------------
-   1. For colors, spacing, sizes: Modify Tailwind classes in index.html
-   2. For animations: Modify this file
-   3. For completely custom effects: Add them to this file
-
-   Tailwind Documentation:
-   ----------------------
-   For a complete list of Tailwind utility classes, see:
-   https://tailwindcss.com/docs
-
-   ============================================================================ */
-

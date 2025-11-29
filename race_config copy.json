@@ -1,0 +1,248 @@
+{
+  "dates": [
+    {
+      "id": "2024-07-04",
+      "label": "July 4, 2024",
+      "tracks": [
+        {
+          "id": "belmont-park",
+          "name": "Belmont Park",
+          "location": "Elmont, NY",
+          "races": [
+            {
+              "race_number": 1,
+              "post_time": "13:05",
+              "distance": "6f",
+              "surface": "Dirt",
+              "class": "Allowance Optional Claiming",
+              "purse": "$85,000",
+              "horses": [
+                { "number": 1, "name": "Rapid Ember", "color": "#0ea5e9" },
+                { "number": 2, "name": "Midnight Relay", "color": "#a855f7" },
+                { "number": 3, "name": "Skyline Surge", "color": "#10b981" },
+                { "number": 4, "name": "Copper Lantern", "color": "#f97316" },
+                { "number": 5, "name": "North Star", "color": "#ef4444" },
+                { "number": 6, "name": "Fifth Avenue", "color": "#6366f1" }
+              ],
+              "winner": "Skyline Surge"
+            },
+            {
+              "race_number": 2,
+              "post_time": "13:45",
+              "distance": "1 1/16m",
+              "surface": "Turf",
+              "class": "Stakes",
+              "purse": "$120,000",
+              "horses": [
+                { "number": 1, "name": "Riverstone", "color": "#14b8a6" },
+                { "number": 2, "name": "Painted Aria", "color": "#f472b6" },
+                { "number": 3, "name": "Harbor Light", "color": "#22c55e" },
+                { "number": 4, "name": "Blue Derby", "color": "#0ea5e9" },
+                { "number": 5, "name": "Redwood Charge", "color": "#f59e0b" },
+                { "number": 6, "name": "Jetstream", "color": "#3b82f6" },
+                { "number": 7, "name": "Final Bell", "color": "#ef4444" }
+              ],
+              "winner": "Jetstream"
+            },
+            {
+              "race_number": 3,
+              "post_time": "14:20",
+              "distance": "7f",
+              "surface": "Dirt",
+              "class": "Allowance",
+              "purse": "$95,000",
+              "horses": [
+                { "number": 1, "name": "Bourbon Street", "color": "#3b82f6" },
+                { "number": 2, "name": "Violet Crown", "color": "#a855f7" },
+                { "number": 3, "name": "Desert Script", "color": "#f97316" },
+                { "number": 4, "name": "Pennant Drive", "color": "#10b981" },
+                { "number": 5, "name": "Ironclad", "color": "#475569" },
+                { "number": 6, "name": "Silver Signal", "color": "#06b6d4" },
+                { "number": 7, "name": "Meadowlark", "color": "#f43f5e" },
+                { "number": 8, "name": "King Harbor", "color": "#84cc16" }
+              ],
+              "winner": "Desert Script"
+            }
+          ]
+        },
+        {
+          "id": "keeneland",
+          "name": "Keeneland",
+          "location": "Lexington, KY",
+          "races": [
+            {
+              "race_number": 1,
+              "post_time": "13:15",
+              "distance": "6f",
+              "surface": "Dirt",
+              "class": "Maiden Special Weight",
+              "purse": "$70,000",
+              "horses": [
+                { "number": 1, "name": "Cobalt Cloud", "color": "#0ea5e9" },
+                { "number": 2, "name": "Quiet Thunder", "color": "#a855f7" },
+                { "number": 3, "name": "Lexington Edge", "color": "#22c55e" },
+                { "number": 4, "name": "Velvet Myth", "color": "#f472b6" },
+                { "number": 5, "name": "Chase the Sun", "color": "#f59e0b" }
+              ],
+              "winner": "Lexington Edge"
+            },
+            {
+              "race_number": 2,
+              "post_time": "14:00",
+              "distance": "1m",
+              "surface": "Turf",
+              "class": "Allowance",
+              "purse": "$80,000",
+              "horses": [
+                { "number": 1, "name": "River Waltz", "color": "#06b6d4" },
+                { "number": 2, "name": "Flashlight", "color": "#ef4444" },
+                { "number": 3, "name": "Golden Meridian", "color": "#f59e0b" },
+                { "number": 4, "name": "Twilight Harbor", "color": "#8b5cf6" },
+                { "number": 5, "name": "Arcadian", "color": "#10b981" },
+                { "number": 6, "name": "Tip Sheet", "color": "#eab308" }
+              ],
+              "winner": "Twilight Harbor"
+            },
+            {
+              "race_number": 3,
+              "post_time": "14:45",
+              "distance": "1 1/8m",
+              "surface": "Dirt",
+              "class": "Allowance",
+              "purse": "$90,000",
+              "horses": [
+                { "number": 1, "name": "Blue Ribbon", "color": "#3b82f6" },
+                { "number": 2, "name": "Winter Bourbon", "color": "#1f2937" },
+                { "number": 3, "name": "Painted Trail", "color": "#a855f7" },
+                { "number": 4, "name": "Silver Lining", "color": "#6b7280" },
+                { "number": 5, "name": "Cardinal Point", "color": "#ef4444" },
+                { "number": 6, "name": "Midnight Scout", "color": "#22c55e" }
+              ],
+              "winner": "Blue Ribbon"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "2024-07-05",
+      "label": "July 5, 2024",
+      "tracks": [
+        {
+          "id": "saratoga",
+          "name": "Saratoga",
+          "location": "Saratoga Springs, NY",
+          "races": [
+            {
+              "race_number": 1,
+              "post_time": "12:40",
+              "distance": "6f",
+              "surface": "Dirt",
+              "class": "Allowance",
+              "purse": "$82,000",
+              "horses": [
+                { "number": 1, "name": "Redwood Runner", "color": "#ef4444" },
+                { "number": 2, "name": "Saratoga Dream", "color": "#22c55e" },
+                { "number": 3, "name": "Penny Arcade", "color": "#a855f7" },
+                { "number": 4, "name": "Harbor Breeze", "color": "#0ea5e9" },
+                { "number": 5, "name": "Thunder Petal", "color": "#f97316" }
+              ],
+              "winner": "Saratoga Dream"
+            },
+            {
+              "race_number": 2,
+              "post_time": "13:25",
+              "distance": "1 1/16m",
+              "surface": "Dirt",
+              "class": "Stakes",
+              "purse": "$150,000",
+              "horses": [
+                { "number": 1, "name": "Chalk Dust", "color": "#c2410c" },
+                { "number": 2, "name": "Graded On Curve", "color": "#6366f1" },
+                { "number": 3, "name": "Velvet Sparrow", "color": "#f43f5e" },
+                { "number": 4, "name": "Jetliner", "color": "#06b6d4" },
+                { "number": 5, "name": "Winter Poppy", "color": "#16a34a" },
+                { "number": 6, "name": "City Steps", "color": "#475569" }
+              ],
+              "winner": "Jetliner"
+            },
+            {
+              "race_number": 3,
+              "post_time": "14:10",
+              "distance": "1m",
+              "surface": "Turf",
+              "class": "Allowance",
+              "purse": "$88,000",
+              "horses": [
+                { "number": 1, "name": "Headwind", "color": "#1d4ed8" },
+                { "number": 2, "name": "Hero's Return", "color": "#f59e0b" },
+                { "number": 3, "name": "Moonlit Arrow", "color": "#7c3aed" },
+                { "number": 4, "name": "Ashburn Alley", "color": "#22c55e" },
+                { "number": 5, "name": "Phantom Ride", "color": "#ef4444" },
+                { "number": 6, "name": "Carbon Copy", "color": "#10b981" },
+                { "number": 7, "name": "Tidal Point", "color": "#0ea5e9" }
+              ],
+              "winner": "Moonlit Arrow"
+            }
+          ]
+        },
+        {
+          "id": "del-mar",
+          "name": "Del Mar",
+          "location": "Del Mar, CA",
+          "races": [
+            {
+              "race_number": 1,
+              "post_time": "13:05",
+              "distance": "5.5f",
+              "surface": "Dirt",
+              "class": "Maiden Special Weight",
+              "purse": "$76,000",
+              "horses": [
+                { "number": 1, "name": "Pacific Crest", "color": "#0ea5e9" },
+                { "number": 2, "name": "Boardwalk", "color": "#14b8a6" },
+                { "number": 3, "name": "Salt Breeze", "color": "#a855f7" },
+                { "number": 4, "name": "Cape Runner", "color": "#f97316" },
+                { "number": 5, "name": "Seaside Signal", "color": "#4ade80" }
+              ],
+              "winner": "Boardwalk"
+            },
+            {
+              "race_number": 2,
+              "post_time": "13:50",
+              "distance": "1m",
+              "surface": "Turf",
+              "class": "Allowance",
+              "purse": "$92,000",
+              "horses": [
+                { "number": 1, "name": "Valencia", "color": "#ef4444" },
+                { "number": 2, "name": "Driftwood", "color": "#22c55e" },
+                { "number": 3, "name": "Ocean Avenue", "color": "#6366f1" },
+                { "number": 4, "name": "Silver Current", "color": "#0ea5e9" },
+                { "number": 5, "name": "Coastal Pilot", "color": "#f59e0b" },
+                { "number": 6, "name": "Painted Shore", "color": "#8b5cf6" }
+              ],
+              "winner": "Driftwood"
+            },
+            {
+              "race_number": 3,
+              "post_time": "14:35",
+              "distance": "7f",
+              "surface": "Dirt",
+              "class": "Allowance",
+              "purse": "$86,000",
+              "horses": [
+                { "number": 1, "name": "Canyon Echo", "color": "#f97316" },
+                { "number": 2, "name": "Lucky Fling", "color": "#22d3ee" },
+                { "number": 3, "name": "Sundown Salute", "color": "#a855f7" },
+                { "number": 4, "name": "Mariner's Call", "color": "#16a34a" },
+                { "number": 5, "name": "Daybreak City", "color": "#ef4444" }
+              ],
+              "winner": "Daybreak City"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

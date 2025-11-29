@@ -1,8 +1,11 @@
 """
-Diabetes Prediction Web Application
+Race Day Prediction Web Application
 
-This Flask application provides a web interface for predicting diabetes progression
-using a machine learning model deployed on Databricks MLflow.
+This Flask application provides a web interface for selecting race days and
+tracks, sending horse-level prediction requests to a Databricks-served model,
+and visualizing results (including a playful race simulation). The structure
+mirrors the original diabetes project so deployment, configuration, and
+infrastructure stay consistent while the domain logic changes entirely.
 
 Educational Overview:
 --------------------
@@ -11,13 +14,13 @@ This application demonstrates several important software engineering concepts:
 2. RESTful API Design: Clean endpoints for client-server communication
 3. Error Handling: Graceful handling of failures with informative messages
 4. Input Validation: Ensuring data quality before processing
-5. Documentation: Comprehensive comments explaining the "why" behind the code
+5. Documentation: Explaining the "why" behind the code and architecture
 
 Architecture:
 ------------
-- Frontend: HTML/JavaScript form that collects patient data
-- Backend: Flask server that processes requests and calls the ML model
-- ML Service: Databricks MLflow serving endpoint that returns predictions
+- Frontend: HTML/JavaScript that lets users choose a race date/track and view races
+- Backend: Flask server that loads schedule data and calls the ML model
+- ML Service: Databricks MLflow serving endpoint that returns win probabilities
 
 Author: [Your Name / Team Name]
 Last Updated: 2025-01-21
@@ -27,35 +30,34 @@ Last Updated: 2025-01-21
 # Standard Library Imports
 # ============================================================================
 import json
+import random
 import sys
-from typing import Dict, Any, Union
+from pathlib import Path
+from typing import Any, Dict, List, Optional
 
 # ============================================================================
 # Third-Party Imports
 # ============================================================================
-import requests
 import pandas as pd
-from flask import Flask, render_template, request, jsonify
+import requests
+from flask import Flask, jsonify, render_template, request
 
 # ============================================================================
 # Local Imports
 # ============================================================================
-from config import Config, get_config
+from config import Config
 
 # ============================================================================
 # Application Initialization
 # ============================================================================
 
 # Initialize Flask application
-# __name__ tells Flask where to look for templates, static files, etc.
 app = Flask(__name__)
 
 # Load configuration from the Config class
-# This centralizes all settings in one place for easy management
 app.config.from_object(Config)
 
 # Print configuration status on startup for debugging
-# This helps students verify their configuration is correct
 Config.print_config_status()
 
 
@@ -63,122 +65,191 @@ Config.print_config_status()
 # Helper Functions
 # ============================================================================
 
-def create_tf_serving_json(data: Union[Dict, pd.DataFrame]) -> Dict:
+def load_race_config() -> Dict[str, Any]:
     """
-    Converts data to TensorFlow Serving JSON format.
-
-    This function handles the special format required by some TensorFlow models.
-    It's a utility function that transforms our Python data structures into
-    the format expected by certain model serving frameworks.
-
-    Args:
-        data: Input data as either a dictionary or pandas DataFrame
+    Loads the race configuration file that defines dates, tracks, races, and winners.
 
     Returns:
-        Dict: Data formatted for TensorFlow Serving API
+        Dict: Parsed JSON configuration
 
-    Educational Note:
-    ----------------
-    Different ML frameworks have different input format requirements.
-    This helper function encapsulates the transformation logic, making
-    the main code cleaner and easier to maintain. If the format changes,
-    we only need to update this one function.
+    Raises:
+        FileNotFoundError: If the configuration file is missing
+        ValueError: If the file cannot be parsed as JSON or is missing required keys
     """
-    if isinstance(data, dict):
-        return {'inputs': {name: data[name].tolist() for name in data.keys()}}
-    return {'inputs': data.tolist()}
+    config_path = Path(Config.RACE_CONFIG_FILE)
+
+    if not config_path.exists():
+        raise FileNotFoundError(
+            f"Race configuration file not found at {config_path.resolve()}"
+        )
+
+    try:
+        with config_path.open('r', encoding='utf-8') as config_file:
+            data = json.load(config_file)
+    except json.JSONDecodeError as exc:
+        raise ValueError(f"Race configuration file is not valid JSON: {exc}") from exc
+
+    if 'dates' not in data:
+        raise ValueError('Race configuration file must include a "dates" section.')
+
+    return data
 
 
-def validate_input_data(data: Dict) -> tuple[bool, str]:
+def sortable_number(value: Any) -> tuple[int, Any]:
     """
-    Validates the input data from the client.
+    Produces a stable, comparable key for values that may be int/str/None.
+    Ensures mixed types don't trigger TypeErrors during sorting.
+    """
+    try:
+        return (0, int(value))
+    except (TypeError, ValueError):
+        return (1, str(value) if value is not None else '')
 
-    This function ensures that all required fields are present and contain
-    valid values before attempting to make a prediction.
+
+def build_schedule_payload(race_data: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    Builds a lightweight payload describing available dates and tracks.
 
     Args:
-        data: Dictionary containing the input features
+        race_data: Parsed configuration dictionary
 
     Returns:
-        tuple: (is_valid: bool, error_message: str)
-
-    Educational Note:
-    ----------------
-    Input validation is crucial because:
-    1. It prevents errors downstream in the ML model
-    2. It provides clear, actionable error messages to users
-    3. It protects against malicious or malformed input
-    4. It fails fast, saving resources and time
+        Dict: JSON-friendly schedule payload
     """
-    required_features = Config.MODEL_FEATURES
+    dates = []
 
-    # Check if all required features are present
-    missing_features = [f for f in required_features if f not in data]
-    if missing_features:
-        return False, f"Missing required features: {', '.join(missing_features)}"
+    for date_entry in race_data.get('dates', []):
+        tracks = []
+        for track in date_entry.get('tracks', []):
+            tracks.append({
+                'id': track.get('id'),
+                'name': track.get('name', track.get('id')),
+                'location': track.get('location', ''),
+                'race_count': len(track.get('races', []))
+            })
 
-    # Validate that all values can be converted to float
-    for feature in required_features:
-        try:
-            float(data[feature])
-        except (ValueError, TypeError):
-            return False, f"Invalid value for feature '{feature}': must be a number"
+        dates.append({
+            'id': date_entry.get('id'),
+            'label': date_entry.get('label', date_entry.get('id')),
+            'tracks': tracks
+        })
 
-    return True, ""
+    return {'dates': dates}
 
 
-def score_model(dataset: pd.DataFrame) -> Dict[str, Any]:
+def find_date_entry(race_data: Dict[str, Any], date_id: str) -> Optional[Dict[str, Any]]:
+    """
+    Returns the date entry matching the provided identifier.
+    """
+    for date_entry in race_data.get('dates', []):
+        if date_entry.get('id') == date_id:
+            return date_entry
+    return None
+
+
+def find_track_entry(date_entry: Dict[str, Any], track_id: str) -> Optional[Dict[str, Any]]:
+    """
+    Returns the track entry for a given date.
+    """
+    for track_entry in date_entry.get('tracks', []):
+        if track_entry.get('id') == track_id:
+            return track_entry
+    return None
+
+
+def build_horse_feature_row(
+    horse: Dict[str, Any],
+    race_meta: Dict[str, Any],
+    date_id: str,
+    track_id: str
+) -> Dict[str, float]:
+    """
+    Builds a placeholder feature vector for a single horse.
+
+    The features are deterministic based on date/track/horse so results are stable
+    when mocking the model. Replace this logic with real feature engineering later.
+    """
+    seed = f"{date_id}-{track_id}-{race_meta.get('race_number')}-{horse.get('horse_id') or horse.get('horse_name') or horse.get('name')}"
+    rng = random.Random(seed)
+
+    post_position_value = horse.get('number')
+    if post_position_value is None:
+        post_position_value = horse.get('program_number')
+    try:
+        post_position_value = float(post_position_value)
+    except (TypeError, ValueError):
+        post_position_value = float(rng.randint(1, 12))
+
+    return {
+        'pace_early': round(rng.uniform(0.25, 1.0), 3),
+        'pace_late': round(rng.uniform(0.25, 1.0), 3),
+        'stamina_score': round(rng.uniform(0.25, 1.0), 3),
+        'surface_fit': round(rng.uniform(0.25, 1.0), 3),
+        'post_position': post_position_value,
+        'class_rating': round(rng.uniform(0.25, 1.0), 3)
+    }
+
+
+def normalize_predictions(raw_predictions: Any, expected_length: int) -> List[float]:
+    """
+    Normalizes raw model outputs to a list of probabilities that sum to 1.
+
+    Args:
+        raw_predictions: Response payload from the model endpoint
+        expected_length: Number of horses in the race
+
+    Returns:
+        List[float]: Normalized probabilities
+    """
+    predictions = raw_predictions
+
+    if isinstance(predictions, dict):
+        if 'predictions' in predictions:
+            predictions = predictions['predictions']
+        elif 'outputs' in predictions:
+            predictions = predictions['outputs']
+
+    if isinstance(predictions, list) and predictions and isinstance(predictions[0], list):
+        predictions = [row[0] if isinstance(row, list) and row else row for row in predictions]
+
+    if not isinstance(predictions, list):
+        raise ValueError('Model response is not a list of predictions.')
+
+    if len(predictions) != expected_length:
+        raise ValueError(
+            f"Model returned {len(predictions)} predictions, expected {expected_length}."
+        )
+
+    cleaned = [max(float(value), 0.0001) for value in predictions]
+    total = sum(cleaned) or 1.0
+    return [value / total for value in cleaned]
+
+
+def score_model(dataset: pd.DataFrame) -> List[float]:
     """
     Sends a prediction request to the MLflow model serving endpoint.
-
-    This function handles the entire process of calling the remote ML model:
-    1. Formats the data according to MLflow's expected schema
-    2. Adds authentication headers with the Databricks token
-    3. Makes the HTTP POST request to the serving endpoint
-    4. Handles errors and returns the prediction result
 
     Args:
         dataset: pandas DataFrame containing the input features
 
     Returns:
-        Dict: The prediction result from the model
+        List[float]: The prediction result from the model
 
     Raises:
         Exception: If the API request fails or returns an error
-
-    Educational Note:
-    ----------------
-    This function demonstrates the client side of an API integration.
-    Key concepts illustrated here:
-    - Authentication: Using bearer tokens for secure API access
-    - Data serialization: Converting Python objects to JSON
-    - Error handling: Checking response status and providing context
-    - Timeout handling: Preventing indefinite waits on slow responses
     """
-    # Get configuration values
     url = Config.MLFLOW_ENDPOINT_URL
     token = Config.DATABRICKS_TOKEN
     timeout = Config.REQUEST_TIMEOUT
 
-    # Prepare authentication and content-type headers
-    # The Authorization header uses the "Bearer" scheme with our token
     headers = {
         'Authorization': f'Bearer {token}',
         'Content-Type': 'application/json'
     }
 
-    # Format the data according to MLflow's expected schema
-    # MLflow expects data in a "dataframe_split" format for pandas DataFrames
-    if isinstance(dataset, pd.DataFrame):
-        data_dict = {'dataframe_split': dataset.to_dict(orient='split')}
-    else:
-        data_dict = create_tf_serving_json(dataset)
-
-    # Serialize to JSON, allowing NaN values (common in ML datasets)
+    data_dict = {'dataframe_split': dataset.to_dict(orient='split')}
     data_json = json.dumps(data_dict, allow_nan=True)
 
-    # Make the POST request to the MLflow endpoint
-    # We use a timeout to prevent hanging indefinitely on slow responses
     try:
         response = requests.post(
             url=url,
@@ -187,202 +258,307 @@ def score_model(dataset: pd.DataFrame) -> Dict[str, Any]:
             timeout=timeout
         )
     except requests.exceptions.Timeout:
-        raise Exception(f'Request timed out after {timeout} seconds. The model endpoint may be slow or unavailable.')
+        raise Exception(f'Request timed out after {timeout} seconds.')
     except requests.exceptions.ConnectionError:
-        raise Exception('Failed to connect to the model endpoint. Check your internet connection and endpoint URL.')
+        raise Exception('Failed to connect to the model endpoint.')
 
-    # Check if the request was successful (HTTP 200 OK)
-    # Any other status code indicates an error
     if response.status_code != 200:
         raise Exception(
             f'Request failed with status {response.status_code}. '
             f'Response: {response.text}'
         )
 
-    # Parse and return the JSON response
     return response.json()
 
 
-def build_dataframe_from_request(data: Dict) -> pd.DataFrame:
+COLOR_PALETTE = [
+    "#0ea5e9",  # blue
+    "#a855f7",  # purple
+    "#10b981",  # emerald
+    "#f97316",  # orange
+    "#ef4444",  # red
+    "#6366f1",  # indigo
+    "#f59e0b",  # amber
+    "#14b8a6",  # teal
+    "#8b5cf6",  # violet
+    "#22c55e",  # green
+    "#e11d48",  # rose
+    "#7c3aed",  # deep violet
+    "#06b6d4",  # cyan
+    "#ea580c",  # burnt orange
+    "#facc15",  # yellow
+    "#0f172a",  # navy
+    "#84cc16",  # lime
+    "#fb7185",  # pink
+    "#1d4ed8",  # royal blue
+    "#f472b6",  # hot pink
+    "#2dd4bf",  # aqua
+    "#c084fc",  # lavender
+    "#34d399",  # mint
+    "#fbbf24",  # gold
+    "#f43f5e",  # raspberry
+    "#22d3ee",  # sky
+    "#3b82f6",  # azure
+]
+
+
+def assign_color(horse: Dict[str, Any]) -> str:
     """
-    Builds a pandas DataFrame from the request data.
-
-    This function extracts the feature values from the request and creates
-    a DataFrame in the exact format expected by the ML model.
-
-    Args:
-        data: Dictionary containing the input features from the request
-
-    Returns:
-        pd.DataFrame: Single-row DataFrame with all features
-
-    Educational Note:
-    ----------------
-    We use pandas DataFrames because:
-    1. They maintain column order and names (important for ML models)
-    2. They handle type conversions automatically
-    3. They integrate seamlessly with scikit-learn and other ML libraries
-    4. They make it easy to extend to batch predictions later
+    Returns an existing color or deterministically assigns one when missing.
     """
-    # Create a dictionary with all features, converting values to float
-    # Using get() with a default of 0 provides a fallback if a value is missing
-    # (though our validation should prevent missing values from reaching here)
-    feature_dict = {
-        feature: float(data.get(feature, 0))
-        for feature in Config.MODEL_FEATURES
+    if horse.get('color'):
+        return horse['color']
+
+    seed_value = horse.get('horse_id') or horse.get('horse_name') or horse.get('name') or horse.get('number') or random.random()
+    rng = random.Random(str(seed_value))
+    return rng.choice(COLOR_PALETTE)
+
+
+def mock_probabilities(horses: List[Dict[str, Any]], seed_token: str) -> List[float]:
+    """
+    Generates deterministic mock probabilities for a list of horses.
+
+    This is used when no model endpoint is configured or when requests fail.
+    """
+    rng = random.Random(seed_token)
+    base_scores = [rng.uniform(0.3, 1.0) for _ in horses]
+    total = sum(base_scores) or 1.0
+    return [score / total for score in base_scores]
+
+
+def generate_predictions(date_id: str, track_id: str, include_predictions: bool = True) -> Dict[str, Any]:
+    """
+    Generates race payload for a given date and track, optionally including model probabilities.
+    """
+    race_data = load_race_config()
+    date_entry = find_date_entry(race_data, date_id)
+
+    if not date_entry:
+        raise ValueError(f"Date '{date_id}' was not found in the schedule.")
+
+    track_entry = find_track_entry(date_entry, track_id)
+    if not track_entry:
+        raise ValueError(f"Track '{track_id}' was not found for date {date_id}.")
+
+    races_payload: List[Dict[str, Any]] = []
+    races = sorted(
+        track_entry.get('races', []),
+        key=lambda race: (
+            race.get('post_time') or '',
+            sortable_number(race.get('race_number'))
+        )
+    )
+
+    for race in races:
+        horses = sorted(
+            race.get('horses', []),
+            key=lambda h: sortable_number(h.get('number'))
+        )
+
+        if not horses:
+            races_payload.append({
+                'race_id': f"{track_id}-{race.get('race_number')}",
+                'race_number': race.get('race_number'),
+                'post_time': race.get('post_time'),
+                'distance': race.get('distance'),
+                'surface': race.get('surface'),
+                'purse': race.get('purse'),
+                'class': race.get('class'),
+                'winner': race.get('winner'),
+                'field_size': 0,
+                'model_top_pick_id': None,
+                'horses': []
+            })
+            continue
+
+        palette = COLOR_PALETTE.copy()
+        rng_palette = random.Random(f"{date_id}-{track_id}-{race.get('race_number')}-palette")
+        rng_palette.shuffle(palette)
+
+        horses_enriched = []
+        for idx, horse in enumerate(horses):
+            chosen_color = horse.get('color') or palette[idx % len(palette)]
+            post_position_value = horse.get('post_position')
+            if post_position_value is None:
+                post_position_value = horse.get('number')
+            if post_position_value is None:
+                post_position_value = horse.get('program_number')
+
+            horses_enriched.append({
+                'horse_id': horse.get('horse_id'),
+                'horse_name': horse.get('horse_name') or horse.get('name'),
+                'number': horse.get('number'),
+                'post_position': post_position_value,
+                'color': chosen_color,
+                'probability': None
+            })
+
+        model_top_pick_id = None
+        model_top_pick_name = None
+        winner_horse_id = race.get('winner_horse_id') or race.get('winner')
+        winner_name = race.get('winner_name') or race.get('winner')
+
+        # If the config didn't include a winner name, try to derive it from the field
+        if not winner_name and winner_horse_id:
+            for horse in horses_enriched:
+                if horse.get('horse_id') == winner_horse_id:
+                    winner_name = horse.get('horse_name')
+                    break
+
+        if include_predictions:
+            feature_rows = [
+                build_horse_feature_row(horse, race, date_id, track_id)
+                for horse in horses
+            ]
+
+            dataset = pd.DataFrame(feature_rows, columns=Config.MODEL_FEATURES)
+
+            try:
+                needs_mock = (
+                    Config.USE_MOCK_MODEL
+                    or not Config.MLFLOW_ENDPOINT_URL
+                    or not Config.DATABRICKS_TOKEN
+                )
+
+                if needs_mock:
+                    probabilities = mock_probabilities(
+                        horses,
+                        f"{date_id}-{track_id}-{race.get('race_number', 'race')}"
+                    )
+                else:
+                    raw_predictions = score_model(dataset)
+                    probabilities = normalize_predictions(raw_predictions, len(horses))
+
+            except Exception as exc:  # noqa: BLE001 - bubble unexpected errors to the client
+                print(f"[WARN] Falling back to mock predictions: {exc}")
+                probabilities = mock_probabilities(
+                    horses,
+                    f"{date_id}-{track_id}-{race.get('race_number', 'race')}"
+                )
+
+            for horse_entry, prob in zip(horses_enriched, probabilities):
+                horse_entry['probability'] = round(prob, 4)
+
+            top_pick = max(horses_enriched, key=lambda h: h['probability'] or 0)
+            model_top_pick_id = top_pick.get('horse_id')
+            model_top_pick_name = top_pick.get('horse_name')
+
+        races_payload.append({
+            'race_id': f"{track_id}-{race.get('race_number')}",
+            'race_number': race.get('race_number'),
+            'post_time': race.get('post_time'),
+            'distance': race.get('distance'),
+            'surface': race.get('surface'),
+            'purse': race.get('purse'),
+            'class': race.get('class'),
+            'winner_horse_id': winner_horse_id,
+            'winner_name': winner_name,
+            'field_size': len(horses),
+            'model_top_pick_id': model_top_pick_id,
+            'model_top_pick_name': model_top_pick_name,
+            'horses': horses_enriched
+        })
+
+    return {
+        'date': {
+            'id': date_id,
+            'label': date_entry.get('label', date_id)
+        },
+        'track': {
+            'id': track_id,
+            'name': track_entry.get('name', track_id),
+            'location': track_entry.get('location')
+        },
+        'races': races_payload
     }
-
-    # Create a DataFrame with a single row
-    # The model expects a DataFrame even for single predictions
-    return pd.DataFrame([feature_dict])
 
 
 # ============================================================================
 # Flask Routes
 # ============================================================================
 
+
 @app.route('/')
 def home():
     """
     Serves the main application page.
-
-    This is the landing page of the application where users can input
-    patient data and receive predictions.
-
-    Returns:
-        Rendered HTML template for the home page
-
-    Educational Note:
-    ----------------
-    The @app.route decorator maps this function to the '/' URL path.
-    When users visit the root of our application, Flask calls this function.
-    Flask automatically looks for 'index.html' in the 'templates' directory.
     """
     return render_template('index.html')
+
+
+@app.route('/schedule', methods=['GET'])
+def schedule():
+    """
+    Returns the available dates and tracks defined in the text configuration file.
+    """
+    try:
+        race_data = load_race_config()
+        payload = build_schedule_payload(race_data)
+        return jsonify({'success': True, **payload})
+    except Exception as exc:  # noqa: BLE001 - send error to the client
+        return jsonify({'success': False, 'error': str(exc)}), 500
+
+
+@app.route('/card', methods=['POST'])
+def card():
+    """
+    Returns race and horse information for a selected date and track without probabilities.
+    """
+    data = request.get_json(silent=True) or {}
+    date_id = data.get('date_id')
+    track_id = data.get('track_id')
+
+    if not date_id or not track_id:
+        return jsonify({
+            'success': False,
+            'error': 'Both date_id and track_id are required.'
+        }), 400
+
+    try:
+        result = generate_predictions(date_id, track_id, include_predictions=False)
+        return jsonify({'success': True, **result})
+    except Exception as exc:  # noqa: BLE001 - return error to client
+        return jsonify({
+            'success': False,
+            'error': str(exc)
+        }), 400
 
 
 @app.route('/predict', methods=['POST'])
 def predict():
     """
-    Handles prediction requests from the frontend.
-
-    This endpoint receives patient data as JSON, validates it, sends it to
-    the ML model, and returns the prediction result.
+    Handles prediction requests for a selected date and track.
 
     Request Format:
         POST /predict
         Content-Type: application/json
-        Body: {
-            "age": 0.05,
-            "sex": 0.05,
-            "bmi": 0.06,
-            ...
-        }
-
-    Response Format (Success):
-        {
-            "success": true,
-            "prediction": 152.5
-        }
-
-    Response Format (Error):
-        {
-            "success": false,
-            "error": "Error description"
-        }
-
-    Returns:
-        JSON response with prediction result or error message
-
-    Educational Note:
-    ----------------
-    This function demonstrates RESTful API design principles:
-    1. Uses POST method for operations that change state or process data
-    2. Returns JSON for easy consumption by JavaScript clients
-    3. Uses appropriate HTTP status codes (200 for success, 400 for errors)
-    4. Provides structured, predictable response formats
-    5. Includes comprehensive error handling
+        Body: { "date_id": "2024-07-04", "track_id": "belmont-park" }
     """
-    try:
-        # Parse JSON data from the request body
-        # request.get_json() automatically parses the JSON and returns a dict
-        data = request.get_json()
+    data = request.get_json(silent=True) or {}
+    date_id = data.get('date_id')
+    track_id = data.get('track_id')
 
-        # Validate that we received data
-        if not data:
-            return jsonify({
-                'success': False,
-                'error': 'No data provided in request body'
-            }), 400
-
-        # Validate the input data
-        is_valid, error_message = validate_input_data(data)
-        if not is_valid:
-            return jsonify({
-                'success': False,
-                'error': error_message
-            }), 400
-
-        # Build DataFrame from the validated input data
-        df = build_dataframe_from_request(data)
-
-        # Get prediction from the MLflow model
-        result = score_model(df)
-
-        # Extract the prediction value from the result
-        # Different model types return predictions in different formats
-        # This handles both "predictions" array and direct result formats
-        if 'predictions' in result:
-            prediction_value = result['predictions'][0]
-        else:
-            prediction_value = result
-
-        # Return successful response with prediction
-        return jsonify({
-            'success': True,
-            'prediction': prediction_value
-        })
-
-    except requests.exceptions.RequestException as e:
-        # Handle network-related errors specifically
+    if not date_id or not track_id:
         return jsonify({
             'success': False,
-            'error': f'Network error while calling model endpoint: {str(e)}'
-        }), 500
-
-    except Exception as e:
-        # Catch-all for any other unexpected errors
-        # In production, you might want to log these errors to a file or service
-        return jsonify({
-            'success': False,
-            'error': f'An error occurred: {str(e)}'
+            'error': 'Both date_id and track_id are required.'
         }), 400
 
+    try:
+        result = generate_predictions(date_id, track_id)
+        return jsonify({'success': True, **result})
+    except Exception as exc:  # noqa: BLE001 - return error to client
+        return jsonify({
+            'success': False,
+            'error': str(exc)
+        }), 400
 
-# ============================================================================
-# Health Check Endpoint (Optional but Recommended)
-# ============================================================================
 
 @app.route('/health', methods=['GET'])
 def health_check():
     """
     Health check endpoint for monitoring and deployment systems.
-
-    This endpoint can be used by load balancers, monitoring tools, or
-    container orchestration systems to verify that the application is running.
-
-    Returns:
-        JSON response indicating application health status
-
-    Educational Note:
-    ----------------
-    Health check endpoints are a best practice in production applications.
-    They allow automated systems to:
-    1. Verify the application is running before routing traffic to it
-    2. Detect and restart failed instances
-    3. Monitor application uptime and availability
     """
-    # Validate configuration
     is_valid, errors = Config.validate_config()
 
     if is_valid:
@@ -391,11 +567,11 @@ def health_check():
             'app': Config.APP_NAME,
             'version': Config.APP_VERSION
         }), 200
-    else:
-        return jsonify({
-            'status': 'unhealthy',
-            'errors': errors
-        }), 500
+
+    return jsonify({
+        'status': 'unhealthy',
+        'errors': errors
+    }), 500
 
 
 # ============================================================================
@@ -405,20 +581,9 @@ def health_check():
 if __name__ == '__main__':
     """
     Main entry point when running the application directly.
-
-    This block only runs when you execute this file directly (python app.py),
-    not when it's imported as a module. It validates configuration and starts
-    the Flask development server.
-
-    Educational Note:
-    ----------------
-    The __name__ == '__main__' pattern is a Python idiom that allows a file to
-    be both imported as a module and run as a standalone script. This is useful
-    for testing and development.
     """
-
     print("\n" + "="*70)
-    print("STARTING DIABETES PREDICTION APPLICATION")
+    print("STARTING RACE DAY PREDICTION APPLICATION")
     print("="*70)
 
     # Validate configuration before starting the server
@@ -430,7 +595,6 @@ if __name__ == '__main__':
         for error in errors:
             print(f"  • {error}")
         print("\nPlease check your .env file or environment variables.")
-        print("See .env.example for a template and configuration instructions.\n")
         sys.exit(1)
 
     print("\n✅ Configuration validated successfully!\n")
@@ -439,9 +603,6 @@ if __name__ == '__main__':
     print("\nPress CTRL+C to stop the server\n")
     print("="*70 + "\n")
 
-    # Start the Flask development server
-    # WARNING: The Flask development server is not suitable for production!
-    # For production, use a WSGI server like Gunicorn or uWSGI
     app.run(
         debug=Config.DEBUG,
         host=Config.HOST,

@@ -1,9 +1,11 @@
 """
-Configuration Module for Diabetes Prediction Application
+Configuration Module for Race Day Prediction Application
 
-This module centralizes all configuration settings for the application,
-making it easy to manage different environments (development, production)
-and update API endpoints without modifying the core application code.
+This module centralizes all configuration settings for the horse racing
+application, mirroring the structure of the previous diabetes project while
+switching the domain to racing. All infrastructure choices (Flask, Databricks
+model serving, environment-driven config) remain the same so deployment and
+operations stay consistent.
 
 Educational Note:
 -----------------
@@ -73,20 +75,15 @@ class Config:
     # Model Configuration
     # ============================================================================
 
-    # Expected feature names that the model accepts
-    # This list should match exactly what your trained model expects
-    # Students may need to modify this based on their specific model
+    # Expected feature names that the racing model accepts.
+    # These are mock placeholders to be replaced with real features later.
     MODEL_FEATURES = [
-        'age',    # Patient age (normalized)
-        'sex',    # Patient sex (normalized)
-        'bmi',    # Body Mass Index (normalized)
-        'bp',     # Average blood pressure (normalized)
-        's1',     # Total serum cholesterol (normalized)
-        's2',     # Low-density lipoproteins (normalized)
-        's3',     # High-density lipoproteins (normalized)
-        's4',     # Total cholesterol/HDL ratio (normalized)
-        's5',     # Log of serum triglycerides (normalized)
-        's6'      # Blood sugar level (normalized)
+        'pace_early',       # Early speed indicator
+        'pace_late',        # Closing kick indicator
+        'stamina_score',    # Stamina for route distances
+        'surface_fit',      # How well the horse handles the surface
+        'post_position',    # Gate position
+        'class_rating'      # Competition class rating
     ]
 
     # ============================================================================
@@ -94,8 +91,14 @@ class Config:
     # ============================================================================
 
     # Application name and version for display purposes
-    APP_NAME = os.getenv('APP_NAME', 'Diabetes Progression Predictor')
+    APP_NAME = os.getenv('APP_NAME', 'Race Day Predictor')
     APP_VERSION = os.getenv('APP_VERSION', '1.0.0')
+
+    # Path to the text configuration file controlling race days, tracks, and races
+    RACE_CONFIG_FILE = os.getenv('RACE_CONFIG_FILE', 'race_config.json')
+
+    # Optional flag to force the app to use mocked model outputs
+    USE_MOCK_MODEL = os.getenv('USE_MOCK_MODEL', 'True').lower() == 'true'
 
     # ============================================================================
     # Validation Methods
@@ -121,14 +124,14 @@ class Config:
         """
         errors = []
 
-        # Check for required Databricks token
-        if not cls.DATABRICKS_TOKEN:
+        # Check for required Databricks token unless we are in mock mode
+        if not cls.DATABRICKS_TOKEN and not cls.USE_MOCK_MODEL:
             errors.append(
                 "DATABRICKS_TOKEN is not set. Please set it in your .env file or as an environment variable."
             )
 
-        # Check for required MLflow endpoint URL
-        if not cls.MLFLOW_ENDPOINT_URL:
+        # Check for required MLflow endpoint URL unless we are in mock mode
+        if not cls.MLFLOW_ENDPOINT_URL and not cls.USE_MOCK_MODEL:
             errors.append(
                 "MLFLOW_ENDPOINT_URL is not set. Please configure your MLflow endpoint URL."
             )
@@ -137,6 +140,13 @@ class Config:
         if cls.MLFLOW_ENDPOINT_URL and not cls.MLFLOW_ENDPOINT_URL.startswith('https://'):
             errors.append(
                 "MLFLOW_ENDPOINT_URL should use HTTPS for security. Current URL: " + cls.MLFLOW_ENDPOINT_URL
+            )
+
+        # Validate that the race configuration file exists
+        if not os.path.exists(cls.RACE_CONFIG_FILE):
+            errors.append(
+                f"Race configuration file not found at {cls.RACE_CONFIG_FILE}. "
+                "Create the file or update RACE_CONFIG_FILE."
             )
 
         return len(errors) == 0, errors
@@ -171,6 +181,8 @@ class Config:
         print(f"Request Timeout: {cls.REQUEST_TIMEOUT}s")
         print("-"*70)
         print(f"Model Features: {', '.join(cls.MODEL_FEATURES)}")
+        print(f"Race Config File: {cls.RACE_CONFIG_FILE}")
+        print(f"Using Mock Model: {cls.USE_MOCK_MODEL}")
         print("="*70 + "\n")
 
 

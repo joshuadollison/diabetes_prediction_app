@@ -1,350 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Meta Tags -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Diabetes Progression Prediction using Machine Learning">
-    <meta name="author" content="Your Name / Team Name">
+    <meta name="description" content="Race Day Predictor powered by Databricks MLflow">
+    <title>Race Day Predictor</title>
 
-    <title>Diabetes Prediction App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
 
-    <!-- Tailwind CSS CDN -->
-    <!-- Educational Note: We use the CDN for simplicity in this example.
-         For production, you should use the Tailwind CLI or PostCSS setup
-         to generate a smaller, optimized CSS file with only the classes you use. -->
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Custom CSS (for animations and special effects) -->
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
-    <!-- Tailwind Configuration (Optional: Customize colors, fonts, etc.) -->
     <script>
-        // Configure Tailwind with custom theme settings
-        // This allows you to define your own color palette, spacing, etc.
         tailwind.config = {
             theme: {
                 extend: {
-                    // Custom color palette matching our design
+                    fontFamily: {
+                        display: ['"Space Grotesk"', 'sans-serif'],
+                        body: ['"Manrope"', 'sans-serif']
+                    },
                     colors: {
-                        primary: {
-                            500: '#667eea',
-                            600: '#5568d3',
-                            700: '#4c51bf'
+                        brand: {
+                            50: '#e9f7f1',
+                            100: '#c8eede',
+                            200: '#97dcbe',
+                            300: '#63c79a',
+                            400: '#35b47c',
+                            500: '#12a567',
+                            600: '#0c8a56',
+                            700: '#0c6e46',
+                            800: '#0a5538',
+                            900: '#0a3a28'
                         },
-                        secondary: {
-                            500: '#764ba2',
-                            600: '#6b3fa1',
-                            700: '#5a329d'
-                        }
+                        ember: '#f97316',
+                        midnight: '#0b1224'
                     }
                 }
             }
-        }
+        };
     </script>
 </head>
-<body class="min-h-screen bg-gradient-to-br from-primary-500 to-secondary-500 p-4 sm:p-6 lg:p-8 flex items-center justify-center font-sans">
-    <!--
-        Educational Note: Body Styling
-        -----------------------------
-        - min-h-screen: Ensures the page is at least full viewport height
-        - bg-gradient-to-br: Creates a diagonal gradient background
-        - p-4 sm:p-6 lg:p-8: Responsive padding (increases on larger screens)
-        - flex items-center justify-center: Centers content vertically and horizontally
-        - font-sans: Uses a clean sans-serif font stack
-    -->
-    <!-- Main Container -->
-    <div class="w-full max-w-6xl mx-auto bg-white rounded-2xl shadow-2xl p-6 sm:p-8 lg:p-10">
-        <!--
-            Educational Note: Container Styling
-            -----------------------------------
-            - w-full: Takes full width of parent
-            - max-w-6xl: Maximum width constraint for readability
-            - mx-auto: Centers the container horizontally
-            - bg-white: White background for contrast
-            - rounded-2xl: Large rounded corners for modern look
-            - shadow-2xl: Deep shadow for depth
-            - p-6 sm:p-8 lg:p-10: Responsive padding
-        -->
-
-        <!-- Header -->
-        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-primary-500 text-center mb-3">
-            Diabetes Progression Prediction
-        </h1>
-        <p class="text-center text-gray-600 mb-8 sm:mb-10 text-base sm:text-lg">
-            Enter patient data to predict diabetes progression
-        </p>
-
-        <!-- Prediction Form -->
-        <form id="predictionForm" class="space-y-6">
-            <!--
-                Educational Note: Form Structure
-                --------------------------------
-                - space-y-6: Adds consistent vertical spacing between form sections
-                - This creates a clean, organized layout
-            -->
-            <!-- Form Grid: Input Fields -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-5">
-                <!--
-                    Educational Note: Responsive Grid
-                    ---------------------------------
-                    - grid: Enables CSS Grid layout
-                    - grid-cols-1: 1 column on mobile
-                    - sm:grid-cols-2: 2 columns on small screens and up
-                    - lg:grid-cols-5: 5 columns on large screens and up
-                    - gap-4 sm:gap-5: Responsive gap between grid items
-                    This creates a responsive layout that adapts to screen size
-                -->
-
-                <!-- Age Input -->
-                <div class="flex flex-col">
-                    <label for="age" class="font-semibold mb-2 text-gray-700 text-sm">
-                        Age (normalized)
-                    </label>
-                    <input
-                        type="number"
-                        id="age"
-                        name="age"
-                        step="0.01"
-                        value="0"
-                        required
-                        class="px-3 py-2 border-2 border-gray-300 rounded-lg text-base focus:outline-none focus:border-primary-500 transition-colors duration-200"
-                    >
-                </div>
-
-                <!-- Sex Input -->
-                <div class="flex flex-col">
-                    <label for="sex" class="font-semibold mb-2 text-gray-700 text-sm">
-                        Sex (normalized)
-                    </label>
-                    <input
-                        type="number"
-                        id="sex"
-                        name="sex"
-                        step="0.01"
-                        value="0"
-                        required
-                        class="px-3 py-2 border-2 border-gray-300 rounded-lg text-base focus:outline-none focus:border-primary-500 transition-colors duration-200"
-                    >
-                </div>
-
-                <!-- BMI Input -->
-                <div class="flex flex-col">
-                    <label for="bmi" class="font-semibold mb-2 text-gray-700 text-sm">
-                        BMI (normalized)
-                    </label>
-                    <input
-                        type="number"
-                        id="bmi"
-                        name="bmi"
-                        step="0.01"
-                        value="0"
-                        required
-                        class="px-3 py-2 border-2 border-gray-300 rounded-lg text-base focus:outline-none focus:border-primary-500 transition-colors duration-200"
-                    >
-                    <span class="text-xs text-gray-500 mt-1">Body Mass Index</span>
-                </div>
-
-                <!-- Blood Pressure Input -->
-                <div class="flex flex-col">
-                    <label for="bp" class="font-semibold mb-2 text-gray-700 text-sm">
-                        Blood Pressure (normalized)
-                    </label>
-                    <input
-                        type="number"
-                        id="bp"
-                        name="bp"
-                        step="0.01"
-                        value="0"
-                        required
-                        class="px-3 py-2 border-2 border-gray-300 rounded-lg text-base focus:outline-none focus:border-primary-500 transition-colors duration-200"
-                    >
-                    <span class="text-xs text-gray-500 mt-1">Average blood pressure</span>
-                </div>
-
-                <!-- S1 Input -->
-                <div class="flex flex-col">
-                    <label for="s1" class="font-semibold mb-2 text-gray-700 text-sm">
-                        S1 (normalized)
-                    </label>
-                    <input
-                        type="number"
-                        id="s1"
-                        name="s1"
-                        step="0.01"
-                        value="0"
-                        required
-                        class="px-3 py-2 border-2 border-gray-300 rounded-lg text-base focus:outline-none focus:border-primary-500 transition-colors duration-200"
-                    >
-                    <span class="text-xs text-gray-500 mt-1">Total serum cholesterol</span>
-                </div>
-
-                <!-- S2 Input -->
-                <div class="flex flex-col">
-                    <label for="s2" class="font-semibold mb-2 text-gray-700 text-sm">
-                        S2 (normalized)
-                    </label>
-                    <input
-                        type="number"
-                        id="s2"
-                        name="s2"
-                        step="0.01"
-                        value="0"
-                        required
-                        class="px-3 py-2 border-2 border-gray-300 rounded-lg text-base focus:outline-none focus:border-primary-500 transition-colors duration-200"
-                    >
-                    <span class="text-xs text-gray-500 mt-1">Low-density lipoproteins</span>
-                </div>
-
-                <!-- S3 Input -->
-                <div class="flex flex-col">
-                    <label for="s3" class="font-semibold mb-2 text-gray-700 text-sm">
-                        S3 (normalized)
-                    </label>
-                    <input
-                        type="number"
-                        id="s3"
-                        name="s3"
-                        step="0.01"
-                        value="0"
-                        required
-                        class="px-3 py-2 border-2 border-gray-300 rounded-lg text-base focus:outline-none focus:border-primary-500 transition-colors duration-200"
-                    >
-                    <span class="text-xs text-gray-500 mt-1">High-density lipoproteins</span>
-                </div>
-
-                <!-- S4 Input -->
-                <div class="flex flex-col">
-                    <label for="s4" class="font-semibold mb-2 text-gray-700 text-sm">
-                        S4 (normalized)
-                    </label>
-                    <input
-                        type="number"
-                        id="s4"
-                        name="s4"
-                        step="0.01"
-                        value="0"
-                        required
-                        class="px-3 py-2 border-2 border-gray-300 rounded-lg text-base focus:outline-none focus:border-primary-500 transition-colors duration-200"
-                    >
-                    <span class="text-xs text-gray-500 mt-1">Total cholesterol/HDL</span>
-                </div>
-
-                <!-- S5 Input -->
-                <div class="flex flex-col">
-                    <label for="s5" class="font-semibold mb-2 text-gray-700 text-sm">
-                        S5 (normalized)
-                    </label>
-                    <input
-                        type="number"
-                        id="s5"
-                        name="s5"
-                        step="0.01"
-                        value="0"
-                        required
-                        class="px-3 py-2 border-2 border-gray-300 rounded-lg text-base focus:outline-none focus:border-primary-500 transition-colors duration-200"
-                    >
-                    <span class="text-xs text-gray-500 mt-1">Log of serum triglycerides</span>
-                </div>
-
-                <!-- S6 Input -->
-                <div class="flex flex-col">
-                    <label for="s6" class="font-semibold mb-2 text-gray-700 text-sm">
-                        S6 (normalized)
-                    </label>
-                    <input
-                        type="number"
-                        id="s6"
-                        name="s6"
-                        step="0.01"
-                        value="0"
-                        required
-                        class="px-3 py-2 border-2 border-gray-300 rounded-lg text-base focus:outline-none focus:border-primary-500 transition-colors duration-200"
-                    >
-                    <span class="text-xs text-gray-500 mt-1">Blood sugar level</span>
-                </div>
-            </div>
-
-            <!-- Submit Button -->
-            <button
-                type="submit"
-                class="btn-submit w-full py-4 bg-gradient-to-r from-primary-500 to-secondary-500 text-white font-semibold text-lg rounded-lg hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary-500/50 active:translate-y-0 disabled:opacity-60 disabled:cursor-not-allowed disabled:transform-none transition-all duration-200"
-            >
-                <!--
-                    Educational Note: Button Styling
-                    --------------------------------
-                    - w-full: Full width button
-                    - py-4: Vertical padding for a larger click target
-                    - bg-gradient-to-r: Horizontal gradient background
-                    - hover:-translate-y-0.5: Subtle lift on hover
-                    - hover:shadow-lg: Enhanced shadow on hover
-                    - disabled:opacity-60: Visual feedback for disabled state
-                    - transition-all: Smooth transitions for all changes
-                -->
-                Get Prediction
-            </button>
-        </form>
-
-        <!-- Prediction Result Display -->
-        <div id="result" class="hidden mt-10 p-8 bg-gradient-to-r from-pink-400 to-red-500 rounded-xl text-center slide-in">
-            <!--
-                Educational Note: Result Display Styling
-                ----------------------------------------
-                - hidden: Initially hidden, shown by JavaScript
-                - mt-10: Top margin for spacing
-                - p-8: Generous padding
-                - bg-gradient-to-r: Horizontal gradient
-                - rounded-xl: Rounded corners
-                - text-center: Centered text
-                - slide-in: Custom animation class (defined in style.css)
-            -->
-            <h2 class="text-white text-2xl font-bold mb-5">Prediction Result</h2>
-            <div id="predictionValue" class="text-5xl sm:text-6xl font-bold text-white my-5 drop-shadow-lg"></div>
-            <p class="text-white/90 text-base mt-3">
-                Diabetes progression measure (higher values indicate greater progression)
-            </p>
-        </div>
-
-        <!-- Error Display -->
-        <div id="error" class="hidden mt-6 p-5 bg-red-500 text-white rounded-lg slide-in"></div>
-
-        <!-- Information Box -->
-        <div class="mt-10 p-6 bg-gray-50 border-l-4 border-primary-500 rounded-lg">
-            <!--
-                Educational Note: Info Box Styling
-                ----------------------------------
-                - mt-10: Top margin for spacing
-                - p-6: Padding for content
-                - bg-gray-50: Light gray background
-                - border-l-4: Left border for visual accent
-                - border-primary-500: Border color matches our theme
-                - rounded-lg: Rounded corners
-            -->
-            <h3 class="text-primary-500 font-bold text-xl mb-3">About This Model</h3>
-            <p class="text-gray-600 leading-relaxed">
-                This application uses a machine learning model deployed on Databricks MLflow to predict
-                diabetes progression based on patient data. All input features are normalized values
-                from the standard diabetes dataset. The prediction represents the quantitative measure
-                of disease progression one year after baseline.
-            </p>
-        </div>
-
-        <!-- Optional: Sample Data Button -->
-        <div class="mt-6 text-center">
-            <button
-                type="button"
-                onclick="loadSampleData()"
-                class="px-6 py-2 bg-gray-200 hover:bg-gray-300 text-gray-700 font-medium rounded-lg transition-colors duration-200"
-            >
-                Load Sample Data
-            </button>
-        </div>
+<body class="min-h-screen bg-gradient-to-br from-midnight via-slate-900 to-slate-950 text-slate-50 font-body relative overflow-x-hidden">
+    <div class="absolute inset-0 pointer-events-none">
+        <div class="absolute -left-10 -top-16 w-64 h-64 bg-brand-500/20 blur-3xl rounded-full"></div>
+        <div class="absolute right-0 top-10 w-72 h-72 bg-amber-400/20 blur-3xl rounded-full"></div>
     </div>
 
-    <!-- External JavaScript File -->
-    <!-- Educational Note: We place scripts at the end of the body so the DOM is fully
-         loaded before JavaScript executes. The external file keeps our HTML clean and
-         makes the JavaScript reusable and easier to maintain. -->
+    <main class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 space-y-8">
+        <header class="space-y-3">
+            <p class="uppercase tracking-[0.24em] text-xs text-brand-200 font-semibold">Race strategy lab</p>
+            <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
+                <div>
+                    <h1 class="text-4xl sm:text-5xl font-display font-semibold tracking-tight text-white">Race Day Predictor</h1>
+                    <p class="text-slate-300 mt-2 max-w-2xl">
+                        Choose a card, query the model service, and watch the horses run. Data, probabilities, and winners are driven entirely from your text config.
+                    </p>
+                </div>
+                <div class="px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-sm text-slate-200">
+                    <div class="font-semibold">Databricks Endpoint</div>
+                    <div class="text-brand-200">POST /predict</div>
+                    <div class="text-slate-400 text-xs">Mocked locally if unset</div>
+                </div>
+            </div>
+        </header>
+
+        <section class="bg-white/5 border border-white/10 rounded-2xl p-5 sm:p-6 shadow-xl shadow-black/20">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 items-end">
+                <div class="space-y-2">
+                    <label for="dateSelect" class="text-sm font-semibold text-slate-200">Race date</label>
+                    <select id="dateSelect" class="input-select w-full">
+                        <option value="">Loading dates...</option>
+                    </select>
+                </div>
+                <div class="space-y-2">
+                    <label for="trackSelect" class="text-sm font-semibold text-slate-200">Track</label>
+                    <select id="trackSelect" class="input-select w-full">
+                        <option value="">Select a date first</option>
+                    </select>
+                </div>
+                <div class="flex items-center gap-3">
+                    <button id="predictButton" class="btn-primary w-full" type="button">
+                        <span class="button-label">Run predictions</span>
+                        <span class="button-spinner hidden"></span>
+                    </button>
+                </div>
+            </div>
+            <p class="text-xs text-slate-400 mt-3">Dates, tracks, fields, and official winners are sourced from <code class="px-1 py-0.5 bg-white/10 rounded">race_config.json</code>.</p>
+        </section>
+
+        <div id="alert" class="hidden"></div>
+
+        <section id="raceGrid" class="grid grid-cols-1 md:grid-cols-2 gap-6"></section>
+
+        <div id="emptyState" class="bg-white/5 border border-dashed border-white/10 rounded-2xl p-8 text-center space-y-3">
+            <p class="text-lg font-semibold text-white">Pick a date and track to get started</p>
+            <p class="text-slate-300 text-sm max-w-2xl mx-auto">
+                We will pull the races for that card, send every horse to the prediction service, rank them by probability, and stage a quick simulation.
+            </p>
+        </div>
+    </main>
+
     <script src="{{ url_for('static', filename='app.js') }}"></script>
 </body>
 </html>
