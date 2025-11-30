@@ -95,6 +95,29 @@ def load_race_config() -> Dict[str, Any]:
     return data
 
 
+def load_winners_config() -> Dict[str, Any]:
+    """
+    Loads the winners configuration file that maps race_id to winner data.
+    """
+    config_path = Path(Config.WINNERS_CONFIG_FILE)
+
+    if not config_path.exists():
+        raise FileNotFoundError(
+            f"Winners configuration file not found at {config_path.resolve()}"
+        )
+
+    try:
+        with config_path.open('r', encoding='utf-8') as config_file:
+            data = json.load(config_file)
+    except json.JSONDecodeError as exc:
+        raise ValueError(f"Winners configuration file is not valid JSON: {exc}") from exc
+
+    if 'winners' not in data:
+        raise ValueError('Winners configuration file must include a "winners" section.')
+
+    return data
+
+
 def sortable_number(value: Any) -> tuple[int, Any]:
     """
     Produces a stable, comparable key for values that may be int/str/None.
@@ -331,6 +354,11 @@ def generate_predictions(date_id: str, track_id: str, include_predictions: bool 
     Generates race payload for a given date and track, optionally including model probabilities.
     """
     race_data = load_race_config()
+    winners_data = load_winners_config()
+    winners_by_race = {
+        winner.get('race_id'): winner
+        for winner in winners_data.get('winners', [])
+    }
     date_entry = find_date_entry(race_data, date_id)
 
     if not date_entry:
@@ -395,8 +423,10 @@ def generate_predictions(date_id: str, track_id: str, include_predictions: bool 
 
         model_top_pick_id = None
         model_top_pick_name = None
-        winner_horse_id = race.get('winner_horse_id') or race.get('winner')
-        winner_name = race.get('winner_name') or race.get('winner')
+        race_id = race.get('race_id') or f"{track_id}-{race.get('race_number')}"
+        winner_entry = winners_by_race.get(race_id, {})
+        winner_horse_id = winner_entry.get('winner_horse_id') or race.get('winner_horse_id') or race.get('winner')
+        winner_name = winner_entry.get('winner_name') or race.get('winner_name') or race.get('winner')
 
         # If the config didn't include a winner name, try to derive it from the field
         if not winner_name and winner_horse_id:

@@ -97,6 +97,9 @@ class Config:
     # Path to the text configuration file controlling race days, tracks, and races
     RACE_CONFIG_FILE = os.getenv('RACE_CONFIG_FILE', 'race_config.json')
 
+    # Path to the winners-only configuration file (race_id -> winner data)
+    WINNERS_CONFIG_FILE = os.getenv('WINNERS_CONFIG_FILE', 'winners_config.json')
+
     # Optional flag to force the app to use mocked model outputs
     USE_MOCK_MODEL = os.getenv('USE_MOCK_MODEL', 'True').lower() == 'true'
 
@@ -149,6 +152,13 @@ class Config:
                 "Create the file or update RACE_CONFIG_FILE."
             )
 
+        # Validate that the winners configuration file exists
+        if not os.path.exists(cls.WINNERS_CONFIG_FILE):
+            errors.append(
+                f"Winners configuration file not found at {cls.WINNERS_CONFIG_FILE}. "
+                "Create the file or update WINNERS_CONFIG_FILE."
+            )
+
         return len(errors) == 0, errors
 
     @classmethod
@@ -182,6 +192,7 @@ class Config:
         print("-"*70)
         print(f"Model Features: {', '.join(cls.MODEL_FEATURES)}")
         print(f"Race Config File: {cls.RACE_CONFIG_FILE}")
+        print(f"Winners Config File: {cls.WINNERS_CONFIG_FILE}")
         print(f"Using Mock Model: {cls.USE_MOCK_MODEL}")
         print("="*70 + "\n")
 

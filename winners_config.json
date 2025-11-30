@@ -1,0 +1,4916 @@
+{
+  "winners": [
+    {
+      "race_id": "AQU_2023-12-01_1",
+      "winner_horse_id": "19001576",
+      "winner_name": "Golden Purchase",
+      "winner_program_number": "5",
+      "source_track": "AQU",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "AQU_2023-12-01_2",
+      "winner_horse_id": "20005828",
+      "winner_name": "Duke Of Gloucester",
+      "winner_program_number": "4",
+      "source_track": "AQU",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "AQU_2023-12-01_3",
+      "winner_horse_id": "19008772",
+      "winner_name": "Kunshan Bridge",
+      "winner_program_number": "3",
+      "source_track": "AQU",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "AQU_2023-12-01_4",
+      "winner_horse_id": "16012826",
+      "winner_name": "Cool Quartet",
+      "winner_program_number": "5",
+      "source_track": "AQU",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "AQU_2023-12-01_5",
+      "winner_horse_id": "21003984",
+      "winner_name": "Nikitis",
+      "winner_program_number": "1",
+      "source_track": "AQU",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "AQU_2023-12-01_6",
+      "winner_horse_id": "18002760",
+      "winner_name": "My Man Matty",
+      "winner_program_number": "5",
+      "source_track": "AQU",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "AQU_2023-12-01_7",
+      "winner_horse_id": "18012746",
+      "winner_name": "Blu Grotto",
+      "winner_program_number": "10",
+      "source_track": "AQU",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "AQU_2023-12-01_8",
+      "winner_horse_id": "19018220",
+      "winner_name": "Hot Fudge",
+      "winner_program_number": "5",
+      "source_track": "AQU",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "AQU_2023-12-01_9",
+      "winner_horse_id": "21012790",
+      "winner_name": "Flight Control",
+      "winner_program_number": "7",
+      "source_track": "AQU",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "CMR_2023-12-01_1",
+      "winner_horse_id": "20001271",
+      "winner_name": "Nube Negra",
+      "winner_program_number": "2",
+      "source_track": "CMR",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "CMR_2023-12-01_2",
+      "winner_horse_id": "20015440",
+      "winner_name": "Minera",
+      "winner_program_number": "1",
+      "source_track": "CMR",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "CMR_2023-12-01_3",
+      "winner_horse_id": "21002841",
+      "winner_name": "Nahialyha",
+      "winner_program_number": "5",
+      "source_track": "CMR",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "CMR_2023-12-01_4",
+      "winner_horse_id": "19018400",
+      "winner_name": "Forge Ahead",
+      "winner_program_number": "5",
+      "source_track": "CMR",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "CMR_2023-12-01_5",
+      "winner_horse_id": "21001510",
+      "winner_name": "Quality Of Life",
+      "winner_program_number": "7",
+      "source_track": "CMR",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "CMR_2023-12-01_6",
+      "winner_horse_id": "19011875",
+      "winner_name": "Rey William",
+      "winner_program_number": "2",
+      "source_track": "CMR",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "CMR_2023-12-01_7",
+      "winner_horse_id": "20006298",
+      "winner_name": "Amaia My Love",
+      "winner_program_number": "6",
+      "source_track": "CMR",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "CT_2023-12-01_1",
+      "winner_horse_id": "21000218",
+      "winner_name": "Hammer",
+      "winner_program_number": "2",
+      "source_track": "CT",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "CT_2023-12-01_2",
+      "winner_horse_id": "19004315",
+      "winner_name": "Baby Man",
+      "winner_program_number": "8",
+      "source_track": "CT",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "CT_2023-12-01_3",
+      "winner_horse_id": "18016097",
+      "winner_name": "Boss E Boogs",
+      "winner_program_number": "2",
+      "source_track": "CT",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "CT_2023-12-01_4",
+      "winner_horse_id": "20013578",
+      "winner_name": "Summoning Denis",
+      "winner_program_number": "1",
+      "source_track": "CT",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "CT_2023-12-01_5",
+      "winner_horse_id": "21012903",
+      "winner_name": "Adios Cool Arrows",
+      "winner_program_number": "3",
+      "source_track": "CT",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "CT_2023-12-01_6",
+      "winner_horse_id": "19015681",
+      "winner_name": "Juba Bound",
+      "winner_program_number": "2",
+      "source_track": "CT",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "CT_2023-12-01_7",
+      "winner_horse_id": "18023191",
+      "winner_name": "Elle'Sbigseacret",
+      "winner_program_number": "8",
+      "source_track": "CT",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "CT_2023-12-01_8",
+      "winner_horse_id": "20001506",
+      "winner_name": "Barrelhouse",
+      "winner_program_number": "5",
+      "source_track": "CT",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "DMR_2023-12-01_1",
+      "winner_horse_id": "20002129",
+      "winner_name": "Llorona",
+      "winner_program_number": "6",
+      "source_track": "DMR",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "DMR_2023-12-01_2",
+      "winner_horse_id": "21009800",
+      "winner_name": "Someone Like You",
+      "winner_program_number": "2",
+      "source_track": "DMR",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "DMR_2023-12-01_3",
+      "winner_horse_id": "21006248",
+      "winner_name": "Back On Track",
+      "winner_program_number": "6",
+      "source_track": "DMR",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "DMR_2023-12-01_4",
+      "winner_horse_id": "21011673",
+      "winner_name": "Medoro",
+      "winner_program_number": "1",
+      "source_track": "DMR",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "DMR_2023-12-01_5",
+      "winner_horse_id": "21008813",
+      "winner_name": "Zombo Bombo",
+      "winner_program_number": "7",
+      "source_track": "DMR",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "DMR_2023-12-01_6",
+      "winner_horse_id": "20008178",
+      "winner_name": "Stay And Scam",
+      "winner_program_number": "7",
+      "source_track": "DMR",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "DMR_2023-12-01_7",
+      "winner_horse_id": "19006842",
+      "winner_name": "Vulin",
+      "winner_program_number": "4",
+      "source_track": "DMR",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "DMR_2023-12-01_8",
+      "winner_horse_id": "21000548",
+      "winner_name": "Stolen Treasure",
+      "winner_program_number": "12",
+      "source_track": "DMR",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "DED_2023-12-01_1",
+      "winner_horse_id": "20020349",
+      "winner_name": "C C'S Legacy",
+      "winner_program_number": "2",
+      "source_track": "DED",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "DED_2023-12-01_2",
+      "winner_horse_id": "19010780",
+      "winner_name": "Zultan",
+      "winner_program_number": "9",
+      "source_track": "DED",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "DED_2023-12-01_3",
+      "winner_horse_id": "20018641",
+      "winner_name": "Luyv",
+      "winner_program_number": "6",
+      "source_track": "DED",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "DED_2023-12-01_4",
+      "winner_horse_id": "19013080",
+      "winner_name": "Heza Pickle",
+      "winner_program_number": "5",
+      "source_track": "DED",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "DED_2023-12-01_5",
+      "winner_horse_id": "19007545",
+      "winner_name": "Jolly Tommy",
+      "winner_program_number": "6",
+      "source_track": "DED",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "DED_2023-12-01_6",
+      "winner_horse_id": "19012423",
+      "winner_name": "Captain Cool",
+      "winner_program_number": "3",
+      "source_track": "DED",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "DED_2023-12-01_7",
+      "winner_horse_id": "20011180",
+      "winner_name": "Reina Aces",
+      "winner_program_number": "1",
+      "source_track": "DED",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "DED_2023-12-01_8",
+      "winner_horse_id": "21006707",
+      "winner_name": "Frosty View",
+      "winner_program_number": "2",
+      "source_track": "DED",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "DED_2023-12-01_9",
+      "winner_horse_id": "20004199",
+      "winner_name": "Moon Time",
+      "winner_program_number": "5",
+      "source_track": "DED",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "EVD_2023-12-01_1",
+      "winner_horse_id": "Q3128965",
+      "winner_name": "Stand Up Perry",
+      "winner_program_number": "6",
+      "source_track": "EVD",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "EVD_2023-12-01_2",
+      "winner_horse_id": "Q3174767",
+      "winner_name": "Fast Dash N Perry",
+      "winner_program_number": "2",
+      "source_track": "EVD",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "EVD_2023-12-01_3",
+      "winner_horse_id": "Q3217823",
+      "winner_name": "Fidelity Tlc",
+      "winner_program_number": "7",
+      "source_track": "EVD",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "EVD_2023-12-01_4",
+      "winner_horse_id": "Q3370472",
+      "winner_name": "Miss Headlines",
+      "winner_program_number": "1",
+      "source_track": "EVD",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "EVD_2023-12-01_5",
+      "winner_horse_id": "Q3240431",
+      "winner_name": "Liverpool Tlc",
+      "winner_program_number": "5",
+      "source_track": "EVD",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "EVD_2023-12-01_6",
+      "winner_horse_id": "Q3304554",
+      "winner_name": "The Big Patriot",
+      "winner_program_number": "1",
+      "source_track": "EVD",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "EVD_2023-12-01_7",
+      "winner_horse_id": "Q3185877",
+      "winner_name": "South Henry Streak",
+      "winner_program_number": "6",
+      "source_track": "EVD",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "EVD_2023-12-01_8",
+      "winner_horse_id": "Q3071455",
+      "winner_name": "Jes Anotha Jambalaya",
+      "winner_program_number": "2",
+      "source_track": "EVD",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "FG_2023-12-01_1",
+      "winner_horse_id": "21010572",
+      "winner_name": "Country Belle",
+      "winner_program_number": "2",
+      "source_track": "FG",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "FG_2023-12-01_2",
+      "winner_horse_id": "18019998",
+      "winner_name": "She'S My Priority",
+      "winner_program_number": "1",
+      "source_track": "FG",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "FG_2023-12-01_3",
+      "winner_horse_id": "20001886",
+      "winner_name": "For Harper",
+      "winner_program_number": "11",
+      "source_track": "FG",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "FG_2023-12-01_4",
+      "winner_horse_id": "20016211",
+      "winner_name": "A Runnin Afleet",
+      "winner_program_number": "5",
+      "source_track": "FG",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "FG_2023-12-01_5",
+      "winner_horse_id": "20010770",
+      "winner_name": "Cash Fever",
+      "winner_program_number": "11",
+      "source_track": "FG",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "FG_2023-12-01_6",
+      "winner_horse_id": "21013450",
+      "winner_name": "Wardy",
+      "winner_program_number": "2",
+      "source_track": "FG",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "FG_2023-12-01_7",
+      "winner_horse_id": "18013050",
+      "winner_name": "Rightandjust",
+      "winner_program_number": "10",
+      "source_track": "FG",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "FG_2023-12-01_8",
+      "winner_horse_id": "20011638",
+      "winner_name": "Shawn'S Solving",
+      "winner_program_number": "9",
+      "source_track": "FG",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "GG_2023-12-01_1",
+      "winner_horse_id": "19013447",
+      "winner_name": "Engee Ombee",
+      "winner_program_number": "7",
+      "source_track": "GG",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "GG_2023-12-01_2",
+      "winner_horse_id": "19006784",
+      "winner_name": "Boss Nine",
+      "winner_program_number": "1",
+      "source_track": "GG",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "GG_2023-12-01_3",
+      "winner_horse_id": "21000360",
+      "winner_name": "Deficit Maja",
+      "winner_program_number": "3",
+      "source_track": "GG",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "GG_2023-12-01_4",
+      "winner_horse_id": "20013453",
+      "winner_name": "Prestigious",
+      "winner_program_number": "5",
+      "source_track": "GG",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "GG_2023-12-01_5",
+      "winner_horse_id": "20002127",
+      "winner_name": "Dawn At Last",
+      "winner_program_number": "4",
+      "source_track": "GG",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "GG_2023-12-01_6",
+      "winner_horse_id": "20013732",
+      "winner_name": "Slew'S Joy",
+      "winner_program_number": "1",
+      "source_track": "GG",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "GG_2023-12-01_7",
+      "winner_horse_id": "F0047362",
+      "winner_name": "Sareeha (Ire)",
+      "winner_program_number": "8",
+      "source_track": "GG",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "GG_2023-12-01_8",
+      "winner_horse_id": "18001506",
+      "winner_name": "Misty Cat",
+      "winner_program_number": "7",
+      "source_track": "GG",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "GP_2023-12-01_1",
+      "winner_horse_id": "21017467",
+      "winner_name": "Cleopatra'S Nile",
+      "winner_program_number": "8",
+      "source_track": "GP",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "GP_2023-12-01_2",
+      "winner_horse_id": "20009103",
+      "winner_name": "Apocalypso",
+      "winner_program_number": "6",
+      "source_track": "GP",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "GP_2023-12-01_3",
+      "winner_horse_id": "18018355",
+      "winner_name": "Hay Hay Paula",
+      "winner_program_number": "8",
+      "source_track": "GP",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "GP_2023-12-01_4",
+      "winner_horse_id": "19011534",
+      "winner_name": "Villegas Swing",
+      "winner_program_number": "4",
+      "source_track": "GP",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "GP_2023-12-01_5",
+      "winner_horse_id": "21002369",
+      "winner_name": "No Fake",
+      "winner_program_number": "3",
+      "source_track": "GP",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "GP_2023-12-01_6",
+      "winner_horse_id": "18008424",
+      "winner_name": "Boldness",
+      "winner_program_number": "1",
+      "source_track": "GP",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "GP_2023-12-01_7",
+      "winner_horse_id": "19006990",
+      "winner_name": "Panther Island",
+      "winner_program_number": "4",
+      "source_track": "GP",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "GP_2023-12-01_8",
+      "winner_horse_id": "F0046648",
+      "winner_name": "No Nay Hudson (Ire)",
+      "winner_program_number": "7",
+      "source_track": "GP",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "GP_2023-12-01_9",
+      "winner_horse_id": "20013006",
+      "winner_name": "Nothing But Pumps",
+      "winner_program_number": "3",
+      "source_track": "GP",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "LRL_2023-12-01_1",
+      "winner_horse_id": "20006861",
+      "winner_name": "Sustenance",
+      "winner_program_number": "5",
+      "source_track": "LRL",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "LRL_2023-12-01_2",
+      "winner_horse_id": "20000864",
+      "winner_name": "Long Live Now",
+      "winner_program_number": "5",
+      "source_track": "LRL",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "LRL_2023-12-01_3",
+      "winner_horse_id": "20003013",
+      "winner_name": "Royal Seamstress",
+      "winner_program_number": "5",
+      "source_track": "LRL",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "LRL_2023-12-01_4",
+      "winner_horse_id": "20013809",
+      "winner_name": "Class Actor",
+      "winner_program_number": "2",
+      "source_track": "LRL",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "LRL_2023-12-01_5",
+      "winner_horse_id": "20016403",
+      "winner_name": "Lady Serenity",
+      "winner_program_number": "1",
+      "source_track": "LRL",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "LRL_2023-12-01_6",
+      "winner_horse_id": "19012693",
+      "winner_name": "Rominski",
+      "winner_program_number": "3",
+      "source_track": "LRL",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "LRL_2023-12-01_7",
+      "winner_horse_id": "20016574",
+      "winner_name": "Feeling Woozy",
+      "winner_program_number": "3",
+      "source_track": "LRL",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "LRL_2023-12-01_8",
+      "winner_horse_id": "19008767",
+      "winner_name": "Beneath The Stars",
+      "winner_program_number": "1",
+      "source_track": "LRL",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "LRL_2023-12-01_9",
+      "winner_horse_id": "20019650",
+      "winner_name": "By Its Absence",
+      "winner_program_number": "5",
+      "source_track": "LRL",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "PEN_2023-12-01_1",
+      "winner_horse_id": "21014842",
+      "winner_name": "Point Pelee",
+      "winner_program_number": "4",
+      "source_track": "PEN",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "PEN_2023-12-01_2",
+      "winner_horse_id": "18022030",
+      "winner_name": "Prospective Candy",
+      "winner_program_number": "5",
+      "source_track": "PEN",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "PEN_2023-12-01_3",
+      "winner_horse_id": "18009272",
+      "winner_name": "Romp",
+      "winner_program_number": "4",
+      "source_track": "PEN",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "PEN_2023-12-01_4",
+      "winner_horse_id": "19011100",
+      "winner_name": "Bowtothequeen",
+      "winner_program_number": "5",
+      "source_track": "PEN",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "PEN_2023-12-01_5",
+      "winner_horse_id": "20008488",
+      "winner_name": "Stephanie My Love",
+      "winner_program_number": "8",
+      "source_track": "PEN",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "PEN_2023-12-01_6",
+      "winner_horse_id": "20014822",
+      "winner_name": "Out Of Ammo",
+      "winner_program_number": "4",
+      "source_track": "PEN",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "PEN_2023-12-01_7",
+      "winner_horse_id": "20014183",
+      "winner_name": "Fast Freeze Kaz",
+      "winner_program_number": "6",
+      "source_track": "PEN",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "RP_2023-12-01_1",
+      "winner_horse_id": "20006121",
+      "winner_name": "Kenny D",
+      "winner_program_number": "2",
+      "source_track": "RP",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "RP_2023-12-01_2",
+      "winner_horse_id": "19005687",
+      "winner_name": "Gimme Candy",
+      "winner_program_number": "2",
+      "source_track": "RP",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "RP_2023-12-01_3",
+      "winner_horse_id": "19003008",
+      "winner_name": "Get Out Tonight",
+      "winner_program_number": "4",
+      "source_track": "RP",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "RP_2023-12-01_4",
+      "winner_horse_id": "17019403",
+      "winner_name": "Gp'S Amazing Grace",
+      "winner_program_number": "4",
+      "source_track": "RP",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "RP_2023-12-01_5",
+      "winner_horse_id": "20000689",
+      "winner_name": "United Sister",
+      "winner_program_number": "5",
+      "source_track": "RP",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "RP_2023-12-01_6",
+      "winner_horse_id": "19019471",
+      "winner_name": "Hacker",
+      "winner_program_number": "7",
+      "source_track": "RP",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "RP_2023-12-01_7",
+      "winner_horse_id": "20010743",
+      "winner_name": "Titled Lady",
+      "winner_program_number": "4",
+      "source_track": "RP",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "RP_2023-12-01_8",
+      "winner_horse_id": "21001511",
+      "winner_name": "Miss Gold",
+      "winner_program_number": "2",
+      "source_track": "RP",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "TAM_2023-12-01_1",
+      "winner_horse_id": "19022004",
+      "winner_name": "Song Runner",
+      "winner_program_number": "1",
+      "source_track": "TAM",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "TAM_2023-12-01_2",
+      "winner_horse_id": "17016800",
+      "winner_name": "Guinessey",
+      "winner_program_number": "1",
+      "source_track": "TAM",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "TAM_2023-12-01_3",
+      "winner_horse_id": "21015919",
+      "winner_name": "The Honeyman",
+      "winner_program_number": "2",
+      "source_track": "TAM",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "TAM_2023-12-01_4",
+      "winner_horse_id": "20002277",
+      "winner_name": "Uncaptured Warrior",
+      "winner_program_number": "8",
+      "source_track": "TAM",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "TAM_2023-12-01_5",
+      "winner_horse_id": "18008835",
+      "winner_name": "Except Temptation",
+      "winner_program_number": "8",
+      "source_track": "TAM",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "TAM_2023-12-01_6",
+      "winner_horse_id": "19008528",
+      "winner_name": "Conspiracy Fact",
+      "winner_program_number": "7",
+      "source_track": "TAM",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "TAM_2023-12-01_7",
+      "winner_horse_id": "19017103",
+      "winner_name": "Happy Runner",
+      "winner_program_number": "1",
+      "source_track": "TAM",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "TAM_2023-12-01_8",
+      "winner_horse_id": "19014467",
+      "winner_name": "The Judge And Jury",
+      "winner_program_number": "8",
+      "source_track": "TAM",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "TAM_2023-12-01_9",
+      "winner_horse_id": "F0045152",
+      "winner_name": "Gunslinger (Ire)",
+      "winner_program_number": "2",
+      "source_track": "TAM",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "TP_2023-12-01_1",
+      "winner_horse_id": "21015942",
+      "winner_name": "Midnight Stormy",
+      "winner_program_number": "8",
+      "source_track": "TP",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "TP_2023-12-01_2",
+      "winner_horse_id": "19012572",
+      "winner_name": "P K Wood",
+      "winner_program_number": "11",
+      "source_track": "TP",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "TP_2023-12-01_3",
+      "winner_horse_id": "18006021",
+      "winner_name": "Miss Getty Up",
+      "winner_program_number": "3",
+      "source_track": "TP",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "TP_2023-12-01_4",
+      "winner_horse_id": "20001889",
+      "winner_name": "Gunleather Al",
+      "winner_program_number": "1",
+      "source_track": "TP",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "TP_2023-12-01_5",
+      "winner_horse_id": "21012360",
+      "winner_name": "Time Muse",
+      "winner_program_number": "7",
+      "source_track": "TP",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "TP_2023-12-01_6",
+      "winner_horse_id": "21006863",
+      "winner_name": "Record Time",
+      "winner_program_number": "3",
+      "source_track": "TP",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "TP_2023-12-01_7",
+      "winner_horse_id": "17012955",
+      "winner_name": "Rogue Element",
+      "winner_program_number": "9",
+      "source_track": "TP",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "TP_2023-12-01_8",
+      "winner_horse_id": "20007314",
+      "winner_name": "Antares",
+      "winner_program_number": "2",
+      "source_track": "TP",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "TP_2023-12-01_9",
+      "winner_horse_id": "21018855",
+      "winner_name": "Ms Ks Dynasty",
+      "winner_program_number": "6",
+      "source_track": "TP",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "WO_2023-12-01_1",
+      "winner_horse_id": "18022152",
+      "winner_name": "Executive Chairman",
+      "winner_program_number": "3",
+      "source_track": "WO",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "WO_2023-12-01_2",
+      "winner_horse_id": "20014834",
+      "winner_name": "Coach Abernathy",
+      "winner_program_number": "8",
+      "source_track": "WO",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "WO_2023-12-01_3",
+      "winner_horse_id": "20016539",
+      "winner_name": "Telltale",
+      "winner_program_number": "5",
+      "source_track": "WO",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "WO_2023-12-01_4",
+      "winner_horse_id": "20003410",
+      "winner_name": "Silent Fortune",
+      "winner_program_number": "9",
+      "source_track": "WO",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "WO_2023-12-01_5",
+      "winner_horse_id": "F0046411",
+      "winner_name": "Napa Spirit (Ire)",
+      "winner_program_number": "7",
+      "source_track": "WO",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "WO_2023-12-01_6",
+      "winner_horse_id": "18015416",
+      "winner_name": "Boxer Brief",
+      "winner_program_number": "2",
+      "source_track": "WO",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "WO_2023-12-01_7",
+      "winner_horse_id": "19004412",
+      "winner_name": "Trizzel Trazzel",
+      "winner_program_number": "1",
+      "source_track": "WO",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "WO_2023-12-01_8",
+      "winner_horse_id": "21007905",
+      "winner_name": "Computer Hacker",
+      "winner_program_number": "5",
+      "source_track": "WO",
+      "source_date": "2023-12-01"
+    },
+    {
+      "race_id": "AQU_2023-12-02_1",
+      "winner_horse_id": "21011600",
+      "winner_name": "Big Prankster",
+      "winner_program_number": "9",
+      "source_track": "AQU",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "AQU_2023-12-02_2",
+      "winner_horse_id": "21017792",
+      "winner_name": "El Capi",
+      "winner_program_number": "1",
+      "source_track": "AQU",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "AQU_2023-12-02_3",
+      "winner_horse_id": "19007599",
+      "winner_name": "Winit",
+      "winner_program_number": "2",
+      "source_track": "AQU",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "AQU_2023-12-02_4",
+      "winner_horse_id": "21010261",
+      "winner_name": "King Freud",
+      "winner_program_number": "8",
+      "source_track": "AQU",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "AQU_2023-12-02_5",
+      "winner_horse_id": "18014473",
+      "winner_name": "American Law",
+      "winner_program_number": "8",
+      "source_track": "AQU",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "AQU_2023-12-02_6",
+      "winner_horse_id": "19017213",
+      "winner_name": "Power Seeker",
+      "winner_program_number": "2",
+      "source_track": "AQU",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "AQU_2023-12-02_7",
+      "winner_horse_id": "21008592",
+      "winner_name": "Life Talk",
+      "winner_program_number": "3",
+      "source_track": "AQU",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "AQU_2023-12-02_8",
+      "winner_horse_id": "18006779",
+      "winner_name": "Dr B",
+      "winner_program_number": "2",
+      "source_track": "AQU",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "AQU_2023-12-02_9",
+      "winner_horse_id": "21010056",
+      "winner_name": "Dornoch",
+      "winner_program_number": "3",
+      "source_track": "AQU",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "AQU_2023-12-02_10",
+      "winner_horse_id": "19014615",
+      "winner_name": "Hoist The Gold",
+      "winner_program_number": "11",
+      "source_track": "AQU",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "CMR_2023-12-02_1",
+      "winner_horse_id": "19000261",
+      "winner_name": "Mami Olga",
+      "winner_program_number": "2",
+      "source_track": "CMR",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "CMR_2023-12-02_2",
+      "winner_horse_id": "17017820",
+      "winner_name": "Indian Sense",
+      "winner_program_number": "2",
+      "source_track": "CMR",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "CMR_2023-12-02_3",
+      "winner_horse_id": "17015352",
+      "winner_name": "Rafy Q.",
+      "winner_program_number": "3",
+      "source_track": "CMR",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "CMR_2023-12-02_4",
+      "winner_horse_id": "20005867",
+      "winner_name": "D' Valentina",
+      "winner_program_number": "4",
+      "source_track": "CMR",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "CMR_2023-12-02_5",
+      "winner_horse_id": "19019050",
+      "winner_name": "Cemile",
+      "winner_program_number": "8",
+      "source_track": "CMR",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "CMR_2023-12-02_6",
+      "winner_horse_id": "20018819",
+      "winner_name": "She'S N The Moment",
+      "winner_program_number": "4",
+      "source_track": "CMR",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "CMR_2023-12-02_7",
+      "winner_horse_id": "20001492",
+      "winner_name": "Clemens",
+      "winner_program_number": "4",
+      "source_track": "CMR",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "CT_2023-12-02_1",
+      "winner_horse_id": "20009052",
+      "winner_name": "Comida Comida",
+      "winner_program_number": "6",
+      "source_track": "CT",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "CT_2023-12-02_2",
+      "winner_horse_id": "19006541",
+      "winner_name": "Runaway Road",
+      "winner_program_number": "7",
+      "source_track": "CT",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "CT_2023-12-02_3",
+      "winner_horse_id": "19008340",
+      "winner_name": "Mud Bug",
+      "winner_program_number": "4",
+      "source_track": "CT",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "CT_2023-12-02_4",
+      "winner_horse_id": "19012225",
+      "winner_name": "Ding Ding",
+      "winner_program_number": "4",
+      "source_track": "CT",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "CT_2023-12-02_5",
+      "winner_horse_id": "20009895",
+      "winner_name": "Dashing Lass",
+      "winner_program_number": "9",
+      "source_track": "CT",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "CT_2023-12-02_6",
+      "winner_horse_id": "20005155",
+      "winner_name": "My Balboa",
+      "winner_program_number": "3",
+      "source_track": "CT",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "CT_2023-12-02_7",
+      "winner_horse_id": "20004660",
+      "winner_name": "Midnight Heiress",
+      "winner_program_number": "10",
+      "source_track": "CT",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "CT_2023-12-02_8",
+      "winner_horse_id": "19017742",
+      "winner_name": "Super Jordan",
+      "winner_program_number": "1",
+      "source_track": "CT",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "DMR_2023-12-02_1",
+      "winner_horse_id": "19003031",
+      "winner_name": "Kerry Gold",
+      "winner_program_number": "6",
+      "source_track": "DMR",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "DMR_2023-12-02_2",
+      "winner_horse_id": "20009469",
+      "winner_name": "Miss Commander",
+      "winner_program_number": "2",
+      "source_track": "DMR",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "DMR_2023-12-02_3",
+      "winner_horse_id": "F0047289",
+      "winner_name": "Unconquerable Keen (Ire)",
+      "winner_program_number": "1",
+      "source_track": "DMR",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "DMR_2023-12-02_4",
+      "winner_horse_id": "18005388",
+      "winner_name": "Ghost Of Midnight",
+      "winner_program_number": "5",
+      "source_track": "DMR",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "DMR_2023-12-02_5",
+      "winner_horse_id": "F0047976",
+      "winner_name": "Zona Verde (Ire)",
+      "winner_program_number": "11",
+      "source_track": "DMR",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "DMR_2023-12-02_6",
+      "winner_horse_id": "21001721",
+      "winner_name": "Better Than Gold",
+      "winner_program_number": "7",
+      "source_track": "DMR",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "DMR_2023-12-02_7",
+      "winner_horse_id": "F0047072",
+      "winner_name": "Program Trading (Gb)",
+      "winner_program_number": "8",
+      "source_track": "DMR",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "DMR_2023-12-02_8",
+      "winner_horse_id": "21007211",
+      "winner_name": "Havoc",
+      "winner_program_number": "5",
+      "source_track": "DMR",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "DMR_2023-12-02_9",
+      "winner_horse_id": "F0047302",
+      "winner_name": "Golden Ghost (Gb)",
+      "winner_program_number": "8",
+      "source_track": "DMR",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "DED_2023-12-02_1",
+      "winner_horse_id": "20000363",
+      "winner_name": "Ilimitada",
+      "winner_program_number": "3",
+      "source_track": "DED",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "DED_2023-12-02_2",
+      "winner_horse_id": "20009113",
+      "winner_name": "Ourperfectprince",
+      "winner_program_number": "5",
+      "source_track": "DED",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "DED_2023-12-02_3",
+      "winner_horse_id": "20009688",
+      "winner_name": "Charlie'S Parade",
+      "winner_program_number": "6",
+      "source_track": "DED",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "DED_2023-12-02_4",
+      "winner_horse_id": "15010689",
+      "winner_name": "Indimaaj",
+      "winner_program_number": "5",
+      "source_track": "DED",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "DED_2023-12-02_5",
+      "winner_horse_id": "20014421",
+      "winner_name": "Pintora",
+      "winner_program_number": "1",
+      "source_track": "DED",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "DED_2023-12-02_6",
+      "winner_horse_id": "15014209",
+      "winner_name": "Lil Miss De Buy",
+      "winner_program_number": "1",
+      "source_track": "DED",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "DED_2023-12-02_7",
+      "winner_horse_id": "18000688",
+      "winner_name": "Getcha",
+      "winner_program_number": "6",
+      "source_track": "DED",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "DED_2023-12-02_8",
+      "winner_horse_id": "20001701",
+      "winner_name": "Jumpin Judy",
+      "winner_program_number": "1",
+      "source_track": "DED",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "DED_2023-12-02_9",
+      "winner_horse_id": "21008921",
+      "winner_name": "Joe T",
+      "winner_program_number": "6",
+      "source_track": "DED",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "EVD_2023-12-02_1",
+      "winner_horse_id": "Q3247143",
+      "winner_name": "Mp Saint Pat",
+      "winner_program_number": "1",
+      "source_track": "EVD",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "EVD_2023-12-02_2",
+      "winner_horse_id": "Q3239787",
+      "winner_name": "Rip Blade",
+      "winner_program_number": "4",
+      "source_track": "EVD",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "EVD_2023-12-02_3",
+      "winner_horse_id": "Q3102020",
+      "winner_name": "Deal A Fast Game",
+      "winner_program_number": "8",
+      "source_track": "EVD",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "EVD_2023-12-02_4",
+      "winner_horse_id": "Q3185892",
+      "winner_name": "Wow Its Jess",
+      "winner_program_number": "6",
+      "source_track": "EVD",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "EVD_2023-12-02_5",
+      "winner_horse_id": "Q3213205",
+      "winner_name": "Tempting Alibi",
+      "winner_program_number": "4",
+      "source_track": "EVD",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "EVD_2023-12-02_6",
+      "winner_horse_id": "Q3207710",
+      "winner_name": "The Blue Dream",
+      "winner_program_number": "1",
+      "source_track": "EVD",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "EVD_2023-12-02_7",
+      "winner_horse_id": "Q3246152",
+      "winner_name": "Pony Boy Corona",
+      "winner_program_number": "4",
+      "source_track": "EVD",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "FG_2023-12-02_1",
+      "winner_horse_id": "18016610",
+      "winner_name": "Caramel Chip",
+      "winner_program_number": "3",
+      "source_track": "FG",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "FG_2023-12-02_2",
+      "winner_horse_id": "18008999",
+      "winner_name": "Xylophone",
+      "winner_program_number": "1",
+      "source_track": "FG",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "FG_2023-12-02_3",
+      "winner_horse_id": "19016817",
+      "winner_name": "Anatolian",
+      "winner_program_number": "3",
+      "source_track": "FG",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "FG_2023-12-02_4",
+      "winner_horse_id": "17004156",
+      "winner_name": "Time For Trouble",
+      "winner_program_number": "4",
+      "source_track": "FG",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "FG_2023-12-02_5",
+      "winner_horse_id": "18015944",
+      "winner_name": "Mischievous Rogue",
+      "winner_program_number": "2",
+      "source_track": "FG",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "FG_2023-12-02_6",
+      "winner_horse_id": "20019890",
+      "winner_name": "Richiesonaroll",
+      "winner_program_number": "11",
+      "source_track": "FG",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "FG_2023-12-02_7",
+      "winner_horse_id": "18000753",
+      "winner_name": "Runway Magic",
+      "winner_program_number": "7",
+      "source_track": "FG",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "FG_2023-12-02_8",
+      "winner_horse_id": "19015439",
+      "winner_name": "Money Supply",
+      "winner_program_number": "2",
+      "source_track": "FG",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "FG_2023-12-02_9",
+      "winner_horse_id": "20014061",
+      "winner_name": "Hi Yah",
+      "winner_program_number": "10",
+      "source_track": "FG",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "GG_2023-12-02_1",
+      "winner_horse_id": "17023681",
+      "winner_name": "Sherilinda",
+      "winner_program_number": "2",
+      "source_track": "GG",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "GG_2023-12-02_2",
+      "winner_horse_id": "20007406",
+      "winner_name": "Cooperklimt",
+      "winner_program_number": "1",
+      "source_track": "GG",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "GG_2023-12-02_3",
+      "winner_horse_id": "19001756",
+      "winner_name": "Shemakescents",
+      "winner_program_number": "7",
+      "source_track": "GG",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "GG_2023-12-02_4",
+      "winner_horse_id": "21010599",
+      "winner_name": "Tiger In My Tank",
+      "winner_program_number": "2",
+      "source_track": "GG",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "GG_2023-12-02_5",
+      "winner_horse_id": "21000292",
+      "winner_name": "Wild Jewels",
+      "winner_program_number": "4",
+      "source_track": "GG",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "GG_2023-12-02_6",
+      "winner_horse_id": "21019147",
+      "winner_name": "Rocket Ribbon",
+      "winner_program_number": "9",
+      "source_track": "GG",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "GG_2023-12-02_7",
+      "winner_horse_id": "20009006",
+      "winner_name": "De La Luna",
+      "winner_program_number": "2",
+      "source_track": "GG",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "GG_2023-12-02_8",
+      "winner_horse_id": "21018400",
+      "winner_name": "Hattie T",
+      "winner_program_number": "4",
+      "source_track": "GG",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "GG_2023-12-02_9",
+      "winner_horse_id": "13013062",
+      "winner_name": "Ward 'N Jerry",
+      "winner_program_number": "1",
+      "source_track": "GG",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "GP_2023-12-02_1",
+      "winner_horse_id": "20017532",
+      "winner_name": "Be My Sunshine",
+      "winner_program_number": "4",
+      "source_track": "GP",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "GP_2023-12-02_2",
+      "winner_horse_id": "21016728",
+      "winner_name": "Neom City",
+      "winner_program_number": "1",
+      "source_track": "GP",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "GP_2023-12-02_3",
+      "winner_horse_id": "19005752",
+      "winner_name": "Demurely",
+      "winner_program_number": "1",
+      "source_track": "GP",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "GP_2023-12-02_4",
+      "winner_horse_id": "20007159",
+      "winner_name": "Little Steven",
+      "winner_program_number": "11",
+      "source_track": "GP",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "GP_2023-12-02_5",
+      "winner_horse_id": "21007409",
+      "winner_name": "Seminole Chief",
+      "winner_program_number": "6",
+      "source_track": "GP",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "GP_2023-12-02_6",
+      "winner_horse_id": "17018745",
+      "winner_name": "Pound Green",
+      "winner_program_number": "6",
+      "source_track": "GP",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "GP_2023-12-02_7",
+      "winner_horse_id": "20007983",
+      "winner_name": "Minxy",
+      "winner_program_number": "5",
+      "source_track": "GP",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "GP_2023-12-02_8",
+      "winner_horse_id": "18017841",
+      "winner_name": "Sky'S Not Falling",
+      "winner_program_number": "10",
+      "source_track": "GP",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "GP_2023-12-02_9",
+      "winner_horse_id": "18005922",
+      "winner_name": "Skyro",
+      "winner_program_number": "5",
+      "source_track": "GP",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "GP_2023-12-02_10",
+      "winner_horse_id": "21007041",
+      "winner_name": "Honey Dijon",
+      "winner_program_number": "1",
+      "source_track": "GP",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "GP_2023-12-02_11",
+      "winner_horse_id": "19013222",
+      "winner_name": "Felix",
+      "winner_program_number": "6",
+      "source_track": "GP",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "LRL_2023-12-02_1",
+      "winner_horse_id": "21014391",
+      "winner_name": "Photo Hop",
+      "winner_program_number": "6",
+      "source_track": "LRL",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "LRL_2023-12-02_2",
+      "winner_horse_id": "20000104",
+      "winner_name": "Ratified",
+      "winner_program_number": "7",
+      "source_track": "LRL",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "LRL_2023-12-02_3",
+      "winner_horse_id": "21011854",
+      "winner_name": "Old Bay",
+      "winner_program_number": "3",
+      "source_track": "LRL",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "LRL_2023-12-02_4",
+      "winner_horse_id": "19018013",
+      "winner_name": "Perfect Day",
+      "winner_program_number": "4",
+      "source_track": "LRL",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "LRL_2023-12-02_5",
+      "winner_horse_id": "14012418",
+      "winner_name": "Greeley And Ben",
+      "winner_program_number": "1",
+      "source_track": "LRL",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "LRL_2023-12-02_6",
+      "winner_horse_id": "19017460",
+      "winner_name": "Formal Order",
+      "winner_program_number": "2",
+      "source_track": "LRL",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "LRL_2023-12-02_7",
+      "winner_horse_id": "21007729",
+      "winner_name": "Kissedbyanangel",
+      "winner_program_number": "7",
+      "source_track": "LRL",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "LRL_2023-12-02_8",
+      "winner_horse_id": "21009823",
+      "winner_name": "Circle P",
+      "winner_program_number": "4",
+      "source_track": "LRL",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "LRL_2023-12-02_9",
+      "winner_horse_id": "21016779",
+      "winner_name": "Lady Charlotte",
+      "winner_program_number": "5",
+      "source_track": "LRL",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "LA_2023-12-02_1",
+      "winner_horse_id": "18010627",
+      "winner_name": "Perfect D",
+      "winner_program_number": "2",
+      "source_track": "LA",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "LA_2023-12-02_2",
+      "winner_horse_id": "19007468",
+      "winner_name": "Vegas Dream",
+      "winner_program_number": "2",
+      "source_track": "LA",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "LA_2023-12-02_3",
+      "winner_horse_id": "20010424",
+      "winner_name": "Acceleray",
+      "winner_program_number": "5",
+      "source_track": "LA",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "LA_2023-12-02_4",
+      "winner_horse_id": "20013701",
+      "winner_name": "Hey Batman",
+      "winner_program_number": "3",
+      "source_track": "LA",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "LA_2023-12-02_5",
+      "winner_horse_id": null,
+      "winner_name": null,
+      "winner_program_number": "1",
+      "source_track": "LA",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "LA_2023-12-02_6",
+      "winner_horse_id": "20016907",
+      "winner_name": "Lampy",
+      "winner_program_number": "3",
+      "source_track": "LA",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "LA_2023-12-02_7",
+      "winner_horse_id": "Q3167215",
+      "winner_name": "Rite On",
+      "winner_program_number": "4",
+      "source_track": "LA",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "LA_2023-12-02_8",
+      "winner_horse_id": "Q3257759",
+      "winner_name": "Cava John Cash",
+      "winner_program_number": "6",
+      "source_track": "LA",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "LA_2023-12-02_9",
+      "winner_horse_id": "Q3331880",
+      "winner_name": "Cheater",
+      "winner_program_number": "7",
+      "source_track": "LA",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "LA_2023-12-02_10",
+      "winner_horse_id": "Q3180159",
+      "winner_name": "Jessica Cruz",
+      "winner_program_number": "3",
+      "source_track": "LA",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "RP_2023-12-02_1",
+      "winner_horse_id": "17014867",
+      "winner_name": "Gold Account",
+      "winner_program_number": "1",
+      "source_track": "RP",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "RP_2023-12-02_2",
+      "winner_horse_id": "21009115",
+      "winner_name": "Cielo'S Knight",
+      "winner_program_number": "3",
+      "source_track": "RP",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "RP_2023-12-02_3",
+      "winner_horse_id": "20016391",
+      "winner_name": "Promise Code",
+      "winner_program_number": "1",
+      "source_track": "RP",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "RP_2023-12-02_4",
+      "winner_horse_id": "17022220",
+      "winner_name": "Euro Suprise",
+      "winner_program_number": "1",
+      "source_track": "RP",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "RP_2023-12-02_5",
+      "winner_horse_id": "20018345",
+      "winner_name": "Jim Ned",
+      "winner_program_number": "1",
+      "source_track": "RP",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "RP_2023-12-02_6",
+      "winner_horse_id": "18008281",
+      "winner_name": "Mister Wayside",
+      "winner_program_number": "4",
+      "source_track": "RP",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "RP_2023-12-02_7",
+      "winner_horse_id": "21004892",
+      "winner_name": "Okie Love",
+      "winner_program_number": "3",
+      "source_track": "RP",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "RP_2023-12-02_8",
+      "winner_horse_id": "20012214",
+      "winner_name": "Flashy Lass",
+      "winner_program_number": "2",
+      "source_track": "RP",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "RP_2023-12-02_9",
+      "winner_horse_id": "19020293",
+      "winner_name": "Pinky Ring Bling",
+      "winner_program_number": "7",
+      "source_track": "RP",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "TAM_2023-12-02_1",
+      "winner_horse_id": "21018728",
+      "winner_name": "Everdoit",
+      "winner_program_number": "7",
+      "source_track": "TAM",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "TAM_2023-12-02_2",
+      "winner_horse_id": "21011200",
+      "winner_name": "America'S Vow",
+      "winner_program_number": "1",
+      "source_track": "TAM",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "TAM_2023-12-02_3",
+      "winner_horse_id": "21013520",
+      "winner_name": "Yellow Feathers",
+      "winner_program_number": "4",
+      "source_track": "TAM",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "TAM_2023-12-02_4",
+      "winner_horse_id": "21015925",
+      "winner_name": "Expecting A Winner",
+      "winner_program_number": "9",
+      "source_track": "TAM",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "TAM_2023-12-02_5",
+      "winner_horse_id": "21011620",
+      "winner_name": "Trendy",
+      "winner_program_number": "5",
+      "source_track": "TAM",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "TAM_2023-12-02_6",
+      "winner_horse_id": "21011335",
+      "winner_name": "Let Them Watch",
+      "winner_program_number": "4",
+      "source_track": "TAM",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "TAM_2023-12-02_7",
+      "winner_horse_id": "21007137",
+      "winner_name": "Mickey Shillelagh",
+      "winner_program_number": "5",
+      "source_track": "TAM",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "TAM_2023-12-02_8",
+      "winner_horse_id": "21008214",
+      "winner_name": "Patriot Spirit",
+      "winner_program_number": "8",
+      "source_track": "TAM",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "TAM_2023-12-02_9",
+      "winner_horse_id": "21007084",
+      "winner_name": "Frosted Victory",
+      "winner_program_number": "1",
+      "source_track": "TAM",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "TP_2023-12-02_1",
+      "winner_horse_id": "19016325",
+      "winner_name": "Pillow Drop",
+      "winner_program_number": "7",
+      "source_track": "TP",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "TP_2023-12-02_2",
+      "winner_horse_id": "21008224",
+      "winner_name": "Twilight Sonata",
+      "winner_program_number": "4",
+      "source_track": "TP",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "TP_2023-12-02_3",
+      "winner_horse_id": "18008121",
+      "winner_name": "Red Pixie",
+      "winner_program_number": "11",
+      "source_track": "TP",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "TP_2023-12-02_4",
+      "winner_horse_id": "20018822",
+      "winner_name": "Rivzonaroll",
+      "winner_program_number": "4",
+      "source_track": "TP",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "TP_2023-12-02_5",
+      "winner_horse_id": "20004265",
+      "winner_name": "Life At Sea",
+      "winner_program_number": "8",
+      "source_track": "TP",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "TP_2023-12-02_6",
+      "winner_horse_id": "19010330",
+      "winner_name": "Marissa'S Lady",
+      "winner_program_number": "4",
+      "source_track": "TP",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "TP_2023-12-02_7",
+      "winner_horse_id": "19014291",
+      "winner_name": "Ziggzappa",
+      "winner_program_number": "10",
+      "source_track": "TP",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "TP_2023-12-02_8",
+      "winner_horse_id": "19001884",
+      "winner_name": "Condemn",
+      "winner_program_number": "10",
+      "source_track": "TP",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "TP_2023-12-02_9",
+      "winner_horse_id": "20005905",
+      "winner_name": "Birdie Rose",
+      "winner_program_number": "5",
+      "source_track": "TP",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "WO_2023-12-02_1",
+      "winner_horse_id": "20019676",
+      "winner_name": "Sunyani",
+      "winner_program_number": "7",
+      "source_track": "WO",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "WO_2023-12-02_2",
+      "winner_horse_id": "20000117",
+      "winner_name": "Kantbackoff",
+      "winner_program_number": "3",
+      "source_track": "WO",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "WO_2023-12-02_3",
+      "winner_horse_id": "21011678",
+      "winner_name": "Princess Mayfair",
+      "winner_program_number": "3",
+      "source_track": "WO",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "WO_2023-12-02_4",
+      "winner_horse_id": "20018751",
+      "winner_name": "Hits Different",
+      "winner_program_number": "7",
+      "source_track": "WO",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "WO_2023-12-02_5",
+      "winner_horse_id": "21003565",
+      "winner_name": "Prima",
+      "winner_program_number": "4",
+      "source_track": "WO",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "WO_2023-12-02_6",
+      "winner_horse_id": "21003586",
+      "winner_name": "Classy Image",
+      "winner_program_number": "3",
+      "source_track": "WO",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "WO_2023-12-02_7",
+      "winner_horse_id": "17021199",
+      "winner_name": "Trading Bay",
+      "winner_program_number": "5",
+      "source_track": "WO",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "WO_2023-12-02_8",
+      "winner_horse_id": "21017589",
+      "winner_name": "Frac Dancer",
+      "winner_program_number": "6",
+      "source_track": "WO",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "WO_2023-12-02_9",
+      "winner_horse_id": "21002836",
+      "winner_name": "Shamans Girl",
+      "winner_program_number": "6",
+      "source_track": "WO",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "WO_2023-12-02_10",
+      "winner_horse_id": "17017542",
+      "winner_name": "Wicked Mercury",
+      "winner_program_number": "5",
+      "source_track": "WO",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "ZIA_2023-12-02_1",
+      "winner_horse_id": "Q3091221",
+      "winner_name": "Ryder Lee",
+      "winner_program_number": "6",
+      "source_track": "ZIA",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "ZIA_2023-12-02_2",
+      "winner_horse_id": "Q2809975",
+      "winner_name": "Buckie Jones",
+      "winner_program_number": "4",
+      "source_track": "ZIA",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "ZIA_2023-12-02_3",
+      "winner_horse_id": "17020236",
+      "winner_name": "Monterey Secret",
+      "winner_program_number": "2",
+      "source_track": "ZIA",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "ZIA_2023-12-02_4",
+      "winner_horse_id": "Q3004090",
+      "winner_name": "Bp Desert Streak",
+      "winner_program_number": "7",
+      "source_track": "ZIA",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "ZIA_2023-12-02_5",
+      "winner_horse_id": "Q3083484",
+      "winner_name": "Hastabetickled",
+      "winner_program_number": "7",
+      "source_track": "ZIA",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "ZIA_2023-12-02_6",
+      "winner_horse_id": "Q3218074",
+      "winner_name": "Dig My Wagon",
+      "winner_program_number": "6",
+      "source_track": "ZIA",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "ZIA_2023-12-02_7",
+      "winner_horse_id": "Q3090608",
+      "winner_name": "Hot Candy Mess",
+      "winner_program_number": "9",
+      "source_track": "ZIA",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "ZIA_2023-12-02_8",
+      "winner_horse_id": "Q3099423",
+      "winner_name": "Tf Featured Dream",
+      "winner_program_number": "8",
+      "source_track": "ZIA",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "ZIA_2023-12-02_9",
+      "winner_horse_id": null,
+      "winner_name": null,
+      "winner_program_number": "7",
+      "source_track": "ZIA",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "ZIA_2023-12-02_10",
+      "winner_horse_id": "Q3241709",
+      "winner_name": "Lasso Me",
+      "winner_program_number": "2",
+      "source_track": "ZIA",
+      "source_date": "2023-12-02"
+    },
+    {
+      "race_id": "AQU_2023-12-03_1",
+      "winner_horse_id": "20002174",
+      "winner_name": "Collect From Ike",
+      "winner_program_number": "2",
+      "source_track": "AQU",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "AQU_2023-12-03_2",
+      "winner_horse_id": "20013429",
+      "winner_name": "Will Be Famous",
+      "winner_program_number": "2",
+      "source_track": "AQU",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "AQU_2023-12-03_3",
+      "winner_horse_id": "21013323",
+      "winner_name": "Leslie'S Loot",
+      "winner_program_number": "3",
+      "source_track": "AQU",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "AQU_2023-12-03_4",
+      "winner_horse_id": "19006507",
+      "winner_name": "Everlys Girl",
+      "winner_program_number": "2",
+      "source_track": "AQU",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "AQU_2023-12-03_5",
+      "winner_horse_id": "20000007",
+      "winner_name": "Zapruder",
+      "winner_program_number": "8",
+      "source_track": "AQU",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "AQU_2023-12-03_6",
+      "winner_horse_id": "20007931",
+      "winner_name": "Mama'S Gold",
+      "winner_program_number": "5",
+      "source_track": "AQU",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "AQU_2023-12-03_7",
+      "winner_horse_id": "19003825",
+      "winner_name": "Morning Matcha",
+      "winner_program_number": "7",
+      "source_track": "AQU",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "AQU_2023-12-03_8",
+      "winner_horse_id": "18010985",
+      "winner_name": "Today'S Flavor",
+      "winner_program_number": "8",
+      "source_track": "AQU",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "AQU_2023-12-03_9",
+      "winner_horse_id": "21002584",
+      "winner_name": "Pretty Up",
+      "winner_program_number": "1",
+      "source_track": "AQU",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "CMR_2023-12-03_1",
+      "winner_horse_id": "19008356",
+      "winner_name": "Stellar Ride",
+      "winner_program_number": "5",
+      "source_track": "CMR",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "CMR_2023-12-03_2",
+      "winner_horse_id": "18003861",
+      "winner_name": "Pretty And Proud",
+      "winner_program_number": "5",
+      "source_track": "CMR",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "CMR_2023-12-03_3",
+      "winner_horse_id": "20013491",
+      "winner_name": "St Andres",
+      "winner_program_number": "6",
+      "source_track": "CMR",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "CMR_2023-12-03_4",
+      "winner_horse_id": "20019094",
+      "winner_name": "Great Azabache",
+      "winner_program_number": "1",
+      "source_track": "CMR",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "CMR_2023-12-03_5",
+      "winner_horse_id": "20013399",
+      "winner_name": "Miss Aria",
+      "winner_program_number": "8",
+      "source_track": "CMR",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "CMR_2023-12-03_6",
+      "winner_horse_id": "21000038",
+      "winner_name": "Michaelo",
+      "winner_program_number": "8",
+      "source_track": "CMR",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "CMR_2023-12-03_7",
+      "winner_horse_id": "20020780",
+      "winner_name": "Eclesiastes",
+      "winner_program_number": "7",
+      "source_track": "CMR",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "DMR_2023-12-03_1",
+      "winner_horse_id": "21000489",
+      "winner_name": "Rastaman Vibe",
+      "winner_program_number": "7",
+      "source_track": "DMR",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "DMR_2023-12-03_2",
+      "winner_horse_id": "19007878",
+      "winner_name": "Yolo Calls",
+      "winner_program_number": "6",
+      "source_track": "DMR",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "DMR_2023-12-03_3",
+      "winner_horse_id": "F0047865",
+      "winner_name": "Almendares (Gb)",
+      "winner_program_number": "9",
+      "source_track": "DMR",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "DMR_2023-12-03_4",
+      "winner_horse_id": "20010129",
+      "winner_name": "Quincy Market",
+      "winner_program_number": "6",
+      "source_track": "DMR",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "DMR_2023-12-03_5",
+      "winner_horse_id": "21004552",
+      "winner_name": "Stay Hot",
+      "winner_program_number": "9",
+      "source_track": "DMR",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "DMR_2023-12-03_6",
+      "winner_horse_id": "21001595",
+      "winner_name": "Express Line",
+      "winner_program_number": "8",
+      "source_track": "DMR",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "DMR_2023-12-03_7",
+      "winner_horse_id": "20003288",
+      "winner_name": "Surge Capacity",
+      "winner_program_number": "3",
+      "source_track": "DMR",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "DMR_2023-12-03_8",
+      "winner_horse_id": "21006218",
+      "winner_name": "Bossy Bruin Gal",
+      "winner_program_number": "4",
+      "source_track": "DMR",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "DMR_2023-12-03_9",
+      "winner_horse_id": "20001299",
+      "winner_name": "Miranda Rights",
+      "winner_program_number": "1",
+      "source_track": "DMR",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "FG_2023-12-03_1",
+      "winner_horse_id": "17013411",
+      "winner_name": "Half Again",
+      "winner_program_number": "3",
+      "source_track": "FG",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "FG_2023-12-03_2",
+      "winner_horse_id": "20004910",
+      "winner_name": "Vortex",
+      "winner_program_number": "3",
+      "source_track": "FG",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "FG_2023-12-03_3",
+      "winner_horse_id": "21008189",
+      "winner_name": "Show Off",
+      "winner_program_number": "7",
+      "source_track": "FG",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "FG_2023-12-03_4",
+      "winner_horse_id": "20017855",
+      "winner_name": "Mucho Macho Girl",
+      "winner_program_number": "6",
+      "source_track": "FG",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "FG_2023-12-03_5",
+      "winner_horse_id": "20013388",
+      "winner_name": "Theroanrunner",
+      "winner_program_number": "2",
+      "source_track": "FG",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "FG_2023-12-03_6",
+      "winner_horse_id": "19003456",
+      "winner_name": "Boss' Dialin In",
+      "winner_program_number": "3",
+      "source_track": "FG",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "FG_2023-12-03_7",
+      "winner_horse_id": "19011162",
+      "winner_name": "Midnight Escape",
+      "winner_program_number": "1",
+      "source_track": "FG",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "FG_2023-12-03_8",
+      "winner_horse_id": "19014835",
+      "winner_name": "Toffee",
+      "winner_program_number": "8",
+      "source_track": "FG",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "GG_2023-12-03_1",
+      "winner_horse_id": "20017303",
+      "winner_name": "Dust Maker",
+      "winner_program_number": "3",
+      "source_track": "GG",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "GG_2023-12-03_2",
+      "winner_horse_id": "20005476",
+      "winner_name": "Titos With A Twist",
+      "winner_program_number": "1",
+      "source_track": "GG",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "GG_2023-12-03_3",
+      "winner_horse_id": "19019845",
+      "winner_name": "You Kidding Me",
+      "winner_program_number": "3",
+      "source_track": "GG",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "GG_2023-12-03_4",
+      "winner_horse_id": "16019667",
+      "winner_name": "Buyback",
+      "winner_program_number": "1",
+      "source_track": "GG",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "GG_2023-12-03_5",
+      "winner_horse_id": "20017583",
+      "winner_name": "Captivating Boy",
+      "winner_program_number": "7",
+      "source_track": "GG",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "GG_2023-12-03_6",
+      "winner_horse_id": "18003870",
+      "winner_name": "Murphys Tiger",
+      "winner_program_number": "6",
+      "source_track": "GG",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "GG_2023-12-03_7",
+      "winner_horse_id": "20010396",
+      "winner_name": "Sing A Happy Song",
+      "winner_program_number": "7",
+      "source_track": "GG",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "GG_2023-12-03_8",
+      "winner_horse_id": "19016821",
+      "winner_name": "Mogollon Rim",
+      "winner_program_number": "4",
+      "source_track": "GG",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "GG_2023-12-03_9",
+      "winner_horse_id": "15017470",
+      "winner_name": "Satanta",
+      "winner_program_number": "6",
+      "source_track": "GG",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "GP_2023-12-03_1",
+      "winner_horse_id": "21006230",
+      "winner_name": "Falfurrias",
+      "winner_program_number": "2",
+      "source_track": "GP",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "GP_2023-12-03_2",
+      "winner_horse_id": "21015595",
+      "winner_name": "Le Mistral",
+      "winner_program_number": "7",
+      "source_track": "GP",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "GP_2023-12-03_3",
+      "winner_horse_id": "20008551",
+      "winner_name": "Libban",
+      "winner_program_number": "2",
+      "source_track": "GP",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "GP_2023-12-03_4",
+      "winner_horse_id": "21001494",
+      "winner_name": "Perfectly Mperfect",
+      "winner_program_number": "7",
+      "source_track": "GP",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "GP_2023-12-03_5",
+      "winner_horse_id": "18001497",
+      "winner_name": "Ensign Parker",
+      "winner_program_number": "3",
+      "source_track": "GP",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "GP_2023-12-03_6",
+      "winner_horse_id": "18012428",
+      "winner_name": "Famous Gent",
+      "winner_program_number": "6",
+      "source_track": "GP",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "GP_2023-12-03_7",
+      "winner_horse_id": "19001800",
+      "winner_name": "Mo Touring",
+      "winner_program_number": "3",
+      "source_track": "GP",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "GP_2023-12-03_8",
+      "winner_horse_id": "21004931",
+      "winner_name": "Pure Class",
+      "winner_program_number": "1",
+      "source_track": "GP",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "GP_2023-12-03_9",
+      "winner_horse_id": "18004489",
+      "winner_name": "Sand And Sea",
+      "winner_program_number": "7",
+      "source_track": "GP",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "GP_2023-12-03_10",
+      "winner_horse_id": "17020454",
+      "winner_name": "Choose Joy",
+      "winner_program_number": "12",
+      "source_track": "GP",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "GP_2023-12-03_11",
+      "winner_horse_id": "20013747",
+      "winner_name": "Jam Session",
+      "winner_program_number": "11",
+      "source_track": "GP",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "LRL_2023-12-03_1",
+      "winner_horse_id": "21009466",
+      "winner_name": "Silverbullettwenty",
+      "winner_program_number": null,
+      "source_track": "LRL",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "LRL_2023-12-03_2",
+      "winner_horse_id": "19014883",
+      "winner_name": "The Haunted Room",
+      "winner_program_number": "6",
+      "source_track": "LRL",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "LRL_2023-12-03_3",
+      "winner_horse_id": "21010655",
+      "winner_name": "Great Opportunity",
+      "winner_program_number": "1",
+      "source_track": "LRL",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "LRL_2023-12-03_4",
+      "winner_horse_id": "16018069",
+      "winner_name": "Ace Nine Nine",
+      "winner_program_number": "1",
+      "source_track": "LRL",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "LRL_2023-12-03_5",
+      "winner_horse_id": "21003545",
+      "winner_name": "Bigdaddysboy",
+      "winner_program_number": "8",
+      "source_track": "LRL",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "LRL_2023-12-03_6",
+      "winner_horse_id": "21007967",
+      "winner_name": "Honey B B",
+      "winner_program_number": "3",
+      "source_track": "LRL",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "LRL_2023-12-03_7",
+      "winner_horse_id": "19012758",
+      "winner_name": "Your Analysis",
+      "winner_program_number": "3",
+      "source_track": "LRL",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "LRL_2023-12-03_8",
+      "winner_horse_id": "19001616",
+      "winner_name": "Shinelikeadiamond",
+      "winner_program_number": "3",
+      "source_track": "LRL",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "LRL_2023-12-03_9",
+      "winner_horse_id": "20018886",
+      "winner_name": "The Big Enchilada",
+      "winner_program_number": "3",
+      "source_track": "LRL",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "LA_2023-12-03_1",
+      "winner_horse_id": "18013495",
+      "winner_name": "Wrong Turn Cupid",
+      "winner_program_number": "5",
+      "source_track": "LA",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "LA_2023-12-03_2",
+      "winner_horse_id": "17008101",
+      "winner_name": "Not Gonna Last",
+      "winner_program_number": "5",
+      "source_track": "LA",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "LA_2023-12-03_3",
+      "winner_horse_id": "19019776",
+      "winner_name": "Holyjazz",
+      "winner_program_number": "7",
+      "source_track": "LA",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "LA_2023-12-03_4",
+      "winner_horse_id": "19014654",
+      "winner_name": "Rufa Red Knot",
+      "winner_program_number": "8",
+      "source_track": "LA",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "LA_2023-12-03_5",
+      "winner_horse_id": "18003630",
+      "winner_name": "Run Snappy",
+      "winner_program_number": "7",
+      "source_track": "LA",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "LA_2023-12-03_6",
+      "winner_horse_id": "Q3158826",
+      "winner_name": "Go Go Po Po Go",
+      "winner_program_number": "4",
+      "source_track": "LA",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "LA_2023-12-03_7",
+      "winner_horse_id": "Q3141561",
+      "winner_name": "Forever Dynasty",
+      "winner_program_number": "6",
+      "source_track": "LA",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "LA_2023-12-03_8",
+      "winner_horse_id": "Q3206826",
+      "winner_name": "Sass Blue Cowboy",
+      "winner_program_number": "5",
+      "source_track": "LA",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "LA_2023-12-03_9",
+      "winner_horse_id": "Q3115440",
+      "winner_name": "Fly Over",
+      "winner_program_number": "2",
+      "source_track": "LA",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "LA_2023-12-03_10",
+      "winner_horse_id": "19020765",
+      "winner_name": "Tizlightning",
+      "winner_program_number": "9",
+      "source_track": "LA",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "MNR_2023-12-03_1",
+      "winner_horse_id": "20016305",
+      "winner_name": "Blanton",
+      "winner_program_number": "8",
+      "source_track": "MNR",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "MNR_2023-12-03_2",
+      "winner_horse_id": "19008911",
+      "winner_name": "Miss Shady",
+      "winner_program_number": "6",
+      "source_track": "MNR",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "MNR_2023-12-03_3",
+      "winner_horse_id": "19014658",
+      "winner_name": "She Is Royalty",
+      "winner_program_number": "4",
+      "source_track": "MNR",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "MNR_2023-12-03_4",
+      "winner_horse_id": "17024229",
+      "winner_name": "Bend In The River",
+      "winner_program_number": "1",
+      "source_track": "MNR",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "MNR_2023-12-03_5",
+      "winner_horse_id": "17007086",
+      "winner_name": "Starship Nugget",
+      "winner_program_number": "2",
+      "source_track": "MNR",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "MNR_2023-12-03_6",
+      "winner_horse_id": "16003164",
+      "winner_name": "Foggy Kitten",
+      "winner_program_number": "5",
+      "source_track": "MNR",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "MNR_2023-12-03_7",
+      "winner_horse_id": "19006098",
+      "winner_name": "Mercury Head",
+      "winner_program_number": "1",
+      "source_track": "MNR",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "MNR_2023-12-03_8",
+      "winner_horse_id": "20006829",
+      "winner_name": "Gaming Soul",
+      "winner_program_number": "6",
+      "source_track": "MNR",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "WO_2023-12-03_1",
+      "winner_horse_id": "18020694",
+      "winner_name": "Pino In A Purse",
+      "winner_program_number": "2",
+      "source_track": "WO",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "WO_2023-12-03_2",
+      "winner_horse_id": "17013118",
+      "winner_name": "Bachelor Pad",
+      "winner_program_number": "2",
+      "source_track": "WO",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "WO_2023-12-03_3",
+      "winner_horse_id": "20008954",
+      "winner_name": "Enahm",
+      "winner_program_number": "5",
+      "source_track": "WO",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "WO_2023-12-03_4",
+      "winner_horse_id": "20004484",
+      "winner_name": "Classic Dancer",
+      "winner_program_number": "9",
+      "source_track": "WO",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "WO_2023-12-03_5",
+      "winner_horse_id": "19017959",
+      "winner_name": "Feelthebeat",
+      "winner_program_number": "4",
+      "source_track": "WO",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "WO_2023-12-03_6",
+      "winner_horse_id": "19006041",
+      "winner_name": "Hilarious Affair",
+      "winner_program_number": "8",
+      "source_track": "WO",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "WO_2023-12-03_7",
+      "winner_horse_id": "17000488",
+      "winner_name": "Conglomerate",
+      "winner_program_number": "2",
+      "source_track": "WO",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "WO_2023-12-03_8",
+      "winner_horse_id": "17021732",
+      "winner_name": "Have A Souper Day",
+      "winner_program_number": "5",
+      "source_track": "WO",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "WO_2023-12-03_9",
+      "winner_horse_id": "F0046120",
+      "winner_name": "Guildsman (Fr)",
+      "winner_program_number": "4",
+      "source_track": "WO",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "ZIA_2023-12-03_1",
+      "winner_horse_id": "Q2876191",
+      "winner_name": "Stuntin Like Daddy",
+      "winner_program_number": "2",
+      "source_track": "ZIA",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "ZIA_2023-12-03_2",
+      "winner_horse_id": "Q3065437",
+      "winner_name": "Blur",
+      "winner_program_number": "2",
+      "source_track": "ZIA",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "ZIA_2023-12-03_3",
+      "winner_horse_id": "Q3172271",
+      "winner_name": "Cj Aquaman",
+      "winner_program_number": "5",
+      "source_track": "ZIA",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "ZIA_2023-12-03_4",
+      "winner_horse_id": "Q3180417",
+      "winner_name": "Return To Fire",
+      "winner_program_number": "5",
+      "source_track": "ZIA",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "ZIA_2023-12-03_5",
+      "winner_horse_id": "Q3259787",
+      "winner_name": "Reason To Remember",
+      "winner_program_number": "10",
+      "source_track": "ZIA",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "ZIA_2023-12-03_6",
+      "winner_horse_id": "Q3215262",
+      "winner_name": "Flashn Milagro",
+      "winner_program_number": "10",
+      "source_track": "ZIA",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "ZIA_2023-12-03_7",
+      "winner_horse_id": "Q3197650",
+      "winner_name": "Malamute Saloon",
+      "winner_program_number": "10",
+      "source_track": "ZIA",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "ZIA_2023-12-03_8",
+      "winner_horse_id": "Q3229359",
+      "winner_name": "Queenofthanile",
+      "winner_program_number": "4",
+      "source_track": "ZIA",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "ZIA_2023-12-03_9",
+      "winner_horse_id": "Q3072962",
+      "winner_name": "Ima Royal Eagle",
+      "winner_program_number": "9",
+      "source_track": "ZIA",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "ZIA_2023-12-03_10",
+      "winner_horse_id": "Q3103524",
+      "winner_name": "Rough Daddy",
+      "winner_program_number": "2",
+      "source_track": "ZIA",
+      "source_date": "2023-12-03"
+    },
+    {
+      "race_id": "MVR_2023-12-04_1",
+      "winner_horse_id": "16016151",
+      "winner_name": "Send Me On",
+      "winner_program_number": "1",
+      "source_track": "MVR",
+      "source_date": "2023-12-04"
+    },
+    {
+      "race_id": "MVR_2023-12-04_2",
+      "winner_horse_id": "17021444",
+      "winner_name": "Windy Lu Who",
+      "winner_program_number": "1",
+      "source_track": "MVR",
+      "source_date": "2023-12-04"
+    },
+    {
+      "race_id": "MVR_2023-12-04_3",
+      "winner_horse_id": "14012308",
+      "winner_name": "Mannford",
+      "winner_program_number": "6",
+      "source_track": "MVR",
+      "source_date": "2023-12-04"
+    },
+    {
+      "race_id": "MVR_2023-12-04_4",
+      "winner_horse_id": "20010965",
+      "winner_name": "Swelter",
+      "winner_program_number": "4",
+      "source_track": "MVR",
+      "source_date": "2023-12-04"
+    },
+    {
+      "race_id": "MVR_2023-12-04_5",
+      "winner_horse_id": "17021603",
+      "winner_name": "El Marro",
+      "winner_program_number": "8",
+      "source_track": "MVR",
+      "source_date": "2023-12-04"
+    },
+    {
+      "race_id": "MVR_2023-12-04_6",
+      "winner_horse_id": "19017286",
+      "winner_name": "Keranos",
+      "winner_program_number": "10",
+      "source_track": "MVR",
+      "source_date": "2023-12-04"
+    },
+    {
+      "race_id": "MVR_2023-12-04_7",
+      "winner_horse_id": "20000594",
+      "winner_name": "Enchanted Melody",
+      "winner_program_number": "6",
+      "source_track": "MVR",
+      "source_date": "2023-12-04"
+    },
+    {
+      "race_id": "MVR_2023-12-04_8",
+      "winner_horse_id": "18006090",
+      "winner_name": "Henry Mac",
+      "winner_program_number": "7",
+      "source_track": "MVR",
+      "source_date": "2023-12-04"
+    },
+    {
+      "race_id": "MVR_2023-12-04_9",
+      "winner_horse_id": "19007054",
+      "winner_name": "Aztec",
+      "winner_program_number": "8",
+      "source_track": "MVR",
+      "source_date": "2023-12-04"
+    },
+    {
+      "race_id": "MNR_2023-12-04_1",
+      "winner_horse_id": "17013058",
+      "winner_name": "Money For Mischief",
+      "winner_program_number": "2",
+      "source_track": "MNR",
+      "source_date": "2023-12-04"
+    },
+    {
+      "race_id": "MNR_2023-12-04_2",
+      "winner_horse_id": "15004282",
+      "winner_name": "Perfect Wager",
+      "winner_program_number": "7",
+      "source_track": "MNR",
+      "source_date": "2023-12-04"
+    },
+    {
+      "race_id": "MNR_2023-12-04_3",
+      "winner_horse_id": "20002385",
+      "winner_name": "Lt. Lydia",
+      "winner_program_number": "8",
+      "source_track": "MNR",
+      "source_date": "2023-12-04"
+    },
+    {
+      "race_id": "MNR_2023-12-04_4",
+      "winner_horse_id": "20004015",
+      "winner_name": "Work N Flirt",
+      "winner_program_number": "10",
+      "source_track": "MNR",
+      "source_date": "2023-12-04"
+    },
+    {
+      "race_id": "MNR_2023-12-04_5",
+      "winner_horse_id": "20010583",
+      "winner_name": "Ayy Ladies",
+      "winner_program_number": "7",
+      "source_track": "MNR",
+      "source_date": "2023-12-04"
+    },
+    {
+      "race_id": "MNR_2023-12-04_6",
+      "winner_horse_id": "20021853",
+      "winner_name": "Love Of Grace",
+      "winner_program_number": "5",
+      "source_track": "MNR",
+      "source_date": "2023-12-04"
+    },
+    {
+      "race_id": "MNR_2023-12-04_7",
+      "winner_horse_id": "17017944",
+      "winner_name": "Fly Home",
+      "winner_program_number": "5",
+      "source_track": "MNR",
+      "source_date": "2023-12-04"
+    },
+    {
+      "race_id": "MNR_2023-12-04_8",
+      "winner_horse_id": "18022644",
+      "winner_name": "Circle Indy",
+      "winner_program_number": "9",
+      "source_track": "MNR",
+      "source_date": "2023-12-04"
+    },
+    {
+      "race_id": "PRX_2023-12-04_1",
+      "winner_horse_id": "20007564",
+      "winner_name": "Tiempo Perfecto",
+      "winner_program_number": "6",
+      "source_track": "PRX",
+      "source_date": "2023-12-04"
+    },
+    {
+      "race_id": "PRX_2023-12-04_2",
+      "winner_horse_id": "19009047",
+      "winner_name": "Deplane",
+      "winner_program_number": "6",
+      "source_track": "PRX",
+      "source_date": "2023-12-04"
+    },
+    {
+      "race_id": "PRX_2023-12-04_3",
+      "winner_horse_id": "19001609",
+      "winner_name": "Runnin Redbird",
+      "winner_program_number": "2",
+      "source_track": "PRX",
+      "source_date": "2023-12-04"
+    },
+    {
+      "race_id": "PRX_2023-12-04_4",
+      "winner_horse_id": "18019013",
+      "winner_name": "Ambitiously Placed",
+      "winner_program_number": "4",
+      "source_track": "PRX",
+      "source_date": "2023-12-04"
+    },
+    {
+      "race_id": "PRX_2023-12-04_5",
+      "winner_horse_id": "18007097",
+      "winner_name": "Sailor'S Return",
+      "winner_program_number": "7",
+      "source_track": "PRX",
+      "source_date": "2023-12-04"
+    },
+    {
+      "race_id": "PRX_2023-12-04_6",
+      "winner_horse_id": "20005559",
+      "winner_name": "Social Lady",
+      "winner_program_number": "4",
+      "source_track": "PRX",
+      "source_date": "2023-12-04"
+    },
+    {
+      "race_id": "PRX_2023-12-04_7",
+      "winner_horse_id": "21009409",
+      "winner_name": "Bali Amour",
+      "winner_program_number": "6",
+      "source_track": "PRX",
+      "source_date": "2023-12-04"
+    },
+    {
+      "race_id": "PRX_2023-12-04_8",
+      "winner_horse_id": "20010074",
+      "winner_name": "Ninja Prize",
+      "winner_program_number": "7",
+      "source_track": "PRX",
+      "source_date": "2023-12-04"
+    },
+    {
+      "race_id": "PRX_2023-12-04_9",
+      "winner_horse_id": "19009560",
+      "winner_name": "Uncle Irish",
+      "winner_program_number": "2",
+      "source_track": "PRX",
+      "source_date": "2023-12-04"
+    },
+    {
+      "race_id": "PRX_2023-12-04_10",
+      "winner_horse_id": "19014723",
+      "winner_name": "Neigh Dude",
+      "winner_program_number": "7",
+      "source_track": "PRX",
+      "source_date": "2023-12-04"
+    },
+    {
+      "race_id": "ZIA_2023-12-04_1",
+      "winner_horse_id": "21020782",
+      "winner_name": "Marking Canyon",
+      "winner_program_number": "4",
+      "source_track": "ZIA",
+      "source_date": "2023-12-04"
+    },
+    {
+      "race_id": "ZIA_2023-12-04_2",
+      "winner_horse_id": "19004708",
+      "winner_name": "Annie Get Ur Guns",
+      "winner_program_number": "8",
+      "source_track": "ZIA",
+      "source_date": "2023-12-04"
+    },
+    {
+      "race_id": "ZIA_2023-12-04_3",
+      "winner_horse_id": "20002760",
+      "winner_name": "Scopello",
+      "winner_program_number": "1",
+      "source_track": "ZIA",
+      "source_date": "2023-12-04"
+    },
+    {
+      "race_id": "ZIA_2023-12-04_4",
+      "winner_horse_id": "20014231",
+      "winner_name": "Silvers Last Dance",
+      "winner_program_number": "1",
+      "source_track": "ZIA",
+      "source_date": "2023-12-04"
+    },
+    {
+      "race_id": "ZIA_2023-12-04_5",
+      "winner_horse_id": "16002347",
+      "winner_name": "Sly",
+      "winner_program_number": "2",
+      "source_track": "ZIA",
+      "source_date": "2023-12-04"
+    },
+    {
+      "race_id": "ZIA_2023-12-04_6",
+      "winner_horse_id": "20002885",
+      "winner_name": "Loco Luna",
+      "winner_program_number": "3",
+      "source_track": "ZIA",
+      "source_date": "2023-12-04"
+    },
+    {
+      "race_id": "ZIA_2023-12-04_7",
+      "winner_horse_id": "20000807",
+      "winner_name": "Capital Joke",
+      "winner_program_number": "7",
+      "source_track": "ZIA",
+      "source_date": "2023-12-04"
+    },
+    {
+      "race_id": "ZIA_2023-12-04_8",
+      "winner_horse_id": "18020098",
+      "winner_name": "Quantum Bull",
+      "winner_program_number": "2",
+      "source_track": "ZIA",
+      "source_date": "2023-12-04"
+    },
+    {
+      "race_id": "ZIA_2023-12-04_9",
+      "winner_horse_id": "20015345",
+      "winner_name": "Flags Finale",
+      "winner_program_number": "1",
+      "source_track": "ZIA",
+      "source_date": "2023-12-04"
+    },
+    {
+      "race_id": "ZIA_2023-12-04_10",
+      "winner_horse_id": "19003900",
+      "winner_name": "Chesterette",
+      "winner_program_number": "5",
+      "source_track": "ZIA",
+      "source_date": "2023-12-04"
+    },
+    {
+      "race_id": "MVR_2023-12-05_1",
+      "winner_horse_id": "19000180",
+      "winner_name": "Frosty Paws",
+      "winner_program_number": "6",
+      "source_track": "MVR",
+      "source_date": "2023-12-05"
+    },
+    {
+      "race_id": "MVR_2023-12-05_2",
+      "winner_horse_id": "20019981",
+      "winner_name": "Happybdaymrprez",
+      "winner_program_number": "3",
+      "source_track": "MVR",
+      "source_date": "2023-12-05"
+    },
+    {
+      "race_id": "MVR_2023-12-05_3",
+      "winner_horse_id": "18006880",
+      "winner_name": "Distorted Limits",
+      "winner_program_number": "2",
+      "source_track": "MVR",
+      "source_date": "2023-12-05"
+    },
+    {
+      "race_id": "MVR_2023-12-05_4",
+      "winner_horse_id": "20017705",
+      "winner_name": "Always Laughing",
+      "winner_program_number": "3",
+      "source_track": "MVR",
+      "source_date": "2023-12-05"
+    },
+    {
+      "race_id": "MVR_2023-12-05_5",
+      "winner_horse_id": "20014553",
+      "winner_name": "Love My Cheryl",
+      "winner_program_number": "4",
+      "source_track": "MVR",
+      "source_date": "2023-12-05"
+    },
+    {
+      "race_id": "MVR_2023-12-05_6",
+      "winner_horse_id": "17010540",
+      "winner_name": "John'S Rock",
+      "winner_program_number": "7",
+      "source_track": "MVR",
+      "source_date": "2023-12-05"
+    },
+    {
+      "race_id": "MVR_2023-12-05_7",
+      "winner_horse_id": "20012867",
+      "winner_name": "Velikiy",
+      "winner_program_number": "10",
+      "source_track": "MVR",
+      "source_date": "2023-12-05"
+    },
+    {
+      "race_id": "MVR_2023-12-05_8",
+      "winner_horse_id": "20018323",
+      "winner_name": "El Cuervo Felis",
+      "winner_program_number": "7",
+      "source_track": "MVR",
+      "source_date": "2023-12-05"
+    },
+    {
+      "race_id": "MNR_2023-12-05_1",
+      "winner_horse_id": "18007018",
+      "winner_name": "Illusions Of Love",
+      "winner_program_number": "8",
+      "source_track": "MNR",
+      "source_date": "2023-12-05"
+    },
+    {
+      "race_id": "MNR_2023-12-05_2",
+      "winner_horse_id": "19017560",
+      "winner_name": "Defend",
+      "winner_program_number": "5",
+      "source_track": "MNR",
+      "source_date": "2023-12-05"
+    },
+    {
+      "race_id": "MNR_2023-12-05_3",
+      "winner_horse_id": "19022662",
+      "winner_name": "Red Devolution",
+      "winner_program_number": "3",
+      "source_track": "MNR",
+      "source_date": "2023-12-05"
+    },
+    {
+      "race_id": "MNR_2023-12-05_4",
+      "winner_horse_id": "20017292",
+      "winner_name": "Rose'S Pepino",
+      "winner_program_number": "4",
+      "source_track": "MNR",
+      "source_date": "2023-12-05"
+    },
+    {
+      "race_id": "MNR_2023-12-05_5",
+      "winner_horse_id": "17000919",
+      "winner_name": "Palace Magic",
+      "winner_program_number": "9",
+      "source_track": "MNR",
+      "source_date": "2023-12-05"
+    },
+    {
+      "race_id": "MNR_2023-12-05_6",
+      "winner_horse_id": "19012912",
+      "winner_name": "Secret Sanctuary",
+      "winner_program_number": "4",
+      "source_track": "MNR",
+      "source_date": "2023-12-05"
+    },
+    {
+      "race_id": "MNR_2023-12-05_7",
+      "winner_horse_id": "20002596",
+      "winner_name": "Xcellent Start",
+      "winner_program_number": "3",
+      "source_track": "MNR",
+      "source_date": "2023-12-05"
+    },
+    {
+      "race_id": "MNR_2023-12-05_8",
+      "winner_horse_id": "19021246",
+      "winner_name": "Secret Seduction",
+      "winner_program_number": "9",
+      "source_track": "MNR",
+      "source_date": "2023-12-05"
+    },
+    {
+      "race_id": "PRX_2023-12-05_1",
+      "winner_horse_id": "20001619",
+      "winner_name": "Tatum",
+      "winner_program_number": "5",
+      "source_track": "PRX",
+      "source_date": "2023-12-05"
+    },
+    {
+      "race_id": "PRX_2023-12-05_2",
+      "winner_horse_id": "20010096",
+      "winner_name": "Big John",
+      "winner_program_number": "2",
+      "source_track": "PRX",
+      "source_date": "2023-12-05"
+    },
+    {
+      "race_id": "PRX_2023-12-05_3",
+      "winner_horse_id": "17021488",
+      "winner_name": "Speedy Bolt",
+      "winner_program_number": "1",
+      "source_track": "PRX",
+      "source_date": "2023-12-05"
+    },
+    {
+      "race_id": "PRX_2023-12-05_4",
+      "winner_horse_id": "18015192",
+      "winner_name": "Afleet Diva",
+      "winner_program_number": "2",
+      "source_track": "PRX",
+      "source_date": "2023-12-05"
+    },
+    {
+      "race_id": "PRX_2023-12-05_5",
+      "winner_horse_id": "19018860",
+      "winner_name": "Golden Wildcat",
+      "winner_program_number": "6",
+      "source_track": "PRX",
+      "source_date": "2023-12-05"
+    },
+    {
+      "race_id": "PRX_2023-12-05_6",
+      "winner_horse_id": "20004654",
+      "winner_name": "Lord Uhtred",
+      "winner_program_number": "4",
+      "source_track": "PRX",
+      "source_date": "2023-12-05"
+    },
+    {
+      "race_id": "PRX_2023-12-05_7",
+      "winner_horse_id": "20005072",
+      "winner_name": "Mindtap",
+      "winner_program_number": "6",
+      "source_track": "PRX",
+      "source_date": "2023-12-05"
+    },
+    {
+      "race_id": "PRX_2023-12-05_8",
+      "winner_horse_id": "20001660",
+      "winner_name": "My Imagination",
+      "winner_program_number": "2",
+      "source_track": "PRX",
+      "source_date": "2023-12-05"
+    },
+    {
+      "race_id": "PRX_2023-12-05_9",
+      "winner_horse_id": "19009615",
+      "winner_name": "Overly Critical",
+      "winner_program_number": "6",
+      "source_track": "PRX",
+      "source_date": "2023-12-05"
+    },
+    {
+      "race_id": "PRX_2023-12-05_10",
+      "winner_horse_id": "19012082",
+      "winner_name": "Magnificent Pearl",
+      "winner_program_number": "3",
+      "source_track": "PRX",
+      "source_date": "2023-12-05"
+    },
+    {
+      "race_id": "ZIA_2023-12-05_1",
+      "winner_horse_id": "20000629",
+      "winner_name": "Brand Loyalty",
+      "winner_program_number": "1",
+      "source_track": "ZIA",
+      "source_date": "2023-12-05"
+    },
+    {
+      "race_id": "ZIA_2023-12-05_2",
+      "winner_horse_id": "20013874",
+      "winner_name": "Neiman",
+      "winner_program_number": "4",
+      "source_track": "ZIA",
+      "source_date": "2023-12-05"
+    },
+    {
+      "race_id": "ZIA_2023-12-05_3",
+      "winner_horse_id": "19011947",
+      "winner_name": "Twelve Stars",
+      "winner_program_number": "11",
+      "source_track": "ZIA",
+      "source_date": "2023-12-05"
+    },
+    {
+      "race_id": "ZIA_2023-12-05_4",
+      "winner_horse_id": "19008278",
+      "winner_name": "Charlie'S Ghost",
+      "winner_program_number": "10",
+      "source_track": "ZIA",
+      "source_date": "2023-12-05"
+    },
+    {
+      "race_id": "ZIA_2023-12-05_5",
+      "winner_horse_id": "19002460",
+      "winner_name": "Im Still Thirsty",
+      "winner_program_number": "4",
+      "source_track": "ZIA",
+      "source_date": "2023-12-05"
+    },
+    {
+      "race_id": "ZIA_2023-12-05_6",
+      "winner_horse_id": "19021257",
+      "winner_name": "Cha Ching Charlie",
+      "winner_program_number": "9",
+      "source_track": "ZIA",
+      "source_date": "2023-12-05"
+    },
+    {
+      "race_id": "ZIA_2023-12-05_7",
+      "winner_horse_id": "19013556",
+      "winner_name": "Rig Rider",
+      "winner_program_number": "7",
+      "source_track": "ZIA",
+      "source_date": "2023-12-05"
+    },
+    {
+      "race_id": "ZIA_2023-12-05_8",
+      "winner_horse_id": null,
+      "winner_name": null,
+      "winner_program_number": "10",
+      "source_track": "ZIA",
+      "source_date": "2023-12-05"
+    },
+    {
+      "race_id": "ZIA_2023-12-05_9",
+      "winner_horse_id": "17018850",
+      "winner_name": "Coyster",
+      "winner_program_number": "12",
+      "source_track": "ZIA",
+      "source_date": "2023-12-05"
+    },
+    {
+      "race_id": "ZIA_2023-12-05_10",
+      "winner_horse_id": "21004772",
+      "winner_name": "Wildcat Reese",
+      "winner_program_number": "3",
+      "source_track": "ZIA",
+      "source_date": "2023-12-05"
+    },
+    {
+      "race_id": "CT_2023-12-06_1",
+      "winner_horse_id": "21016461",
+      "winner_name": "Pour Me A Drink",
+      "winner_program_number": "4",
+      "source_track": "CT",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "CT_2023-12-06_2",
+      "winner_horse_id": "19012195",
+      "winner_name": "Sargent Kobe",
+      "winner_program_number": "1",
+      "source_track": "CT",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "CT_2023-12-06_3",
+      "winner_horse_id": "20016386",
+      "winner_name": "Mo Eh Hennessy",
+      "winner_program_number": "7",
+      "source_track": "CT",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "CT_2023-12-06_4",
+      "winner_horse_id": "18021557",
+      "winner_name": "Tappin Royalty",
+      "winner_program_number": "2",
+      "source_track": "CT",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "CT_2023-12-06_5",
+      "winner_horse_id": "20004905",
+      "winner_name": "Appealing Road",
+      "winner_program_number": "2",
+      "source_track": "CT",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "CT_2023-12-06_6",
+      "winner_horse_id": "18015484",
+      "winner_name": "Candy Invasion",
+      "winner_program_number": "8",
+      "source_track": "CT",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "CT_2023-12-06_7",
+      "winner_horse_id": "18004454",
+      "winner_name": "Black Panda",
+      "winner_program_number": "1",
+      "source_track": "CT",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "CT_2023-12-06_8",
+      "winner_horse_id": "20019831",
+      "winner_name": "Dog Town Allen",
+      "winner_program_number": "8",
+      "source_track": "CT",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "DED_2023-12-06_1",
+      "winner_horse_id": "17018784",
+      "winner_name": "Loveu And Proudofu",
+      "winner_program_number": "6",
+      "source_track": "DED",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "DED_2023-12-06_2",
+      "winner_horse_id": "19003442",
+      "winner_name": "Xcaret",
+      "winner_program_number": "1",
+      "source_track": "DED",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "DED_2023-12-06_3",
+      "winner_horse_id": "20014172",
+      "winner_name": "Chacha To Catalina",
+      "winner_program_number": "2",
+      "source_track": "DED",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "DED_2023-12-06_4",
+      "winner_horse_id": "20013921",
+      "winner_name": "Muchmorethanready",
+      "winner_program_number": "7",
+      "source_track": "DED",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "DED_2023-12-06_5",
+      "winner_horse_id": "17018837",
+      "winner_name": "Mists Of Time",
+      "winner_program_number": "1",
+      "source_track": "DED",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "DED_2023-12-06_6",
+      "winner_horse_id": "18003840",
+      "winner_name": "Just A Win",
+      "winner_program_number": "5",
+      "source_track": "DED",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "DED_2023-12-06_7",
+      "winner_horse_id": "20014158",
+      "winner_name": "Uxmal",
+      "winner_program_number": "1",
+      "source_track": "DED",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "DED_2023-12-06_8",
+      "winner_horse_id": "21017544",
+      "winner_name": "Three Gold Pieces",
+      "winner_program_number": "10",
+      "source_track": "DED",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "EVD_2023-12-06_1",
+      "winner_horse_id": "Q3021284",
+      "winner_name": "Rc Mister G",
+      "winner_program_number": "4",
+      "source_track": "EVD",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "EVD_2023-12-06_2",
+      "winner_horse_id": "Q3229411",
+      "winner_name": "Jess Push Your Luck",
+      "winner_program_number": "4",
+      "source_track": "EVD",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "EVD_2023-12-06_3",
+      "winner_horse_id": "Q3191167",
+      "winner_name": "Louisana Queen",
+      "winner_program_number": "2",
+      "source_track": "EVD",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "EVD_2023-12-06_4",
+      "winner_horse_id": "Q3084620",
+      "winner_name": "Shez Jet Fast",
+      "winner_program_number": "6",
+      "source_track": "EVD",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "EVD_2023-12-06_5",
+      "winner_horse_id": "Q3260347",
+      "winner_name": "Jm Texas Blood",
+      "winner_program_number": "2",
+      "source_track": "EVD",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "EVD_2023-12-06_6",
+      "winner_horse_id": "Q3229024",
+      "winner_name": "Kiss My Mud Bug",
+      "winner_program_number": "1",
+      "source_track": "EVD",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "EVD_2023-12-06_7",
+      "winner_horse_id": "Q3257359",
+      "winner_name": "Lz Hennessy",
+      "winner_program_number": "8",
+      "source_track": "EVD",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "MVR_2023-12-06_1",
+      "winner_horse_id": "18008504",
+      "winner_name": "Sudden Shift",
+      "winner_program_number": "1",
+      "source_track": "MVR",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "MVR_2023-12-06_2",
+      "winner_horse_id": "13022513",
+      "winner_name": "Montauk Cove",
+      "winner_program_number": "2",
+      "source_track": "MVR",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "MVR_2023-12-06_3",
+      "winner_horse_id": "16004762",
+      "winner_name": "Shell Fire",
+      "winner_program_number": "8",
+      "source_track": "MVR",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "MVR_2023-12-06_4",
+      "winner_horse_id": "19017287",
+      "winner_name": "Backatya",
+      "winner_program_number": "3",
+      "source_track": "MVR",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "MVR_2023-12-06_5",
+      "winner_horse_id": "20020003",
+      "winner_name": "Dance Drama",
+      "winner_program_number": "6",
+      "source_track": "MVR",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "MVR_2023-12-06_6",
+      "winner_horse_id": "18006427",
+      "winner_name": "Epicurean",
+      "winner_program_number": "6",
+      "source_track": "MVR",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "MVR_2023-12-06_7",
+      "winner_horse_id": "17014682",
+      "winner_name": "Bareback Fun",
+      "winner_program_number": "1",
+      "source_track": "MVR",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "MVR_2023-12-06_8",
+      "winner_horse_id": "18006935",
+      "winner_name": "Exonerated Prez",
+      "winner_program_number": "1",
+      "source_track": "MVR",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "MNR_2023-12-06_1",
+      "winner_horse_id": "18009658",
+      "winner_name": "Conrad The Red",
+      "winner_program_number": "8",
+      "source_track": "MNR",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "MNR_2023-12-06_2",
+      "winner_horse_id": "20012336",
+      "winner_name": "The Reign Song",
+      "winner_program_number": "9",
+      "source_track": "MNR",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "MNR_2023-12-06_3",
+      "winner_horse_id": "17006880",
+      "winner_name": "Sena The Duchess",
+      "winner_program_number": "3",
+      "source_track": "MNR",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "MNR_2023-12-06_4",
+      "winner_horse_id": "16017275",
+      "winner_name": "Tel Aviv",
+      "winner_program_number": "9",
+      "source_track": "MNR",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "MNR_2023-12-06_5",
+      "winner_horse_id": "18003695",
+      "winner_name": "Party Swagger",
+      "winner_program_number": "6",
+      "source_track": "MNR",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "MNR_2023-12-06_6",
+      "winner_horse_id": "16004699",
+      "winner_name": "Quick Entry",
+      "winner_program_number": "5",
+      "source_track": "MNR",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "MNR_2023-12-06_7",
+      "winner_horse_id": "18005018",
+      "winner_name": "Found My Ball",
+      "winner_program_number": "7",
+      "source_track": "MNR",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "MNR_2023-12-06_8",
+      "winner_horse_id": "17018467",
+      "winner_name": "Bob'S Calling",
+      "winner_program_number": "7",
+      "source_track": "MNR",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "PRX_2023-12-06_1",
+      "winner_horse_id": "14018077",
+      "winner_name": "Manolete",
+      "winner_program_number": "7",
+      "source_track": "PRX",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "PRX_2023-12-06_2",
+      "winner_horse_id": "21001908",
+      "winner_name": "Party At Sam'S",
+      "winner_program_number": "8",
+      "source_track": "PRX",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "PRX_2023-12-06_3",
+      "winner_horse_id": "19018541",
+      "winner_name": "Big Warden",
+      "winner_program_number": "5",
+      "source_track": "PRX",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "PRX_2023-12-06_4",
+      "winner_horse_id": "20010422",
+      "winner_name": "Matty Bo",
+      "winner_program_number": "8",
+      "source_track": "PRX",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "PRX_2023-12-06_5",
+      "winner_horse_id": "20008142",
+      "winner_name": "Jsk Lucky'S Pushpa",
+      "winner_program_number": "9",
+      "source_track": "PRX",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "PRX_2023-12-06_6",
+      "winner_horse_id": "18004536",
+      "winner_name": "Bullet Butch",
+      "winner_program_number": "8",
+      "source_track": "PRX",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "PRX_2023-12-06_7",
+      "winner_horse_id": "16022805",
+      "winner_name": "Secret Path",
+      "winner_program_number": "4",
+      "source_track": "PRX",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "PRX_2023-12-06_8",
+      "winner_horse_id": "20009045",
+      "winner_name": "Bump N Run",
+      "winner_program_number": "3",
+      "source_track": "PRX",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "PRX_2023-12-06_9",
+      "winner_horse_id": "19010435",
+      "winner_name": "La Cienega",
+      "winner_program_number": "5",
+      "source_track": "PRX",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "PRX_2023-12-06_10",
+      "winner_horse_id": "19009512",
+      "winner_name": "Power Agenda",
+      "winner_program_number": "2",
+      "source_track": "PRX",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "PEN_2023-12-06_1",
+      "winner_horse_id": "20012974",
+      "winner_name": "If We Get Lucky",
+      "winner_program_number": "8",
+      "source_track": "PEN",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "PEN_2023-12-06_2",
+      "winner_horse_id": "20009542",
+      "winner_name": "Bestsugardaddyever",
+      "winner_program_number": "9",
+      "source_track": "PEN",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "PEN_2023-12-06_3",
+      "winner_horse_id": "18009630",
+      "winner_name": "Amount",
+      "winner_program_number": "3",
+      "source_track": "PEN",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "PEN_2023-12-06_4",
+      "winner_horse_id": "17020620",
+      "winner_name": "Dee Jay",
+      "winner_program_number": "7",
+      "source_track": "PEN",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "PEN_2023-12-06_5",
+      "winner_horse_id": "20019512",
+      "winner_name": "Filtered Light",
+      "winner_program_number": "6",
+      "source_track": "PEN",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "PEN_2023-12-06_6",
+      "winner_horse_id": "21005108",
+      "winner_name": "Chuck Adams",
+      "winner_program_number": "7",
+      "source_track": "PEN",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "PEN_2023-12-06_7",
+      "winner_horse_id": "19004141",
+      "winner_name": "Chucka Moon",
+      "winner_program_number": "3",
+      "source_track": "PEN",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "TAM_2023-12-06_1",
+      "winner_horse_id": "20006631",
+      "winner_name": "My First Date",
+      "winner_program_number": "1",
+      "source_track": "TAM",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "TAM_2023-12-06_2",
+      "winner_horse_id": "19006463",
+      "winner_name": "Countless Dreams",
+      "winner_program_number": "4",
+      "source_track": "TAM",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "TAM_2023-12-06_3",
+      "winner_horse_id": "19019457",
+      "winner_name": "Chiquirin",
+      "winner_program_number": "3",
+      "source_track": "TAM",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "TAM_2023-12-06_4",
+      "winner_horse_id": "20019268",
+      "winner_name": "Nice Baby",
+      "winner_program_number": "6",
+      "source_track": "TAM",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "TAM_2023-12-06_5",
+      "winner_horse_id": "20020061",
+      "winner_name": "Papa Funny",
+      "winner_program_number": "5",
+      "source_track": "TAM",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "TAM_2023-12-06_6",
+      "winner_horse_id": "19020423",
+      "winner_name": "Bold Medication",
+      "winner_program_number": "5",
+      "source_track": "TAM",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "TAM_2023-12-06_7",
+      "winner_horse_id": "19000294",
+      "winner_name": "Dark And Fitzy",
+      "winner_program_number": "3",
+      "source_track": "TAM",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "TAM_2023-12-06_8",
+      "winner_horse_id": "19010993",
+      "winner_name": "Li'L Miss Camille",
+      "winner_program_number": "4",
+      "source_track": "TAM",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "TAM_2023-12-06_9",
+      "winner_horse_id": "17023441",
+      "winner_name": "Bahamian Moon",
+      "winner_program_number": "7",
+      "source_track": "TAM",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "TP_2023-12-06_1",
+      "winner_horse_id": "21003681",
+      "winner_name": "Sonho De Verao",
+      "winner_program_number": "10",
+      "source_track": "TP",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "TP_2023-12-06_2",
+      "winner_horse_id": "21003879",
+      "winner_name": "Cooperstown",
+      "winner_program_number": "12",
+      "source_track": "TP",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "TP_2023-12-06_3",
+      "winner_horse_id": "18018612",
+      "winner_name": "Cronus",
+      "winner_program_number": "4",
+      "source_track": "TP",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "TP_2023-12-06_4",
+      "winner_horse_id": "18009927",
+      "winner_name": "Commandandcontrol",
+      "winner_program_number": "7",
+      "source_track": "TP",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "TP_2023-12-06_5",
+      "winner_horse_id": "21011773",
+      "winner_name": "J Rivers",
+      "winner_program_number": "1",
+      "source_track": "TP",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "TP_2023-12-06_6",
+      "winner_horse_id": "19010260",
+      "winner_name": "Bel Aria",
+      "winner_program_number": "3",
+      "source_track": "TP",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "TP_2023-12-06_7",
+      "winner_horse_id": "20015978",
+      "winner_name": "Queen Of Missoula",
+      "winner_program_number": "1",
+      "source_track": "TP",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "TP_2023-12-06_8",
+      "winner_horse_id": "18014422",
+      "winner_name": "Paddy'S House",
+      "winner_program_number": "2",
+      "source_track": "TP",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "TP_2023-12-06_9",
+      "winner_horse_id": "21005737",
+      "winner_name": "Katheeb",
+      "winner_program_number": "5",
+      "source_track": "TP",
+      "source_date": "2023-12-06"
+    },
+    {
+      "race_id": "AQU_2023-12-07_1",
+      "winner_horse_id": "20016165",
+      "winner_name": "Frau Diablo",
+      "winner_program_number": "5",
+      "source_track": "AQU",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "AQU_2023-12-07_2",
+      "winner_horse_id": "18009072",
+      "winner_name": "Poppy'S Pride",
+      "winner_program_number": "3",
+      "source_track": "AQU",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "AQU_2023-12-07_3",
+      "winner_horse_id": "21010545",
+      "winner_name": "Class Act",
+      "winner_program_number": "4",
+      "source_track": "AQU",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "AQU_2023-12-07_4",
+      "winner_horse_id": "19008069",
+      "winner_name": "Apollo Rising",
+      "winner_program_number": "2",
+      "source_track": "AQU",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "AQU_2023-12-07_5",
+      "winner_horse_id": "19010023",
+      "winner_name": "Golden Rocket",
+      "winner_program_number": "5",
+      "source_track": "AQU",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "AQU_2023-12-07_6",
+      "winner_horse_id": "20008376",
+      "winner_name": "Bussia",
+      "winner_program_number": "7",
+      "source_track": "AQU",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "AQU_2023-12-07_7",
+      "winner_horse_id": "18016768",
+      "winner_name": "Timed Out",
+      "winner_program_number": "4",
+      "source_track": "AQU",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "AQU_2023-12-07_8",
+      "winner_horse_id": "20018240",
+      "winner_name": "Factually Correct",
+      "winner_program_number": "2",
+      "source_track": "AQU",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "AQU_2023-12-07_9",
+      "winner_horse_id": "20007310",
+      "winner_name": "Sharpaz",
+      "winner_program_number": "9",
+      "source_track": "AQU",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "CMR_2023-12-07_1",
+      "winner_horse_id": "19011995",
+      "winner_name": "Mi Nieta Emalianys",
+      "winner_program_number": "1",
+      "source_track": "CMR",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "CMR_2023-12-07_2",
+      "winner_horse_id": "20015635",
+      "winner_name": "Harlan'S War",
+      "winner_program_number": "5",
+      "source_track": "CMR",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "CMR_2023-12-07_3",
+      "winner_horse_id": "20016012",
+      "winner_name": "Keen Beauty",
+      "winner_program_number": "4",
+      "source_track": "CMR",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "CMR_2023-12-07_4",
+      "winner_horse_id": "17005886",
+      "winner_name": "Prince Blue",
+      "winner_program_number": "3",
+      "source_track": "CMR",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "CMR_2023-12-07_5",
+      "winner_horse_id": "18002003",
+      "winner_name": "My Uncle Titan",
+      "winner_program_number": "9",
+      "source_track": "CMR",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "CMR_2023-12-07_6",
+      "winner_horse_id": "18006499",
+      "winner_name": "Pianista",
+      "winner_program_number": "4",
+      "source_track": "CMR",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "CMR_2023-12-07_7",
+      "winner_horse_id": "19018907",
+      "winner_name": "Auditora",
+      "winner_program_number": "6",
+      "source_track": "CMR",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "CT_2023-12-07_1",
+      "winner_horse_id": "19000969",
+      "winner_name": "Divine Fashion",
+      "winner_program_number": "2",
+      "source_track": "CT",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "CT_2023-12-07_2",
+      "winner_horse_id": "19003354",
+      "winner_name": "Sweet Talia",
+      "winner_program_number": "4",
+      "source_track": "CT",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "CT_2023-12-07_3",
+      "winner_horse_id": "20009642",
+      "winner_name": "Gabriel'S Wing",
+      "winner_program_number": "2",
+      "source_track": "CT",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "CT_2023-12-07_4",
+      "winner_horse_id": "19008934",
+      "winner_name": "Seems To Whisper",
+      "winner_program_number": "2",
+      "source_track": "CT",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "CT_2023-12-07_5",
+      "winner_horse_id": "19005446",
+      "winner_name": "Princess Halo",
+      "winner_program_number": "1",
+      "source_track": "CT",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "CT_2023-12-07_6",
+      "winner_horse_id": "20013302",
+      "winner_name": "Playing For Two",
+      "winner_program_number": "7",
+      "source_track": "CT",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "CT_2023-12-07_7",
+      "winner_horse_id": "18004481",
+      "winner_name": "Youthinkthatsfunny",
+      "winner_program_number": "1",
+      "source_track": "CT",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "CT_2023-12-07_8",
+      "winner_horse_id": "20012728",
+      "winner_name": "Daphne'S Fire",
+      "winner_program_number": "1",
+      "source_track": "CT",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "DED_2023-12-07_1",
+      "winner_horse_id": "20014483",
+      "winner_name": "Black Ace",
+      "winner_program_number": "5",
+      "source_track": "DED",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "DED_2023-12-07_2",
+      "winner_horse_id": "20011757",
+      "winner_name": "Midnight Crown",
+      "winner_program_number": "2",
+      "source_track": "DED",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "DED_2023-12-07_3",
+      "winner_horse_id": "20014242",
+      "winner_name": "Pal'S Alarm",
+      "winner_program_number": "6",
+      "source_track": "DED",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "DED_2023-12-07_4",
+      "winner_horse_id": "15014825",
+      "winner_name": "Boyfriend Material",
+      "winner_program_number": "4",
+      "source_track": "DED",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "DED_2023-12-07_5",
+      "winner_horse_id": "18008114",
+      "winner_name": "Nephi",
+      "winner_program_number": "2",
+      "source_track": "DED",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "DED_2023-12-07_6",
+      "winner_horse_id": "17001543",
+      "winner_name": "Violent City",
+      "winner_program_number": "4",
+      "source_track": "DED",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "DED_2023-12-07_7",
+      "winner_horse_id": "18016589",
+      "winner_name": "Midnight Trip",
+      "winner_program_number": "5",
+      "source_track": "DED",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "DED_2023-12-07_8",
+      "winner_horse_id": "19014540",
+      "winner_name": "Target Practice",
+      "winner_program_number": "3",
+      "source_track": "DED",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "EVD_2023-12-07_1",
+      "winner_horse_id": "Q3223229",
+      "winner_name": "Jazack",
+      "winner_program_number": "4",
+      "source_track": "EVD",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "EVD_2023-12-07_2",
+      "winner_horse_id": "Q3168173",
+      "winner_name": "Hometown Bar",
+      "winner_program_number": "5",
+      "source_track": "EVD",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "EVD_2023-12-07_3",
+      "winner_horse_id": "Q3230401",
+      "winner_name": "Sweet Dash",
+      "winner_program_number": "5",
+      "source_track": "EVD",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "EVD_2023-12-07_4",
+      "winner_horse_id": "Q3285194",
+      "winner_name": "Miss Eden Sue",
+      "winner_program_number": "7",
+      "source_track": "EVD",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "EVD_2023-12-07_5",
+      "winner_horse_id": "Q3251561",
+      "winner_name": "Cantcontainthepower",
+      "winner_program_number": "7",
+      "source_track": "EVD",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "EVD_2023-12-07_6",
+      "winner_horse_id": "Q3158728",
+      "winner_name": "Electric Cartel",
+      "winner_program_number": "8",
+      "source_track": "EVD",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "EVD_2023-12-07_7",
+      "winner_horse_id": "Q3269489",
+      "winner_name": "Brace For Red River",
+      "winner_program_number": "5",
+      "source_track": "EVD",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "FG_2023-12-07_1",
+      "winner_horse_id": "20017006",
+      "winner_name": "Chi Town Hustler",
+      "winner_program_number": "1",
+      "source_track": "FG",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "FG_2023-12-07_2",
+      "winner_horse_id": "20016730",
+      "winner_name": "Swift N Traffic",
+      "winner_program_number": "4",
+      "source_track": "FG",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "FG_2023-12-07_3",
+      "winner_horse_id": "21011406",
+      "winner_name": "Craken Jax",
+      "winner_program_number": "1",
+      "source_track": "FG",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "FG_2023-12-07_4",
+      "winner_horse_id": "18014861",
+      "winner_name": "Win Worthy",
+      "winner_program_number": "8",
+      "source_track": "FG",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "FG_2023-12-07_5",
+      "winner_horse_id": "20015283",
+      "winner_name": "Gunner Bay",
+      "winner_program_number": "1",
+      "source_track": "FG",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "FG_2023-12-07_6",
+      "winner_horse_id": "19018103",
+      "winner_name": "Summer Lover",
+      "winner_program_number": "2",
+      "source_track": "FG",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "FG_2023-12-07_7",
+      "winner_horse_id": "20002399",
+      "winner_name": "Clear As A Bele",
+      "winner_program_number": "8",
+      "source_track": "FG",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "FG_2023-12-07_8",
+      "winner_horse_id": "20002167",
+      "winner_name": "Charging",
+      "winner_program_number": "6",
+      "source_track": "FG",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "FG_2023-12-07_9",
+      "winner_horse_id": "20005454",
+      "winner_name": "Cajun Connection",
+      "winner_program_number": "1",
+      "source_track": "FG",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "GP_2023-12-07_1",
+      "winner_horse_id": "20011921",
+      "winner_name": "Hari",
+      "winner_program_number": "11",
+      "source_track": "GP",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "GP_2023-12-07_2",
+      "winner_horse_id": "21013012",
+      "winner_name": "Anajuliaforever",
+      "winner_program_number": "4",
+      "source_track": "GP",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "GP_2023-12-07_3",
+      "winner_horse_id": "20000961",
+      "winner_name": "Game Warden",
+      "winner_program_number": "3",
+      "source_track": "GP",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "GP_2023-12-07_4",
+      "winner_horse_id": "14014729",
+      "winner_name": "Money Factor",
+      "winner_program_number": "4",
+      "source_track": "GP",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "GP_2023-12-07_5",
+      "winner_horse_id": "21008765",
+      "winner_name": "Khozy Colby",
+      "winner_program_number": "1",
+      "source_track": "GP",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "GP_2023-12-07_6",
+      "winner_horse_id": "21015098",
+      "winner_name": "Rezasrolex",
+      "winner_program_number": "3",
+      "source_track": "GP",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "GP_2023-12-07_7",
+      "winner_horse_id": "21003903",
+      "winner_name": "Silent Heart",
+      "winner_program_number": "11",
+      "source_track": "GP",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "GP_2023-12-07_8",
+      "winner_horse_id": "18012562",
+      "winner_name": "Sigrun Fast Boy",
+      "winner_program_number": "6",
+      "source_track": "GP",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "GP_2023-12-07_9",
+      "winner_horse_id": "21002275",
+      "winner_name": "Fiona'S Magic",
+      "winner_program_number": "5",
+      "source_track": "GP",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "GP_2023-12-07_10",
+      "winner_horse_id": "20012976",
+      "winner_name": "Cumberland",
+      "winner_program_number": "6",
+      "source_track": "GP",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "MVR_2023-12-07_1",
+      "winner_horse_id": "18013716",
+      "winner_name": "Nicholas James",
+      "winner_program_number": "6",
+      "source_track": "MVR",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "MVR_2023-12-07_2",
+      "winner_horse_id": "20010078",
+      "winner_name": "Frog Town",
+      "winner_program_number": "7",
+      "source_track": "MVR",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "MVR_2023-12-07_3",
+      "winner_horse_id": "19017976",
+      "winner_name": "Donnarumma",
+      "winner_program_number": "5",
+      "source_track": "MVR",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "MVR_2023-12-07_4",
+      "winner_horse_id": "19007099",
+      "winner_name": "Lucky Penny Rose",
+      "winner_program_number": "3",
+      "source_track": "MVR",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "MVR_2023-12-07_5",
+      "winner_horse_id": "20012858",
+      "winner_name": "Little Rons Rocket",
+      "winner_program_number": "5",
+      "source_track": "MVR",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "MVR_2023-12-07_6",
+      "winner_horse_id": "19012064",
+      "winner_name": "Country Club Bobby",
+      "winner_program_number": "5",
+      "source_track": "MVR",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "MVR_2023-12-07_7",
+      "winner_horse_id": "19016623",
+      "winner_name": "Queenie Rose",
+      "winner_program_number": "3",
+      "source_track": "MVR",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "MVR_2023-12-07_8",
+      "winner_horse_id": "20010331",
+      "winner_name": "Lady Jasper",
+      "winner_program_number": "6",
+      "source_track": "MVR",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "PEN_2023-12-07_1",
+      "winner_horse_id": "20010114",
+      "winner_name": "Banjo",
+      "winner_program_number": "4",
+      "source_track": "PEN",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "PEN_2023-12-07_2",
+      "winner_horse_id": "18022799",
+      "winner_name": "The Method",
+      "winner_program_number": "5",
+      "source_track": "PEN",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "PEN_2023-12-07_3",
+      "winner_horse_id": "20003773",
+      "winner_name": "Synonym",
+      "winner_program_number": "5",
+      "source_track": "PEN",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "PEN_2023-12-07_4",
+      "winner_horse_id": "18000061",
+      "winner_name": "Run Laura Run",
+      "winner_program_number": "5",
+      "source_track": "PEN",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "PEN_2023-12-07_5",
+      "winner_horse_id": "19007119",
+      "winner_name": "Kaz Sugar Bank",
+      "winner_program_number": "2",
+      "source_track": "PEN",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "PEN_2023-12-07_6",
+      "winner_horse_id": "21010997",
+      "winner_name": "Socially Awkward",
+      "winner_program_number": "2",
+      "source_track": "PEN",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "PEN_2023-12-07_7",
+      "winner_horse_id": "18009598",
+      "winner_name": "Dixie Cannonball",
+      "winner_program_number": "6",
+      "source_track": "PEN",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "RP_2023-12-07_1",
+      "winner_horse_id": "18021022",
+      "winner_name": "Kick It Again Bob",
+      "winner_program_number": "7",
+      "source_track": "RP",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "RP_2023-12-07_2",
+      "winner_horse_id": "19015945",
+      "winner_name": "New Stripe",
+      "winner_program_number": "3",
+      "source_track": "RP",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "RP_2023-12-07_3",
+      "winner_horse_id": "18016222",
+      "winner_name": "Tiz Life",
+      "winner_program_number": "7",
+      "source_track": "RP",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "RP_2023-12-07_4",
+      "winner_horse_id": "21007337",
+      "winner_name": "Okie Smoke",
+      "winner_program_number": "1",
+      "source_track": "RP",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "RP_2023-12-07_5",
+      "winner_horse_id": "14000792",
+      "winner_name": "California Swing",
+      "winner_program_number": "3",
+      "source_track": "RP",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "RP_2023-12-07_6",
+      "winner_horse_id": "19019857",
+      "winner_name": "Big City Boy",
+      "winner_program_number": "6",
+      "source_track": "RP",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "RP_2023-12-07_7",
+      "winner_horse_id": "20005769",
+      "winner_name": "Minister Maz",
+      "winner_program_number": "3",
+      "source_track": "RP",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "RP_2023-12-07_8",
+      "winner_horse_id": "20017399",
+      "winner_name": "Appropriated Funds",
+      "winner_program_number": "6",
+      "source_track": "RP",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "RP_2023-12-07_9",
+      "winner_horse_id": "20004431",
+      "winner_name": "Floating",
+      "winner_program_number": "1",
+      "source_track": "RP",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "TP_2023-12-07_1",
+      "winner_horse_id": "19004258",
+      "winner_name": "Barbershop",
+      "winner_program_number": "12",
+      "source_track": "TP",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "TP_2023-12-07_2",
+      "winner_horse_id": "18012258",
+      "winner_name": "Mobster Gun",
+      "winner_program_number": "1",
+      "source_track": "TP",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "TP_2023-12-07_3",
+      "winner_horse_id": "20017592",
+      "winner_name": "Study Committee",
+      "winner_program_number": "3",
+      "source_track": "TP",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "TP_2023-12-07_4",
+      "winner_horse_id": "19003026",
+      "winner_name": "Madison Luvs Duke",
+      "winner_program_number": "5",
+      "source_track": "TP",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "TP_2023-12-07_5",
+      "winner_horse_id": "20015685",
+      "winner_name": "Wild Acclaim",
+      "winner_program_number": "12",
+      "source_track": "TP",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "TP_2023-12-07_6",
+      "winner_horse_id": "18012958",
+      "winner_name": "Lilac Girl",
+      "winner_program_number": "5",
+      "source_track": "TP",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "TP_2023-12-07_7",
+      "winner_horse_id": "19005686",
+      "winner_name": "Star Shopping",
+      "winner_program_number": "1",
+      "source_track": "TP",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "TP_2023-12-07_8",
+      "winner_horse_id": "18011684",
+      "winner_name": "Current Climate",
+      "winner_program_number": "2",
+      "source_track": "TP",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "TP_2023-12-07_9",
+      "winner_horse_id": "17016996",
+      "winner_name": "Spycraft",
+      "winner_program_number": "3",
+      "source_track": "TP",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "WO_2023-12-07_1",
+      "winner_horse_id": "19002593",
+      "winner_name": "Roses Are Free",
+      "winner_program_number": "1",
+      "source_track": "WO",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "WO_2023-12-07_2",
+      "winner_horse_id": "20011379",
+      "winner_name": "Barefoot Servantu",
+      "winner_program_number": "4",
+      "source_track": "WO",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "WO_2023-12-07_3",
+      "winner_horse_id": "19003731",
+      "winner_name": "Mason'S Music",
+      "winner_program_number": "2",
+      "source_track": "WO",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "WO_2023-12-07_4",
+      "winner_horse_id": "16021001",
+      "winner_name": "Color Force",
+      "winner_program_number": "4",
+      "source_track": "WO",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "WO_2023-12-07_5",
+      "winner_horse_id": "21019296",
+      "winner_name": "Dresden Row",
+      "winner_program_number": "6",
+      "source_track": "WO",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "WO_2023-12-07_6",
+      "winner_horse_id": "20004992",
+      "winner_name": "True Temper",
+      "winner_program_number": "2",
+      "source_track": "WO",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "WO_2023-12-07_7",
+      "winner_horse_id": "20019651",
+      "winner_name": "Machina",
+      "winner_program_number": "4",
+      "source_track": "WO",
+      "source_date": "2023-12-07"
+    },
+    {
+      "race_id": "WO_2023-12-07_8",
+      "winner_horse_id": "20014524",
+      "winner_name": "Moonbright",
+      "winner_program_number": "8",
+      "source_track": "WO",
+      "source_date": "2023-12-07"
+    }
+  ]
+}
