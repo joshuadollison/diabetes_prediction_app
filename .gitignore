@@ -108,3 +108,4 @@ Thumbs.db
 *.temp
 tmp/
 temp/
+model/prediction_log.csv

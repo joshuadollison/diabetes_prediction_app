@@ -30,6 +30,9 @@ Last Updated: 2025-01-21
 # Standard Library Imports
 # ============================================================================
 import json
+import pickle
+from datetime import datetime
+import math
 import random
 import sys
 from pathlib import Path
@@ -248,6 +251,89 @@ def normalize_predictions(raw_predictions: Any, expected_length: int) -> List[fl
     return [value / total for value in cleaned]
 
 
+def _safe_float(value: Any, default: float = 0.0) -> float:
+    try:
+        val = float(value)
+        if math.isnan(val):
+            return default
+        return val
+    except (TypeError, ValueError):
+        return default
+
+
+def load_local_model() -> Optional[Dict[str, Any]]:
+    """
+    Loads the lightweight local model artifact if available.
+    """
+    model_path = Path("model/horsey_model.pkl")
+    if not model_path.exists():
+        return None
+    try:
+        return pickle.load(model_path.open("rb"))
+    except Exception:
+        return None
+
+
+def load_local_dataset(date_id: str) -> Optional[pd.DataFrame]:
+    """
+    Loads the local model input CSV for the given date.
+    """
+    date_tag = date_id.replace("-", "")
+    csv_path = Path(f"model/model_input_{date_tag}.csv")
+    if not csv_path.exists():
+        return None
+    try:
+        return pd.read_csv(csv_path)
+    except Exception:
+        return None
+
+
+def local_model_predict(model: Dict[str, Any], row: pd.Series) -> float:
+    """
+    Simple weighted-average pseudo model using two features.
+    """
+    weight = _safe_float(model.get("w", 0.5), 0.5)
+    f1 = _safe_float(row.get("pace_pressure_score"), 0.0)
+    f2 = _safe_float(row.get("race_strength_index"), 0.0)
+    score = weight * f1 + (1 - weight) * f2
+    return 1 / (1 + math.exp(-score))
+
+
+def log_prediction_error(message: str) -> None:
+    """
+    Appends prediction-related errors to a local log for visibility.
+    """
+    log_path = Path("model/prediction_errors.log")
+    timestamp = datetime.utcnow().isoformat() + "Z"
+    try:
+        with log_path.open("a", encoding="utf-8") as log_file:
+            log_file.write(f"[{timestamp}] {message}\n")
+    except Exception:
+        # If logging fails, avoid crashing the request
+        pass
+
+
+def append_prediction_log(rows: List[Dict[str, Any]]) -> None:
+    """
+    Appends prediction rows to model/prediction_log.csv with headers if needed.
+    """
+    log_path = Path("model/prediction_log.csv")
+    ensure_header = not log_path.exists()
+    try:
+        with log_path.open("a", encoding="utf-8") as log_file:
+            if ensure_header:
+                log_file.write("race_id,horse_id,horse_name,prediction\n")
+            for row in rows:
+                log_file.write(
+                    f"{row.get('race_id','')},"
+                    f"{row.get('horse_id','')},"
+                    f"\"{row.get('horse_name','')}\","
+                    f"{row.get('prediction','')}\n"
+                )
+    except Exception as exc:
+        log_prediction_error(f"Failed to append prediction log: {exc}")
+
+
 def score_model(dataset: pd.DataFrame) -> List[float]:
     """
     Sends a prediction request to the MLflow model serving endpoint.
@@ -377,6 +463,9 @@ def generate_predictions(date_id: str, track_id: str, include_predictions: bool 
         )
     )
 
+    local_model_artifact = load_local_model()
+    local_dataset = load_local_dataset(date_id) if include_predictions else None
+
     for race in races:
         horses = sorted(
             race.get('horses', []),
@@ -436,35 +525,54 @@ def generate_predictions(date_id: str, track_id: str, include_predictions: bool 
                     break
 
         if include_predictions:
-            feature_rows = [
-                build_horse_feature_row(horse, race, date_id, track_id)
-                for horse in horses
-            ]
+            probabilities: List[float] = []
 
-            dataset = pd.DataFrame(feature_rows, columns=Config.MODEL_FEATURES)
+            # Prefer local CSV/model if available for this date
+            if local_model_artifact is not None and local_dataset is not None:
+                race_rows = local_dataset[local_dataset['race_id'] == race_id].copy()
+                if not race_rows.empty:
+                    probs_map: Dict[str, float] = {}
+                    for _, row in race_rows.iterrows():
+                        prob = local_model_predict(local_model_artifact, row)
+                        probs_map[str(row.get('horse_id'))] = prob
+                    # Normalize across horses found in this race
+                    values = list(probs_map.values())
+                    total = sum(values) or 1.0
+                    probs_map = {k: v / total for k, v in probs_map.items()}
+                    probabilities = [
+                        probs_map.get(str(horse.get('horse_id')), 0.0)
+                        for horse in horses
+                    ]
 
-            try:
-                needs_mock = (
-                    Config.USE_MOCK_MODEL
-                    or not Config.MLFLOW_ENDPOINT_URL
-                    or not Config.DATABRICKS_TOKEN
-                )
-
-                if needs_mock:
-                    probabilities = mock_probabilities(
-                        horses,
-                        f"{date_id}-{track_id}-{race.get('race_number', 'race')}"
+            # Fallback to remote model if local not available
+            if not probabilities:
+                if not Config.MLFLOW_ENDPOINT_URL or not Config.DATABRICKS_TOKEN:
+                    error_msg = (
+                        f"No local predictions for race {race_id} and Databricks endpoint "
+                        "credentials are missing."
                     )
-                else:
+                    log_prediction_error(error_msg)
+                    raise RuntimeError(error_msg)
+
+                feature_rows = [
+                    build_horse_feature_row(horse, race, date_id, track_id)
+                    for horse in horses
+                ]
+
+                dataset = pd.DataFrame(feature_rows, columns=Config.MODEL_FEATURES)
+
+                try:
                     raw_predictions = score_model(dataset)
                     probabilities = normalize_predictions(raw_predictions, len(horses))
+                except Exception as exc:  # noqa: BLE001
+                    error_msg = f"Remote prediction failed for race {race_id}: {exc}"
+                    log_prediction_error(error_msg)
+                    raise
 
-            except Exception as exc:  # noqa: BLE001 - bubble unexpected errors to the client
-                print(f"[WARN] Falling back to mock predictions: {exc}")
-                probabilities = mock_probabilities(
-                    horses,
-                    f"{date_id}-{track_id}-{race.get('race_number', 'race')}"
-                )
+            if not probabilities:
+                error_msg = f"No predictions produced for race {race_id}"
+                log_prediction_error(error_msg)
+                raise RuntimeError(error_msg)
 
             for horse_entry, prob in zip(horses_enriched, probabilities):
                 horse_entry['probability'] = round(prob, 4)
@@ -472,6 +580,17 @@ def generate_predictions(date_id: str, track_id: str, include_predictions: bool 
             top_pick = max(horses_enriched, key=lambda h: h['probability'] or 0)
             model_top_pick_id = top_pick.get('horse_id')
             model_top_pick_name = top_pick.get('horse_name')
+
+            # Log predictions for this race
+            append_prediction_log([
+                {
+                    'race_id': race_id,
+                    'horse_id': horse.get('horse_id'),
+                    'horse_name': horse.get('horse_name'),
+                    'prediction': horse.get('probability')
+                }
+                for horse in horses_enriched
+            ])
 
         races_payload.append({
             'race_id': f"{track_id}-{race.get('race_number')}",
