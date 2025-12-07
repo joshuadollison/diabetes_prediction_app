@@ -33,6 +33,7 @@ import json
 import pickle
 from datetime import datetime
 import math
+import numpy as np
 import random
 import sys
 from pathlib import Path
@@ -44,6 +45,11 @@ from typing import Any, Dict, List, Optional
 import pandas as pd
 import requests
 from flask import Flask, jsonify, render_template, request
+
+try:
+    import xgboost as xgb  # type: ignore
+except ImportError:  # pragma: no cover
+    xgb = None  # type: ignore
 
 # ============================================================================
 # Local Imports
@@ -254,24 +260,27 @@ def normalize_predictions(raw_predictions: Any, expected_length: int) -> List[fl
 def _safe_float(value: Any, default: float = 0.0) -> float:
     try:
         val = float(value)
-        if math.isnan(val):
+        if math.isnan(val) or math.isinf(val):
             return default
         return val
     except (TypeError, ValueError):
         return default
 
 
-def load_local_model() -> Optional[Dict[str, Any]]:
+def load_local_model(model_path: Optional[Path] = None) -> tuple[Any, Path]:
     """
-    Loads the lightweight local model artifact if available.
+    Loads the local model artifact (expected to be a trained estimator).
     """
-    model_path = Path("model/horsey_model.pkl")
-    if not model_path.exists():
-        return None
+    resolved_path = Path(model_path) if model_path else Path("model/horsey_model.pkl")
+    if not resolved_path.exists():
+        raise FileNotFoundError(
+            f"Local model not found at {resolved_path.resolve()}"
+        )
     try:
-        return pickle.load(model_path.open("rb"))
-    except Exception:
-        return None
+        model_obj = pickle.load(resolved_path.open("rb"))
+        return model_obj, resolved_path
+    except Exception as exc:  # noqa: BLE001
+        raise RuntimeError(f"Failed to load local model from {resolved_path}: {exc}") from exc
 
 
 def load_local_dataset(date_id: str) -> Optional[pd.DataFrame]:
@@ -288,15 +297,189 @@ def load_local_dataset(date_id: str) -> Optional[pd.DataFrame]:
         return None
 
 
-def local_model_predict(model: Dict[str, Any], row: pd.Series) -> float:
+def _build_feature_frame(row: pd.Series, model: Any) -> pd.DataFrame:
     """
-    Simple weighted-average pseudo model using two features.
+    Shapes a single-row DataFrame using the model's expected feature order when available.
     """
-    weight = _safe_float(model.get("w", 0.5), 0.5)
-    f1 = _safe_float(row.get("pace_pressure_score"), 0.0)
-    f2 = _safe_float(row.get("race_strength_index"), 0.0)
-    score = weight * f1 + (1 - weight) * f2
-    return 1 / (1 + math.exp(-score))
+    feature_names = getattr(model, "feature_names_in_", None)
+    if feature_names is not None:
+        missing = [feature for feature in feature_names if feature not in row]
+        if missing:
+            raise ValueError(
+                f"Local model is missing required features: {', '.join(missing[:5])}"
+            )
+        ordered = [row[feature] for feature in feature_names]
+        return pd.DataFrame([ordered], columns=feature_names)
+
+    filtered_row = row.drop(labels=[col for col in ('race_id', 'horse_id', 'horse_name') if col in row])
+    return pd.DataFrame([filtered_row])
+
+
+def _extract_positive_probability(model: Any, proba_row: Any) -> float:
+    """
+    Extracts the probability for the positive class from a predict_proba row.
+    """
+    if hasattr(model, "classes_"):
+        classes = list(getattr(model, "classes_"))
+        if len(classes) == len(proba_row):
+            for candidate in (1, "1", True, "win", "positive"):
+                if candidate in classes:
+                    return float(proba_row[classes.index(candidate)])
+            if len(classes) == 2:
+                return float(proba_row[1])
+    return float(proba_row[-1])
+
+
+def local_model_predict(model: Any, row: pd.Series) -> float:
+    """
+    Runs a local model prediction, preferring predict_proba, with fallbacks for predict/callable.
+    """
+    feature_frame: Optional[pd.DataFrame] = None
+
+    def ensure_frame() -> pd.DataFrame:
+        nonlocal feature_frame
+        if feature_frame is None:
+            feature_frame = _build_feature_frame(row, model)
+        return feature_frame
+
+    if hasattr(model, "predict_proba"):
+        proba = model.predict_proba(ensure_frame())
+        if proba is None or len(proba) == 0:
+            raise ValueError("Local model returned no probabilities.")
+        proba_row = proba[0]
+        if proba_row is None or len(proba_row) == 0:
+            raise ValueError("Local model probability row is empty.")
+        return _safe_float(_extract_positive_probability(model, proba_row), 0.0)
+
+    if hasattr(model, "predict"):
+        pred = model.predict(ensure_frame())
+        if pred is None or len(pred) == 0:
+            raise ValueError("Local model returned no predictions.")
+        return _safe_float(pred[0], 0.0)
+
+    if callable(model):
+        return _safe_float(model(row), 0.0)
+
+    raise ValueError("Local model must implement predict_proba, predict, or be callable.")
+
+
+def _align_features_for_model(model: Any, df_in: pd.DataFrame) -> pd.DataFrame:
+    """
+    Aligns the feature frame to the model's expected columns when available.
+    Supports xgboost Booster feature names and scikit feature_names_in_.
+    """
+    if xgb is not None:
+        booster = None
+        if isinstance(model, xgb.Booster):
+            booster = model
+        elif hasattr(model, "get_booster"):
+            try:
+                booster = model.get_booster()
+            except Exception:
+                booster = None
+        if booster is not None:
+            names = booster.feature_names
+            if names:
+                aligned = pd.DataFrame(index=df_in.index)
+                for col in names:
+                    aligned[col] = df_in[col] if col in df_in.columns else 0.0
+                return aligned
+            try:
+                expected = booster.num_features()
+            except Exception:
+                expected = None
+            if expected:
+                cols_sorted = sorted(df_in.columns)
+                trimmed = df_in[cols_sorted]
+                if trimmed.shape[1] > expected:
+                    trimmed = trimmed.iloc[:, :expected]
+                elif trimmed.shape[1] < expected:
+                    for i in range(expected - trimmed.shape[1]):
+                        trimmed[f"pad_{i}"] = 0.0
+                return trimmed
+
+    feature_names = getattr(model, "feature_names_in_", None)
+    if feature_names is not None:
+        aligned = pd.DataFrame(index=df_in.index)
+        for col in feature_names:
+            aligned[col] = df_in[col] if col in df_in.columns else 0.0
+        return aligned
+
+    return df_in
+
+
+def _predict_with_model(model: Any, feature_df: pd.DataFrame, model_path: Optional[Path] = None) -> np.ndarray:
+    """
+    Runs batch predictions with alignment for xgboost/scikit models.
+    """
+    numeric_df = feature_df.select_dtypes(include=["number", "bool"]).copy()
+    # Drop common target column if present
+    for target_col in ("target_win",):
+        if target_col in numeric_df.columns:
+            numeric_df = numeric_df.drop(columns=[target_col])
+
+    aligned = _align_features_for_model(model, numeric_df)
+
+    if isinstance(model, dict) and model.get("type") == "pair_weighted_average":
+        if model_path is None:
+            raise ValueError("Ensemble model config requires model_path to locate member models.")
+        member_count = int(model.get("members", 2))
+        weight = float(model.get("w", 0.5))
+        model_dir = model_path.parent
+        # Only allow base models (non-ensemble dicts) as members to avoid recursive loops
+        candidates = []
+        for p in sorted(model_dir.glob("*.pkl")):
+            if p.resolve() == model_path.resolve():
+                continue
+            try:
+                obj = pickle.load(p.open("rb"))
+            except Exception:
+                continue
+            if isinstance(obj, dict) and obj.get("type") == "pair_weighted_average":
+                continue
+            candidates.append((p, obj))
+        if len(candidates) < member_count:
+            raise ValueError(
+                f"Ensemble model expects {member_count} base members but only found {len(candidates)} "
+                f"(skip ensemble dicts and self). Add real model pickles next to {model_path.name}."
+            )
+        member_preds = []
+        for idx, (member_path, member_obj) in enumerate(candidates[:member_count]):
+            member_pred = _predict_with_model(member_obj, feature_df, member_path)
+            if member_count == 2:
+                w = weight if idx == 0 else (1.0 - weight)
+            else:
+                w = 1.0 / member_count
+            member_preds.append(w * member_pred)
+        return sum(member_preds)
+
+    if xgb is not None and isinstance(model, xgb.Booster):
+        dmat = xgb.DMatrix(aligned)
+        return model.predict(dmat)
+
+    if hasattr(model, "predict_proba"):
+        proba_input = aligned
+        if xgb is not None and hasattr(model, "get_booster") and isinstance(model.get_booster(), xgb.Booster):
+            proba_input = xgb.DMatrix(aligned)
+        proba = model.predict_proba(proba_input)
+        if proba is None or len(proba) == 0:
+            raise ValueError("Local model returned no probabilities.")
+        if proba.ndim == 2 and proba.shape[1] >= 2:
+            return proba[:, 1]
+        return np.asarray(proba).ravel()
+
+    if hasattr(model, "predict"):
+        pred_input = aligned
+        if xgb is not None and hasattr(model, "get_booster") and isinstance(model.get_booster(), xgb.Booster):
+            pred_input = xgb.DMatrix(aligned)
+        preds = model.predict(pred_input)
+        return np.asarray(preds).ravel()
+
+    if callable(model):
+        preds = feature_df.apply(lambda row: model(row), axis=1)
+        return np.asarray(preds, dtype=float).ravel()
+
+    raise ValueError("Local model must implement predict_proba, predict, or be callable.")
 
 
 def log_prediction_error(message: str) -> None:
@@ -423,18 +606,6 @@ def assign_color(horse: Dict[str, Any]) -> str:
     return rng.choice(COLOR_PALETTE)
 
 
-def mock_probabilities(horses: List[Dict[str, Any]], seed_token: str) -> List[float]:
-    """
-    Generates deterministic mock probabilities for a list of horses.
-
-    This is used when no model endpoint is configured or when requests fail.
-    """
-    rng = random.Random(seed_token)
-    base_scores = [rng.uniform(0.3, 1.0) for _ in horses]
-    total = sum(base_scores) or 1.0
-    return [score / total for score in base_scores]
-
-
 def generate_predictions(date_id: str, track_id: str, include_predictions: bool = True) -> Dict[str, Any]:
     """
     Generates race payload for a given date and track, optionally including model probabilities.
@@ -463,18 +634,62 @@ def generate_predictions(date_id: str, track_id: str, include_predictions: bool 
         )
     )
 
-    local_model_artifact = load_local_model()
+    local_model_artifact: Optional[Any] = None
+    local_model_path: Optional[Path] = None
     local_dataset = load_local_dataset(date_id) if include_predictions else None
+    if include_predictions:
+        local_model_artifact, local_model_path = load_local_model()
 
     for race in races:
-        horses = sorted(
-            race.get('horses', []),
-            key=lambda h: sortable_number(h.get('number'))
-        )
+        race_id = race.get('race_id') or f"{track_id}-{race.get('race_number')}"
+        config_horses = race.get('horses', [])
+        config_horse_by_id = {
+            str(h.get('horse_id')): h for h in config_horses if h.get('horse_id') is not None
+        }
+
+        # Build horse roster: use model_input CSV when predicting, otherwise config list
+        if include_predictions:
+            if local_dataset is None:
+                raise RuntimeError(f"Local dataset for date {date_id} was not found.")
+            race_rows = local_dataset[local_dataset['race_id'] == race_id].copy()
+            if race_rows.empty:
+                error_msg = f"No local rows found for race {race_id} in dataset for {date_id}."
+                log_prediction_error(error_msg)
+                raise RuntimeError(error_msg)
+
+            horses = []
+            for _, row in race_rows.iterrows():
+                horse_id = row.get('horse_id')
+                cfg_horse = config_horse_by_id.get(str(horse_id))
+                cfg_number = cfg_horse.get('number') if cfg_horse else None
+                cfg_post = cfg_horse.get('post_position') if cfg_horse else None
+                cfg_prog = cfg_horse.get('program_number') if cfg_horse else None
+                post_position_value = cfg_post
+                if post_position_value is None or (isinstance(post_position_value, float) and math.isnan(post_position_value)):
+                    post_position_value = row.get('post_position')
+                if post_position_value is None or (isinstance(post_position_value, float) and math.isnan(post_position_value)):
+                    post_position_value = cfg_number or cfg_prog or row.get('program_num') or row.get('number')
+
+                number_value = cfg_number
+                if number_value is None:
+                    number_value = row.get('program_num') or row.get('number')
+
+                horses.append({
+                    'horse_id': horse_id,
+                    'horse_name': row.get('horse_name') or row.get('entry_name'),
+                    'number': number_value,
+                    'post_position': post_position_value,
+                    'color': cfg_horse.get('color') if cfg_horse else None,
+                })
+        else:
+            horses = sorted(
+                race.get('horses', []),
+                key=lambda h: sortable_number(h.get('number'))
+            )
 
         if not horses:
             races_payload.append({
-                'race_id': f"{track_id}-{race.get('race_number')}",
+                'race_id': race_id,
                 'race_number': race.get('race_number'),
                 'post_time': race.get('post_time'),
                 'distance': race.get('distance'),
@@ -492,8 +707,13 @@ def generate_predictions(date_id: str, track_id: str, include_predictions: bool 
         rng_palette = random.Random(f"{date_id}-{track_id}-{race.get('race_number')}-palette")
         rng_palette.shuffle(palette)
 
+        horses_sorted = sorted(
+            horses,
+            key=lambda h: sortable_number(h.get('post_position') or h.get('number'))
+        )
+
         horses_enriched = []
-        for idx, horse in enumerate(horses):
+        for idx, horse in enumerate(horses_sorted):
             chosen_color = horse.get('color') or palette[idx % len(palette)]
             post_position_value = horse.get('post_position')
             if post_position_value is None:
@@ -512,7 +732,6 @@ def generate_predictions(date_id: str, track_id: str, include_predictions: bool 
 
         model_top_pick_id = None
         model_top_pick_name = None
-        race_id = race.get('race_id') or f"{track_id}-{race.get('race_number')}"
         winner_entry = winners_by_race.get(race_id, {})
         winner_horse_id = winner_entry.get('winner_horse_id') or race.get('winner_horse_id') or race.get('winner')
         winner_name = winner_entry.get('winner_name') or race.get('winner_name') or race.get('winner')
@@ -525,57 +744,49 @@ def generate_predictions(date_id: str, track_id: str, include_predictions: bool 
                     break
 
         if include_predictions:
-            probabilities: List[float] = []
-
-            # Prefer local CSV/model if available for this date
-            if local_model_artifact is not None and local_dataset is not None:
-                race_rows = local_dataset[local_dataset['race_id'] == race_id].copy()
-                if not race_rows.empty:
-                    probs_map: Dict[str, float] = {}
-                    for _, row in race_rows.iterrows():
-                        prob = local_model_predict(local_model_artifact, row)
-                        probs_map[str(row.get('horse_id'))] = prob
-                    # Normalize across horses found in this race
-                    values = list(probs_map.values())
-                    total = sum(values) or 1.0
-                    probs_map = {k: v / total for k, v in probs_map.items()}
-                    probabilities = [
-                        probs_map.get(str(horse.get('horse_id')), 0.0)
-                        for horse in horses
-                    ]
-
-            # Fallback to remote model if local not available
-            if not probabilities:
-                if not Config.MLFLOW_ENDPOINT_URL or not Config.DATABRICKS_TOKEN:
-                    error_msg = (
-                        f"No local predictions for race {race_id} and Databricks endpoint "
-                        "credentials are missing."
-                    )
-                    log_prediction_error(error_msg)
-                    raise RuntimeError(error_msg)
-
-                feature_rows = [
-                    build_horse_feature_row(horse, race, date_id, track_id)
-                    for horse in horses
-                ]
-
-                dataset = pd.DataFrame(feature_rows, columns=Config.MODEL_FEATURES)
-
-                try:
-                    raw_predictions = score_model(dataset)
-                    probabilities = normalize_predictions(raw_predictions, len(horses))
-                except Exception as exc:  # noqa: BLE001
-                    error_msg = f"Remote prediction failed for race {race_id}: {exc}"
-                    log_prediction_error(error_msg)
-                    raise
-
-            if not probabilities:
-                error_msg = f"No predictions produced for race {race_id}"
+            if local_dataset is None:
+                error_msg = f"Local dataset for date {date_id} was not found."
                 log_prediction_error(error_msg)
                 raise RuntimeError(error_msg)
 
-            for horse_entry, prob in zip(horses_enriched, probabilities):
-                horse_entry['probability'] = round(prob, 4)
+            race_rows = local_dataset[local_dataset['race_id'] == race_id].copy()
+            if race_rows.empty:
+                error_msg = f"No local rows found for race {race_id} in dataset for {date_id}."
+                log_prediction_error(error_msg)
+                raise RuntimeError(error_msg)
+
+            predictions = _predict_with_model(local_model_artifact, race_rows, local_model_path)
+            if predictions is None or len(predictions) != len(race_rows):
+                error_msg = f"Local model returned {len(predictions) if predictions is not None else 0} predictions for {len(race_rows)} rows in race {race_id}"
+                log_prediction_error(error_msg)
+                raise RuntimeError(error_msg)
+
+            probs_map: Dict[str, float] = {}
+            for (_, row), pred in zip(race_rows.iterrows(), predictions):
+                probs_map[str(row.get('horse_id'))] = _safe_float(pred, 0.0)
+
+            if not probs_map:
+                error_msg = f"Local model produced no predictions for race {race_id}"
+                log_prediction_error(error_msg)
+                raise RuntimeError(error_msg)
+
+            probabilities_raw = []
+            for horse in horses_sorted:
+                prob = probs_map.get(str(horse.get('horse_id')), 0.0)
+                prob = 0.0 if (prob is None or not math.isfinite(prob)) else prob
+                probabilities_raw.append(prob)
+
+            prob_total = sum(probabilities_raw)
+            if prob_total <= 0:
+                error_msg = f"No probabilities aligned to horses for race {race_id}"
+                log_prediction_error(error_msg)
+                raise RuntimeError(error_msg)
+
+            probabilities_norm = [prob / prob_total for prob in probabilities_raw]
+
+            for horse_entry, prob_raw, prob_norm in zip(horses_enriched, probabilities_raw, probabilities_norm):
+                horse_entry['probability_raw'] = round(prob_raw, 6)
+                horse_entry['probability'] = round(prob_norm, 4)
 
             top_pick = max(horses_enriched, key=lambda h: h['probability'] or 0)
             model_top_pick_id = top_pick.get('horse_id')
@@ -593,7 +804,7 @@ def generate_predictions(date_id: str, track_id: str, include_predictions: bool 
             ])
 
         races_payload.append({
-            'race_id': f"{track_id}-{race.get('race_number')}",
+            'race_id': race_id,
             'race_number': race.get('race_number'),
             'post_time': race.get('post_time'),
             'distance': race.get('distance'),
