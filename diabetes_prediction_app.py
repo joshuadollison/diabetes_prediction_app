@@ -1026,7 +1026,7 @@ def predict():
     data = request.get_json(silent=True) or {}
     date_id = data.get('date_id')
     track_id = data.get('track_id')
-    model_choice = (data.get('model_choice') or 'F1').upper()
+    model_choice = (data.get('model_choice') or 'F05').upper()
 
     if not date_id or not track_id:
         return jsonify({
@@ -1041,6 +1041,14 @@ def predict():
         'PRECISION': Path('model/lgbm_precision.pkl')
     }
     chosen_path = model_map.get(model_choice, model_map['F1'])
+
+    if model_choice == 'F1':
+        host = (request.host or '').split(':')[0]
+        if host not in ('127.0.0.1', 'localhost'):
+            return jsonify({
+                'success': False,
+                'error': 'F1 model is only available when running locally.'
+            }), 400
 
     try:
         result = generate_predictions(date_id, track_id, model_path=chosen_path)

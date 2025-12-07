@@ -14,7 +14,7 @@ const appState = {
     selectedTrack: null,
     races: [],
     hasPredictions: false,
-    modelChoice: 'F1'
+    modelChoice: 'F05'
 };
 
 async function bootstrapApp() {

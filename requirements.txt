@@ -44,6 +44,9 @@ numpy>=1.24.0
 # Used to create DataFrames for model input formatting
 pandas>=2.0.0
 
+# LightGBM: Gradient boosting library used by some models
+lightgbm>=4.3.0
+
 # ============================================================================
 # Production Web Server
 # ============================================================================
