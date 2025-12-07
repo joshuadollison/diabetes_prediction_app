@@ -55,19 +55,19 @@
                 <div>
                     <h1 class="text-4xl sm:text-5xl font-display font-semibold tracking-tight text-white">Race Day Predictor</h1>
                     <p class="text-slate-300 mt-2 max-w-2xl">
-                        Choose a card, query the model service, and watch the horses run. Data, probabilities, and winners are driven entirely from your text config.
+                        Choose a card, query the model, and watch the horses run. Cards/winners come from the config; features and scores come from the model input CSVs and the local pickle.
                     </p>
                 </div>
                 <div class="px-4 py-3 rounded-xl bg-white/5 border border-white/10 text-sm text-slate-200">
-                    <div class="font-semibold">Databricks Endpoint</div>
+                    <div class="font-semibold">Local Model</div>
                     <div class="text-brand-200">POST /predict</div>
-                    <div class="text-slate-400 text-xs">Mocked locally if unset</div>
+                    <div class="text-slate-400 text-xs">Served from horsey_model.pkl and model_input_*.csv</div>
                 </div>
             </div>
         </header>
 
         <section class="bg-white/5 border border-white/10 rounded-2xl p-5 sm:p-6 shadow-xl shadow-black/20">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 items-end">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6 items-end">
                 <div class="space-y-2">
                     <label for="dateSelect" class="text-sm font-semibold text-slate-200">Race date</label>
                     <select id="dateSelect" class="input-select w-full">
@@ -80,14 +80,25 @@
                         <option value="">Select a date first</option>
                     </select>
                 </div>
+                <div class="space-y-2">
+                    <label for="modelSelect" class="text-sm font-semibold text-slate-200">Model</label>
+                    <select id="modelSelect" class="input-select w-full">
+                        <option value="F1">F1</option>
+                        <option value="F05">F05</option>
+                        <option value="Precision">Precision</option>
+                    </select>
+                </div>
                 <div class="flex items-center gap-3">
                     <button id="predictButton" class="btn-primary w-full" type="button">
                         <span class="button-label">Run predictions</span>
                         <span class="button-spinner hidden"></span>
                     </button>
+                    <button id="playAllButton" class="btn-secondary whitespace-nowrap" type="button">Play all</button>
                 </div>
             </div>
-            <p class="text-xs text-slate-400 mt-3">Dates, tracks, fields, and official winners are sourced from <code class="px-1 py-0.5 bg-white/10 rounded">race_config.json</code>.</p>
+            <p class="text-xs text-slate-400 mt-3">
+                Cards and winners come from <code class="px-1 py-0.5 bg-white/10 rounded">race_config.json</code>; model features and scores come from <code class="px-1 py-0.5 bg-white/10 rounded">model_input_*.csv</code> and <code class="px-1 py-0.5 bg-white/10 rounded">horsey_model.pkl</code>.
+            </p>
         </section>
 
         <div id="alert" class="hidden"></div>

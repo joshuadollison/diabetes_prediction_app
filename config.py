@@ -100,9 +100,6 @@ class Config:
     # Path to the winners-only configuration file (race_id -> winner data)
     WINNERS_CONFIG_FILE = os.getenv('WINNERS_CONFIG_FILE', 'winners_config.json')
 
-    # Optional flag to force the app to use mocked model outputs
-    USE_MOCK_MODEL = os.getenv('USE_MOCK_MODEL', 'True').lower() == 'true'
-
     # ============================================================================
     # Validation Methods
     # ============================================================================
@@ -127,19 +124,7 @@ class Config:
         """
         errors = []
 
-        # Check for required Databricks token unless we are in mock mode
-        if not cls.DATABRICKS_TOKEN and not cls.USE_MOCK_MODEL:
-            errors.append(
-                "DATABRICKS_TOKEN is not set. Please set it in your .env file or as an environment variable."
-            )
-
-        # Check for required MLflow endpoint URL unless we are in mock mode
-        if not cls.MLFLOW_ENDPOINT_URL and not cls.USE_MOCK_MODEL:
-            errors.append(
-                "MLFLOW_ENDPOINT_URL is not set. Please configure your MLflow endpoint URL."
-            )
-
-        # Validate that endpoint URL is a valid HTTPS URL
+        # Validate that endpoint URL is a valid HTTPS URL when provided
         if cls.MLFLOW_ENDPOINT_URL and not cls.MLFLOW_ENDPOINT_URL.startswith('https://'):
             errors.append(
                 "MLFLOW_ENDPOINT_URL should use HTTPS for security. Current URL: " + cls.MLFLOW_ENDPOINT_URL
@@ -193,7 +178,6 @@ class Config:
         print(f"Model Features: {', '.join(cls.MODEL_FEATURES)}")
         print(f"Race Config File: {cls.RACE_CONFIG_FILE}")
         print(f"Winners Config File: {cls.WINNERS_CONFIG_FILE}")
-        print(f"Using Mock Model: {cls.USE_MOCK_MODEL}")
         print("="*70 + "\n")
 
 

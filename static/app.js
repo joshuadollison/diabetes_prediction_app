@@ -13,7 +13,8 @@ const appState = {
     selectedDate: null,
     selectedTrack: null,
     races: [],
-    hasPredictions: false
+    hasPredictions: false,
+    modelChoice: 'F1'
 };
 
 async function bootstrapApp() {
@@ -25,6 +26,8 @@ function bindControls() {
     const dateSelect = document.getElementById('dateSelect');
     const trackSelect = document.getElementById('trackSelect');
     const predictButton = document.getElementById('predictButton');
+    const playAllButton = document.getElementById('playAllButton');
+    const modelSelect = document.getElementById('modelSelect');
 
     if (dateSelect) {
         dateSelect.addEventListener('change', handleDateChange);
@@ -34,6 +37,12 @@ function bindControls() {
     }
     if (predictButton) {
         predictButton.addEventListener('click', handlePredictClick);
+    }
+    if (playAllButton) {
+        playAllButton.addEventListener('click', handlePlayAllClick);
+    }
+    if (modelSelect) {
+        modelSelect.addEventListener('change', handleModelChange);
     }
 }
 
@@ -131,7 +140,7 @@ async function handlePredictClick() {
 
     try {
         setButtonLoading(true);
-        const payload = await fetchPredictions(selectedDate, selectedTrack);
+        const payload = await fetchPredictions(selectedDate, selectedTrack, appState.modelChoice);
         appState.races = payload.races || [];
         appState.hasPredictions = true;
         renderRaceGrid(appState.races, payload, true);
@@ -140,6 +149,23 @@ async function handlePredictClick() {
     } finally {
         setButtonLoading(false);
     }
+}
+
+function handlePlayAllClick() {
+    hideAlert();
+    if (!appState.races || appState.races.length === 0) {
+        showAlert('Load a card first.', 'warning');
+        return;
+    }
+    appState.races.forEach(race => {
+        if (race && race.race_id) {
+            playRaceAnimation(race.race_id);
+        }
+    });
+}
+
+function handleModelChange(event) {
+    appState.modelChoice = event.target.value || 'F1';
 }
 
 async function loadCard(dateId, trackId) {
@@ -170,7 +196,7 @@ async function fetchPredictions(dateId, trackId) {
     const response = await fetch('/predict', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ date_id: dateId, track_id: trackId })
+        body: JSON.stringify({ date_id: dateId, track_id: trackId, model_choice: appState.modelChoice })
     });
 
     const payload = await response.json();
@@ -213,9 +239,12 @@ function buildRaceCard(race, payloadMeta, hasPredictions) {
     const headerLine = `${payloadMeta?.track?.name || 'Track'} • ${payloadMeta?.date?.label || ''}`;
 
     const horseList = horses.map((horse, index) => {
-        const probabilityText = horse.probability != null
-            ? `${(horse.probability * 100).toFixed(1)}% win chance`
-            : 'Probability pending';
+        let probabilityText = 'Probability pending';
+        if (horse.probability != null && horse.probability_raw != null) {
+            probabilityText = `${(horse.probability * 100).toFixed(1)}% (normalized) • ${(horse.probability_raw * 100).toFixed(2)}% raw`;
+        } else if (horse.probability != null) {
+            probabilityText = `${(horse.probability * 100).toFixed(1)}% win chance`;
+        }
         const isTopPick = hasPredictions && index === 0;
         const highlightClass = isTopPick ? 'horse-pick' : 'bg-white/5';
         const numberContent = horse.post_position != null ? `${horse.post_position}` : '';

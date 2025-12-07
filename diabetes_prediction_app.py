@@ -1,31 +1,3 @@
-"""
-Race Day Prediction Web Application
-
-This Flask application provides a web interface for selecting race days and
-tracks, sending horse-level prediction requests to a Databricks-served model,
-and visualizing results (including a playful race simulation). The structure
-mirrors the original diabetes project so deployment, configuration, and
-infrastructure stay consistent while the domain logic changes entirely.
-
-Educational Overview:
---------------------
-This application demonstrates several important software engineering concepts:
-1. Separation of Concerns: Configuration separate from business logic
-2. RESTful API Design: Clean endpoints for client-server communication
-3. Error Handling: Graceful handling of failures with informative messages
-4. Input Validation: Ensuring data quality before processing
-5. Documentation: Explaining the "why" behind the code and architecture
-
-Architecture:
-------------
-- Frontend: HTML/JavaScript that lets users choose a race date/track and view races
-- Backend: Flask server that loads schedule data and calls the ML model
-- ML Service: Databricks MLflow serving endpoint that returns win probabilities
-
-Author: [Your Name / Team Name]
-Last Updated: 2025-01-21
-"""
-
 # ============================================================================
 # Standard Library Imports
 # ============================================================================
@@ -50,6 +22,11 @@ try:
     import xgboost as xgb  # type: ignore
 except ImportError:  # pragma: no cover
     xgb = None  # type: ignore
+
+try:
+    import lightgbm as lgb  # type: ignore
+except ImportError:  # pragma: no cover
+    lgb = None  # type: ignore
 
 # ============================================================================
 # Local Imports
@@ -267,6 +244,45 @@ def _safe_float(value: Any, default: float = 0.0) -> float:
         return default
 
 
+def _safe_id(value: Any) -> Optional[str]:
+    """
+    Converts a horse identifier to string, returning None for NaN/None.
+    """
+    if value is None:
+        return None
+    try:
+        if pd.isna(value):
+            return None
+    except Exception:
+        pass
+    try:
+        if isinstance(value, float) and math.isnan(value):
+            return None
+    except Exception:
+        pass
+    return str(value)
+
+
+def _clean_number(value: Any) -> Optional[Any]:
+    """
+    Returns None for NaN/None; otherwise returns the value.
+    """
+    if value is None:
+        return None
+    try:
+        if isinstance(value, float) and math.isnan(value):
+            return None
+    except Exception:
+        pass
+    try:
+        numeric_val = float(value)
+        if numeric_val < 0:
+            return None
+    except Exception:
+        pass
+    return value
+
+
 def load_local_model(model_path: Optional[Path] = None) -> tuple[Any, Path]:
     """
     Loads the local model artifact (expected to be a trained estimator).
@@ -366,8 +382,64 @@ def local_model_predict(model: Any, row: pd.Series) -> float:
 def _align_features_for_model(model: Any, df_in: pd.DataFrame) -> pd.DataFrame:
     """
     Aligns the feature frame to the model's expected columns when available.
-    Supports xgboost Booster feature names and scikit feature_names_in_.
+    Supports xgboost/lightgbm boosters and scikit feature_names_in_.
     """
+    booster = None
+    feature_names = None
+
+    if xgb is not None:
+        if isinstance(model, xgb.Booster):
+            booster = model
+            feature_names = booster.feature_names
+        elif hasattr(model, "get_booster"):
+            try:
+                booster = model.get_booster()
+                feature_names = booster.feature_names
+            except Exception:
+                booster = None
+
+    if booster is None and lgb is not None:
+        if isinstance(model, lgb.Booster):
+            booster = model
+            feature_names = booster.feature_name()
+        elif hasattr(model, "booster_"):
+            try:
+                booster = model.booster_
+                feature_names = booster.feature_name()
+            except Exception:
+                booster = None
+
+    if booster is not None and feature_names:
+        if all(isinstance(col, str) and col.startswith("Column_") for col in feature_names):
+            indexed = {
+                name: df_in.iloc[:, idx] if idx < df_in.shape[1] else 0.0
+                for idx, name in enumerate(feature_names)
+            }
+            return pd.DataFrame(indexed, index=df_in.index)
+
+        aligned = pd.DataFrame(index=df_in.index)
+        for col in feature_names:
+            aligned[col] = df_in[col] if col in df_in.columns else 0.0
+        return aligned
+
+    # Booster without names: try to enforce feature count if available
+    if booster is not None:
+        expected = None
+        if hasattr(booster, "num_features"):
+            try:
+                expected = booster.num_features()
+            except Exception:
+                expected = None
+        if expected:
+            cols_sorted = sorted(df_in.columns)
+            trimmed = df_in[cols_sorted]
+            if trimmed.shape[1] > expected:
+                trimmed = trimmed.iloc[:, :expected]
+            elif trimmed.shape[1] < expected:
+                for i in range(expected - trimmed.shape[1]):
+                    trimmed[f"pad_{i}"] = 0.0
+            return trimmed
+
     if xgb is not None:
         booster = None
         if isinstance(model, xgb.Booster):
@@ -405,6 +477,17 @@ def _align_features_for_model(model: Any, df_in: pd.DataFrame) -> pd.DataFrame:
             aligned[col] = df_in[col] if col in df_in.columns else 0.0
         return aligned
 
+    expected = getattr(model, "n_features_in_", None)
+    if expected:
+        cols_sorted = sorted(df_in.columns)
+        aligned = df_in[cols_sorted]
+        if aligned.shape[1] > expected:
+            aligned = aligned.iloc[:, :expected]
+        elif aligned.shape[1] < expected:
+            for i in range(expected - aligned.shape[1]):
+                aligned[f"pad_{i}"] = 0.0
+        return aligned
+
     return df_in
 
 
@@ -413,12 +496,24 @@ def _predict_with_model(model: Any, feature_df: pd.DataFrame, model_path: Option
     Runs batch predictions with alignment for xgboost/scikit models.
     """
     numeric_df = feature_df.select_dtypes(include=["number", "bool"]).copy()
+    numeric_df = numeric_df.replace([np.inf, -np.inf], 0).fillna(0)
     # Drop common target column if present
     for target_col in ("target_win",):
         if target_col in numeric_df.columns:
             numeric_df = numeric_df.drop(columns=[target_col])
 
+    # If the model expects a single feature (e.g., isotonic regression), collapse to one column
+    n_features = getattr(model, "n_features_in_", None)
+    is_single_feature_model = (
+        n_features == 1
+        or "isotonic" in model.__class__.__name__.lower()
+    )
+    if is_single_feature_model and numeric_df.shape[1] > 1:
+        numeric_df = numeric_df.iloc[:, [0]]
+
     aligned = _align_features_for_model(model, numeric_df)
+    if is_single_feature_model and aligned.shape[1] > 1:
+        aligned = aligned.iloc[:, [0]]
 
     if isinstance(model, dict) and model.get("type") == "pair_weighted_average":
         if model_path is None:
@@ -426,25 +521,42 @@ def _predict_with_model(model: Any, feature_df: pd.DataFrame, model_path: Option
         member_count = int(model.get("members", 2))
         weight = float(model.get("w", 0.5))
         model_dir = model_path.parent
-        # Only allow base models (non-ensemble dicts) as members to avoid recursive loops
-        candidates = []
-        for p in sorted(model_dir.glob("*.pkl")):
-            if p.resolve() == model_path.resolve():
-                continue
-            try:
-                obj = pickle.load(p.open("rb"))
-            except Exception:
-                continue
-            if isinstance(obj, dict) and obj.get("type") == "pair_weighted_average":
-                continue
-            candidates.append((p, obj))
-        if len(candidates) < member_count:
-            raise ValueError(
-                f"Ensemble model expects {member_count} base members but only found {len(candidates)} "
-                f"(skip ensemble dicts and self). Add real model pickles next to {model_path.name}."
-            )
+        # Prefer explicit member names based on ensemble filename
+        member_names: List[str] = []
+        if model_path.stem.lower() == "ens_xgb_rf":
+            member_names = ["rf", "xg"]
+
+        members: List[tuple[Path, Any]] = []
+        if member_names:
+            for name in member_names:
+                path = model_dir / f"{name}.pkl"
+                if not path.exists():
+                    raise ValueError(f"Ensemble member model not found: {path}")
+                members.append((path, pickle.load(path.open("rb"))))
+            member_count = len(members)
+        else:
+            candidates = []
+            for p in sorted(model_dir.glob("*.pkl")):
+                if p.resolve() == model_path.resolve():
+                    continue
+                try:
+                    obj = pickle.load(p.open("rb"))
+                    if isinstance(obj, dict):
+                        continue
+                    candidates.append((p, obj))
+                except Exception:
+                    continue
+            if len(candidates) < member_count:
+                # proceed with available members instead of hard error; use equal weights
+                member_count = len(candidates)
+                if member_count == 0:
+                    raise ValueError(
+                        f"Ensemble model expected members but found none next to {model_path.name}"
+                    )
+            members = candidates[:member_count]
+
         member_preds = []
-        for idx, (member_path, member_obj) in enumerate(candidates[:member_count]):
+        for idx, (member_path, member_obj) in enumerate(members[:member_count]):
             member_pred = _predict_with_model(member_obj, feature_df, member_path)
             if member_count == 2:
                 w = weight if idx == 0 else (1.0 - weight)
@@ -457,8 +569,16 @@ def _predict_with_model(model: Any, feature_df: pd.DataFrame, model_path: Option
         dmat = xgb.DMatrix(aligned)
         return model.predict(dmat)
 
+    if lgb is not None and isinstance(model, lgb.Booster):
+        num_iter = getattr(model, "best_iteration", None)
+        return model.predict(aligned, num_iteration=num_iter)
+    if lgb is not None and hasattr(model, "predict") and model.__class__.__module__.startswith("lightgbm"):
+        return model.predict(aligned)
+
     if hasattr(model, "predict_proba"):
         proba_input = aligned
+        if is_single_feature_model and not isinstance(proba_input, np.ndarray):
+            proba_input = aligned.iloc[:, 0].to_numpy()
         if xgb is not None and hasattr(model, "get_booster") and isinstance(model.get_booster(), xgb.Booster):
             proba_input = xgb.DMatrix(aligned)
         proba = model.predict_proba(proba_input)
@@ -470,6 +590,8 @@ def _predict_with_model(model: Any, feature_df: pd.DataFrame, model_path: Option
 
     if hasattr(model, "predict"):
         pred_input = aligned
+        if is_single_feature_model and not isinstance(pred_input, np.ndarray):
+            pred_input = aligned.iloc[:, 0].to_numpy()
         if xgb is not None and hasattr(model, "get_booster") and isinstance(model.get_booster(), xgb.Booster):
             pred_input = xgb.DMatrix(aligned)
         preds = model.predict(pred_input)
@@ -606,7 +728,7 @@ def assign_color(horse: Dict[str, Any]) -> str:
     return rng.choice(COLOR_PALETTE)
 
 
-def generate_predictions(date_id: str, track_id: str, include_predictions: bool = True) -> Dict[str, Any]:
+def generate_predictions(date_id: str, track_id: str, include_predictions: bool = True, model_path: Optional[Path] = None) -> Dict[str, Any]:
     """
     Generates race payload for a given date and track, optionally including model probabilities.
     """
@@ -635,17 +757,19 @@ def generate_predictions(date_id: str, track_id: str, include_predictions: bool 
     )
 
     local_model_artifact: Optional[Any] = None
-    local_model_path: Optional[Path] = None
+    local_model_path: Optional[Path] = model_path
     local_dataset = load_local_dataset(date_id) if include_predictions else None
     if include_predictions:
-        local_model_artifact, local_model_path = load_local_model()
+        local_model_artifact, local_model_path = load_local_model(model_path)
 
     for race in races:
         race_id = race.get('race_id') or f"{track_id}-{race.get('race_number')}"
         config_horses = race.get('horses', [])
-        config_horse_by_id = {
-            str(h.get('horse_id')): h for h in config_horses if h.get('horse_id') is not None
-        }
+        config_horse_by_id = {}
+        for h in config_horses:
+            hid = _safe_id(h.get('horse_id'))
+            if hid is not None:
+                config_horse_by_id[hid] = h
 
         # Build horse roster: use model_input CSV when predicting, otherwise config list
         if include_predictions:
@@ -659,8 +783,9 @@ def generate_predictions(date_id: str, track_id: str, include_predictions: bool 
 
             horses = []
             for _, row in race_rows.iterrows():
-                horse_id = row.get('horse_id')
-                cfg_horse = config_horse_by_id.get(str(horse_id))
+                horse_id_raw = row.get('horse_id')
+                horse_id = _safe_id(horse_id_raw)
+                cfg_horse = config_horse_by_id.get(horse_id)
                 cfg_number = cfg_horse.get('number') if cfg_horse else None
                 cfg_post = cfg_horse.get('post_position') if cfg_horse else None
                 cfg_prog = cfg_horse.get('program_number') if cfg_horse else None
@@ -677,8 +802,8 @@ def generate_predictions(date_id: str, track_id: str, include_predictions: bool 
                 horses.append({
                     'horse_id': horse_id,
                     'horse_name': row.get('horse_name') or row.get('entry_name'),
-                    'number': number_value,
-                    'post_position': post_position_value,
+                    'number': _clean_number(number_value),
+                    'post_position': _clean_number(post_position_value),
                     'color': cfg_horse.get('color') if cfg_horse else None,
                 })
         else:
@@ -722,10 +847,10 @@ def generate_predictions(date_id: str, track_id: str, include_predictions: bool 
                 post_position_value = horse.get('program_number')
 
             horses_enriched.append({
-                'horse_id': horse.get('horse_id'),
+                'horse_id': _safe_id(horse.get('horse_id')),
                 'horse_name': horse.get('horse_name') or horse.get('name'),
-                'number': horse.get('number'),
-                'post_position': post_position_value,
+                'number': _clean_number(horse.get('number')),
+                'post_position': _clean_number(post_position_value),
                 'color': chosen_color,
                 'probability': None
             })
@@ -763,7 +888,10 @@ def generate_predictions(date_id: str, track_id: str, include_predictions: bool 
 
             probs_map: Dict[str, float] = {}
             for (_, row), pred in zip(race_rows.iterrows(), predictions):
-                probs_map[str(row.get('horse_id'))] = _safe_float(pred, 0.0)
+                hid = _safe_id(row.get('horse_id'))
+                if hid is None:
+                    continue
+                probs_map[hid] = _safe_float(pred, 0.0)
 
             if not probs_map:
                 error_msg = f"Local model produced no predictions for race {race_id}"
@@ -772,7 +900,8 @@ def generate_predictions(date_id: str, track_id: str, include_predictions: bool 
 
             probabilities_raw = []
             for horse in horses_sorted:
-                prob = probs_map.get(str(horse.get('horse_id')), 0.0)
+                hid = _safe_id(horse.get('horse_id'))
+                prob = probs_map.get(hid, 0.0)
                 prob = 0.0 if (prob is None or not math.isfinite(prob)) else prob
                 probabilities_raw.append(prob)
 
@@ -892,11 +1021,12 @@ def predict():
     Request Format:
         POST /predict
         Content-Type: application/json
-        Body: { "date_id": "2024-07-04", "track_id": "belmont-park" }
+        Body: { "date_id": "2024-07-04", "track_id": "belmont-park", "model_choice": "F1" }
     """
     data = request.get_json(silent=True) or {}
     date_id = data.get('date_id')
     track_id = data.get('track_id')
+    model_choice = (data.get('model_choice') or 'F1').upper()
 
     if not date_id or not track_id:
         return jsonify({
@@ -904,8 +1034,16 @@ def predict():
             'error': 'Both date_id and track_id are required.'
         }), 400
 
+    model_map = {
+        'F1': Path('model/ens_xgb_rf.pkl'),
+        'F05': Path('model/lgbm_f05.pkl'),
+        'F0.5': Path('model/lgbm_f05.pkl'),
+        'PRECISION': Path('model/lgbm_precision.pkl')
+    }
+    chosen_path = model_map.get(model_choice, model_map['F1'])
+
     try:
-        result = generate_predictions(date_id, track_id)
+        result = generate_predictions(date_id, track_id, model_path=chosen_path)
         return jsonify({'success': True, **result})
     except Exception as exc:  # noqa: BLE001 - return error to client
         return jsonify({

@@ -109,3 +109,4 @@ Thumbs.db
 tmp/
 temp/
 model/prediction_log.csv
+*.pkl
